@@ -1,0 +1,323 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DF506AD415924A4500D49E67 /* Obra.m in Sources */ = {isa = PBXBuildFile; fileRef = DF506AD315924A4500D49E67 /* Obra.m */; };
+		DFE73BA315903BE900816FC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE73BA215903BE800816FC8 /* UIKit.framework */; };
+		DFE73BA515903BE900816FC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE73BA415903BE900816FC8 /* Foundation.framework */; };
+		DFE73BA715903BE900816FC8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE73BA615903BE900816FC8 /* CoreGraphics.framework */; };
+		DFE73BA915903BE900816FC8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE73BA815903BE900816FC8 /* CoreData.framework */; };
+		DFE73BAF15903BE900816FC8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DFE73BAD15903BE900816FC8 /* InfoPlist.strings */; };
+		DFE73BB115903BE900816FC8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BB015903BE900816FC8 /* main.m */; };
+		DFE73BB515903BE900816FC8 /* PrimeInspecaoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BB415903BE900816FC8 /* PrimeInspecaoAppDelegate.m */; };
+		DFE73BB815903BE900816FC8 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE73BB615903BE900816FC8 /* MainStoryboard.storyboard */; };
+		DFE73BBB15903BE900816FC8 /* PrimeInspecao.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BB915903BE900816FC8 /* PrimeInspecao.xcdatamodeld */; };
+		DFE73BBE15903BE900816FC8 /* PrimeInspecaoMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BBD15903BE900816FC8 /* PrimeInspecaoMasterViewController.m */; };
+		DFE73BC115903BE900816FC8 /* PrimeInspecaoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BC015903BE900816FC8 /* PrimeInspecaoDetailViewController.m */; };
+		DFE73BC915903EBA00816FC8 /* ObrasTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BC815903EBA00816FC8 /* ObrasTableViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DF506AD215924A4500D49E67 /* Obra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obra.h; sourceTree = "<group>"; };
+		DF506AD315924A4500D49E67 /* Obra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Obra.m; sourceTree = "<group>"; };
+		DFE73B9E15903BE800816FC8 /* PrimeInspecao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrimeInspecao.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFE73BA215903BE800816FC8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DFE73BA415903BE900816FC8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DFE73BA615903BE900816FC8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DFE73BA815903BE900816FC8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DFE73BAC15903BE900816FC8 /* PrimeInspecao-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PrimeInspecao-Info.plist"; sourceTree = "<group>"; };
+		DFE73BAE15903BE900816FC8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DFE73BB015903BE900816FC8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DFE73BB215903BE900816FC8 /* PrimeInspecao-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PrimeInspecao-Prefix.pch"; sourceTree = "<group>"; };
+		DFE73BB315903BE900816FC8 /* PrimeInspecaoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrimeInspecaoAppDelegate.h; sourceTree = "<group>"; };
+		DFE73BB415903BE900816FC8 /* PrimeInspecaoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrimeInspecaoAppDelegate.m; sourceTree = "<group>"; };
+		DFE73BB715903BE900816FC8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		DFE73BBA15903BE900816FC8 /* PrimeInspecao.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PrimeInspecao.xcdatamodel; sourceTree = "<group>"; };
+		DFE73BBC15903BE900816FC8 /* PrimeInspecaoMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrimeInspecaoMasterViewController.h; sourceTree = "<group>"; };
+		DFE73BBD15903BE900816FC8 /* PrimeInspecaoMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrimeInspecaoMasterViewController.m; sourceTree = "<group>"; };
+		DFE73BBF15903BE900816FC8 /* PrimeInspecaoDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrimeInspecaoDetailViewController.h; sourceTree = "<group>"; };
+		DFE73BC015903BE900816FC8 /* PrimeInspecaoDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrimeInspecaoDetailViewController.m; sourceTree = "<group>"; };
+		DFE73BC715903EBA00816FC8 /* ObrasTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObrasTableViewController.h; sourceTree = "<group>"; };
+		DFE73BC815903EBA00816FC8 /* ObrasTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObrasTableViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DFE73B9B15903BE800816FC8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFE73BA315903BE900816FC8 /* UIKit.framework in Frameworks */,
+				DFE73BA515903BE900816FC8 /* Foundation.framework in Frameworks */,
+				DFE73BA715903BE900816FC8 /* CoreGraphics.framework in Frameworks */,
+				DFE73BA915903BE900816FC8 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DFE73B9315903BE800816FC8 = {
+			isa = PBXGroup;
+			children = (
+				DFE73BAA15903BE900816FC8 /* PrimeInspecao */,
+				DFE73BA115903BE800816FC8 /* Frameworks */,
+				DFE73B9F15903BE800816FC8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DFE73B9F15903BE800816FC8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DFE73B9E15903BE800816FC8 /* PrimeInspecao.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DFE73BA115903BE800816FC8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DFE73BA215903BE800816FC8 /* UIKit.framework */,
+				DFE73BA415903BE900816FC8 /* Foundation.framework */,
+				DFE73BA615903BE900816FC8 /* CoreGraphics.framework */,
+				DFE73BA815903BE900816FC8 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DFE73BAA15903BE900816FC8 /* PrimeInspecao */ = {
+			isa = PBXGroup;
+			children = (
+				DFE73BB315903BE900816FC8 /* PrimeInspecaoAppDelegate.h */,
+				DFE73BB415903BE900816FC8 /* PrimeInspecaoAppDelegate.m */,
+				DFE73BB615903BE900816FC8 /* MainStoryboard.storyboard */,
+				DFE73BBC15903BE900816FC8 /* PrimeInspecaoMasterViewController.h */,
+				DFE73BBD15903BE900816FC8 /* PrimeInspecaoMasterViewController.m */,
+				DFE73BBF15903BE900816FC8 /* PrimeInspecaoDetailViewController.h */,
+				DFE73BC015903BE900816FC8 /* PrimeInspecaoDetailViewController.m */,
+				DFE73BC715903EBA00816FC8 /* ObrasTableViewController.h */,
+				DFE73BC815903EBA00816FC8 /* ObrasTableViewController.m */,
+				DFE73BB915903BE900816FC8 /* PrimeInspecao.xcdatamodeld */,
+				DF506AD215924A4500D49E67 /* Obra.h */,
+				DF506AD315924A4500D49E67 /* Obra.m */,
+				DFE73BAB15903BE900816FC8 /* Supporting Files */,
+			);
+			path = PrimeInspecao;
+			sourceTree = "<group>";
+		};
+		DFE73BAB15903BE900816FC8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DFE73BAC15903BE900816FC8 /* PrimeInspecao-Info.plist */,
+				DFE73BAD15903BE900816FC8 /* InfoPlist.strings */,
+				DFE73BB015903BE900816FC8 /* main.m */,
+				DFE73BB215903BE900816FC8 /* PrimeInspecao-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DFE73B9D15903BE800816FC8 /* PrimeInspecao */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DFE73BC415903BE900816FC8 /* Build configuration list for PBXNativeTarget "PrimeInspecao" */;
+			buildPhases = (
+				DFE73B9A15903BE800816FC8 /* Sources */,
+				DFE73B9B15903BE800816FC8 /* Frameworks */,
+				DFE73B9C15903BE800816FC8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PrimeInspecao;
+			productName = PrimeInspecao;
+			productReference = DFE73B9E15903BE800816FC8 /* PrimeInspecao.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DFE73B9515903BE800816FC8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = DFE73B9815903BE800816FC8 /* Build configuration list for PBXProject "PrimeInspecao" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DFE73B9315903BE800816FC8;
+			productRefGroup = DFE73B9F15903BE800816FC8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DFE73B9D15903BE800816FC8 /* PrimeInspecao */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DFE73B9C15903BE800816FC8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFE73BAF15903BE900816FC8 /* InfoPlist.strings in Resources */,
+				DFE73BB815903BE900816FC8 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DFE73B9A15903BE800816FC8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFE73BB115903BE900816FC8 /* main.m in Sources */,
+				DFE73BB515903BE900816FC8 /* PrimeInspecaoAppDelegate.m in Sources */,
+				DFE73BBB15903BE900816FC8 /* PrimeInspecao.xcdatamodeld in Sources */,
+				DFE73BBE15903BE900816FC8 /* PrimeInspecaoMasterViewController.m in Sources */,
+				DFE73BC115903BE900816FC8 /* PrimeInspecaoDetailViewController.m in Sources */,
+				DFE73BC915903EBA00816FC8 /* ObrasTableViewController.m in Sources */,
+				DF506AD415924A4500D49E67 /* Obra.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DFE73BAD15903BE900816FC8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DFE73BAE15903BE900816FC8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DFE73BB615903BE900816FC8 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DFE73BB715903BE900816FC8 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DFE73BC215903BE900816FC8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		DFE73BC315903BE900816FC8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DFE73BC515903BE900816FC8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PrimeInspecao/PrimeInspecao-Prefix.pch";
+				INFOPLIST_FILE = "PrimeInspecao/PrimeInspecao-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DFE73BC615903BE900816FC8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PrimeInspecao/PrimeInspecao-Prefix.pch";
+				INFOPLIST_FILE = "PrimeInspecao/PrimeInspecao-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DFE73B9815903BE800816FC8 /* Build configuration list for PBXProject "PrimeInspecao" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFE73BC215903BE900816FC8 /* Debug */,
+				DFE73BC315903BE900816FC8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DFE73BC415903BE900816FC8 /* Build configuration list for PBXNativeTarget "PrimeInspecao" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFE73BC515903BE900816FC8 /* Debug */,
+				DFE73BC615903BE900816FC8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DFE73BB915903BE900816FC8 /* PrimeInspecao.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DFE73BBA15903BE900816FC8 /* PrimeInspecao.xcdatamodel */,
+			);
+			currentVersion = DFE73BBA15903BE900816FC8 /* PrimeInspecao.xcdatamodel */;
+			path = PrimeInspecao.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = DFE73B9515903BE800816FC8 /* Project object */;
+}
