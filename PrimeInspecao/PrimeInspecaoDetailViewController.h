@@ -16,6 +16,4 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet UITextField *nomeTextField;
 
-- (IBAction) saveButton: (id)sender;
-
 @end
