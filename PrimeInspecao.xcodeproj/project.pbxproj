@@ -18,7 +18,7 @@
 		DFE73BB815903BE900816FC8 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE73BB615903BE900816FC8 /* MainStoryboard.storyboard */; };
 		DFE73BBB15903BE900816FC8 /* PrimeInspecao.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BB915903BE900816FC8 /* PrimeInspecao.xcdatamodeld */; };
 		DFE73BBE15903BE900816FC8 /* PrimeInspecaoMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BBD15903BE900816FC8 /* PrimeInspecaoMasterViewController.m */; };
-		DFE73BC115903BE900816FC8 /* PrimeInspecaoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BC015903BE900816FC8 /* PrimeInspecaoDetailViewController.m */; };
+		DFE73BC115903BE900816FC8 /* ObraDetalheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BC015903BE900816FC8 /* ObraDetalheViewController.m */; };
 		DFE73BC915903EBA00816FC8 /* ObrasTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BC815903EBA00816FC8 /* ObrasTableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -40,8 +40,8 @@
 		DFE73BBA15903BE900816FC8 /* PrimeInspecao.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PrimeInspecao.xcdatamodel; sourceTree = "<group>"; };
 		DFE73BBC15903BE900816FC8 /* PrimeInspecaoMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrimeInspecaoMasterViewController.h; sourceTree = "<group>"; };
 		DFE73BBD15903BE900816FC8 /* PrimeInspecaoMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrimeInspecaoMasterViewController.m; sourceTree = "<group>"; };
-		DFE73BBF15903BE900816FC8 /* PrimeInspecaoDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrimeInspecaoDetailViewController.h; sourceTree = "<group>"; };
-		DFE73BC015903BE900816FC8 /* PrimeInspecaoDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrimeInspecaoDetailViewController.m; sourceTree = "<group>"; };
+		DFE73BBF15903BE900816FC8 /* ObraDetalheViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObraDetalheViewController.h; sourceTree = "<group>"; };
+		DFE73BC015903BE900816FC8 /* ObraDetalheViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObraDetalheViewController.m; sourceTree = "<group>"; };
 		DFE73BC715903EBA00816FC8 /* ObrasTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObrasTableViewController.h; sourceTree = "<group>"; };
 		DFE73BC815903EBA00816FC8 /* ObrasTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObrasTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,18 +92,18 @@
 		DFE73BAA15903BE900816FC8 /* PrimeInspecao */ = {
 			isa = PBXGroup;
 			children = (
-				DFE73BB315903BE900816FC8 /* PrimeInspecaoAppDelegate.h */,
-				DFE73BB415903BE900816FC8 /* PrimeInspecaoAppDelegate.m */,
 				DFE73BB615903BE900816FC8 /* MainStoryboard.storyboard */,
-				DFE73BBC15903BE900816FC8 /* PrimeInspecaoMasterViewController.h */,
-				DFE73BBD15903BE900816FC8 /* PrimeInspecaoMasterViewController.m */,
-				DFE73BBF15903BE900816FC8 /* PrimeInspecaoDetailViewController.h */,
-				DFE73BC015903BE900816FC8 /* PrimeInspecaoDetailViewController.m */,
-				DFE73BC715903EBA00816FC8 /* ObrasTableViewController.h */,
-				DFE73BC815903EBA00816FC8 /* ObrasTableViewController.m */,
 				DFE73BB915903BE900816FC8 /* PrimeInspecao.xcdatamodeld */,
 				DF506AD215924A4500D49E67 /* Obra.h */,
 				DF506AD315924A4500D49E67 /* Obra.m */,
+				DFE73BB315903BE900816FC8 /* PrimeInspecaoAppDelegate.h */,
+				DFE73BB415903BE900816FC8 /* PrimeInspecaoAppDelegate.m */,
+				DFE73BBC15903BE900816FC8 /* PrimeInspecaoMasterViewController.h */,
+				DFE73BBD15903BE900816FC8 /* PrimeInspecaoMasterViewController.m */,
+				DFE73BC715903EBA00816FC8 /* ObrasTableViewController.h */,
+				DFE73BC815903EBA00816FC8 /* ObrasTableViewController.m */,
+				DFE73BBF15903BE900816FC8 /* ObraDetalheViewController.h */,
+				DFE73BC015903BE900816FC8 /* ObraDetalheViewController.m */,
 				DFE73BAB15903BE900816FC8 /* Supporting Files */,
 			);
 			path = PrimeInspecao;
@@ -146,7 +146,7 @@
 		DFE73B9515903BE800816FC8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = DFE73B9815903BE800816FC8 /* Build configuration list for PBXProject "PrimeInspecao" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -186,7 +186,7 @@
 				DFE73BB515903BE900816FC8 /* PrimeInspecaoAppDelegate.m in Sources */,
 				DFE73BBB15903BE900816FC8 /* PrimeInspecao.xcdatamodeld in Sources */,
 				DFE73BBE15903BE900816FC8 /* PrimeInspecaoMasterViewController.m in Sources */,
-				DFE73BC115903BE900816FC8 /* PrimeInspecaoDetailViewController.m in Sources */,
+				DFE73BC115903BE900816FC8 /* ObraDetalheViewController.m in Sources */,
 				DFE73BC915903EBA00816FC8 /* ObrasTableViewController.m in Sources */,
 				DF506AD415924A4500D49E67 /* Obra.m in Sources */,
 			);

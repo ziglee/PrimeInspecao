@@ -8,15 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class PrimeInspecaoDetailViewController;
+@class ObraDetalheViewController;
 
 #import <CoreData/CoreData.h>
 
 @interface PrimeInspecaoMasterViewController : UIViewController
 
-@property (strong, nonatomic) PrimeInspecaoDetailViewController *detailViewController;
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
 
 @end

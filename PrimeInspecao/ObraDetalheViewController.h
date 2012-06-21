@@ -9,11 +9,12 @@
 #import "Obra.h"
 #import <UIKit/UIKit.h>
 
-@interface PrimeInspecaoDetailViewController : UIViewController <UISplitViewControllerDelegate>
+@interface ObraDetalheViewController : UIViewController <UISplitViewControllerDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) Obra *detailItem;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet UITextField *nomeTextField;
+@property (strong, nonatomic) IBOutlet UITextField *engenheiroTextField;
 
 @end

@@ -7,14 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class PrimeInspecaoDetailViewController;
-
 #import <CoreData/CoreData.h>
 
 @interface ObrasTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
-
-@property (strong, nonatomic) PrimeInspecaoDetailViewController *detailViewController;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
