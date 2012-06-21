@@ -1,39 +1,32 @@
 //
-//  ObrasTableViewController.m
+//  SecaoPerguntasTableViewControllerViewController.m
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 19/06/12.
+//  Created by Cassio Ribeiro on 21/06/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Obra.h"
-#import "ObrasTableViewController.h"
-#import "ObraDetalheViewController.h"
+#import "SecaoPerguntasTableViewController.h"
+#import "SecaoPerguntas.h"
+#import "SecaoPerguntasDetalheViewController.h"
 
-@interface ObrasTableViewController()
+@interface SecaoPerguntasTableViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
-@implementation ObrasTableViewController
+@implementation SecaoPerguntasTableViewController
 
 @synthesize fetchedResultsController = __fetchedResultsController;
 @synthesize managedObjectContext = __managedObjectContext;
 
-#pragma mark - View lifecycle
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject)];
     
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:addButton, self.editButtonItem, nil];
 }
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    [self.navigationController setToolbarHidden:YES animated:YES];
-}    
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -61,8 +54,6 @@
     return cell;
 }
 
-#pragma mark - Table view delegate
-
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
@@ -82,15 +73,67 @@
     }   
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
-    Obra *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    NSUInteger fromIndex = fromIndexPath.row;  
+    NSUInteger toIndex = toIndexPath.row;
     
-    ObraDetalheViewController *detalheObra = [self.storyboard instantiateViewControllerWithIdentifier:@"ObraDetalhe"];
+    if (fromIndex == toIndex) {
+        return;
+    }
+    
+    SecaoPerguntas *affectedObject = [self.fetchedResultsController.fetchedObjects objectAtIndex:fromIndex];  
+    affectedObject.posicao = [NSNumber numberWithInteger:toIndex];
+    
+    NSUInteger start, end;
+    int delta;
+    
+    if (fromIndex < toIndex) {
+        // move was down, need to shift up
+        delta = -1;
+        start = fromIndex + 1;
+        end = toIndex;
+    } else { // fromIndex > toIndex
+        // move was up, need to shift down
+        delta = 1;
+        start = toIndex;
+        end = fromIndex - 1;
+    }
+    
+    for (NSUInteger i = start; i <= end; i++) {
+        SecaoPerguntas *otherObject = [self.fetchedResultsController.fetchedObjects objectAtIndex:i];  
+        otherObject.posicao = [NSNumber numberWithInteger:delta + otherObject.posicao.intValue];
+    }
+    
+    NSError *error = nil;
+	if (![self.fetchedResultsController performFetch:&error]) {
+	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	    abort();
+	}
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{    
+    SecaoPerguntas *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    
+    SecaoPerguntasDetalheViewController *detalheObra = [self.storyboard instantiateViewControllerWithIdentifier:@"SecaoPerguntasDetalhe"];
     detalheObra.managedObjectContext = self.managedObjectContext;
     detalheObra.detailItem = selectedObject;
     
     [self.navigationController pushViewController:detalheObra animated:YES];
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    SecaoPerguntas *secao = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = secao.titulo;
 }
 
 #pragma mark - Fetched results controller
@@ -100,14 +143,14 @@
     if (__fetchedResultsController != nil) {
         return __fetchedResultsController;
     }    
-
+    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Obra" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SecaoPerguntas" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     [fetchRequest setFetchBatchSize:20];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"nome" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"posicao" ascending:YES];
     NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -175,18 +218,13 @@
     [self.tableView endUpdates];
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-    Obra *obra = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = obra.nome;
-}
-
 - (void)insertNewObject
 {
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:self.managedObjectContext];
+    SecaoPerguntas *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:self.managedObjectContext];
     
-    [newManagedObject setValue:@"<Nome da obra>" forKey:@"nome"];
+    newManagedObject.titulo = @"<Título da seção>";
+    newManagedObject.posicao = [NSNumber numberWithInt:[self.tableView numberOfRowsInSection:0] + 1];
     
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {

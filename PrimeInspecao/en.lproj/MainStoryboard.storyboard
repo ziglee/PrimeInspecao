@@ -100,6 +100,90 @@
             </objects>
             <point key="canvasLocation" x="-387" y="-886"/>
         </scene>
+        <!--Secao Perguntas Table View Controller - Seções-->
+        <scene sceneID="Fqf-m1-RF3">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nsE-in-zFf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="oFO-ry-T0p" customClass="SecaoPerguntasTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dRV-L3-dZb">
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="TGV-ym-CaA" style="IBUITableViewCellStyleDefault" id="BXW-90-DuX">
+                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="735" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TGV-ym-CaA">
+                                            <rect key="frame" x="10" y="0.0" width="715" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="oFO-ry-T0p" id="kcg-4W-mVV"/>
+                            <outlet property="delegate" destination="oFO-ry-T0p" id="Pby-b8-XCA"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Seções" id="c2Z-iQ-TVJ"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="-387" y="342"/>
+        </scene>
+        <!--Secao Perguntas Detalhe View Controller-->
+        <scene sceneID="fw0-fP-Sld">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3jy-LC-GKR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="SecaoPerguntasDetalhe" id="z5x-i9-cYb" customClass="SecaoPerguntasDetalheViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JKh-pQ-WLr">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="f71-kF-0pq">
+                                <rect key="frame" x="20" y="49" width="728" height="31"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Título" lineBreakMode="tailTruncation" minimumFontSize="10" id="Qh3-LR-vgz">
+                                <rect key="frame" x="20" y="20" width="46" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Perguntas" lineBreakMode="tailTruncation" minimumFontSize="10" id="zRx-pi-Hd5">
+                                <rect key="frame" x="20" y="102" width="78" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Zft-Y0-aLE">
+                                <rect key="frame" x="20" y="131" width="728" height="853"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="tituloTextField" destination="f71-kF-0pq" id="fWu-hj-wmH"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="582" y="342"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="eEG-Gs-7Kx">
             <objects>
@@ -129,7 +213,7 @@
                                 <rect key="frame" x="244" y="428" width="280" height="37"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Gerenciar obras">
+                                <state key="normal" title="Obras">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -144,13 +228,16 @@
                                 <rect key="frame" x="244" y="494" width="280" height="37"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Avaliar obra">
+                                <state key="normal" title="Configurar avaliação">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="oFO-ry-T0p" kind="push" identifier="secoes" id="qqJ-CF-Y9L"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -175,6 +262,15 @@
         </class>
         <class className="PrimeInspecaoMasterViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PrimeInspecaoMasterViewController.h"/>
+        </class>
+        <class className="SecaoPerguntasDetalheViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SecaoPerguntasDetalheViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tituloTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SecaoPerguntasTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SecaoPerguntasTableViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

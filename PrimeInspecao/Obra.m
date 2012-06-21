@@ -2,7 +2,7 @@
 //  Obra.m
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 20/06/12.
+//  Created by Cassio Ribeiro on 21/06/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,9 +11,10 @@
 
 @implementation Obra
 
-@dynamic nome;
+@dynamic engenheiro;
 @dynamic latitude;
 @dynamic longitude;
-@dynamic engenheiro;
+@dynamic nome;
+@dynamic avaliacoes;
 
 @end

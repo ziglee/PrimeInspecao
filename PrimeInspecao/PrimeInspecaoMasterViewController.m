@@ -8,6 +8,7 @@
 
 #import "PrimeInspecaoMasterViewController.h"
 #import "ObrasTableViewController.h"
+#import "SecaoPerguntasTableViewController.h"
 
 @implementation PrimeInspecaoMasterViewController
 
@@ -23,10 +24,16 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString *identifier = [segue identifier];
-    if ([identifier isEqualToString:@"obras"]) {
+    if ([identifier isEqualToString:@"obras"]) 
+    {
         ObrasTableViewController *destination = [segue destinationViewController];
         destination.managedObjectContext = self.managedObjectContext;
     } 
+    else if ([identifier isEqualToString:@"secoes"]) 
+    {
+        SecaoPerguntasTableViewController *destination = [segue destinationViewController];
+        destination.managedObjectContext = self.managedObjectContext;
+    }
 }
 
 @end
