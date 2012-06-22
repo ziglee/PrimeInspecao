@@ -7,6 +7,7 @@
 //
 
 #import "ObraDetalheViewController.h"
+#import "AvaliacaoTableViewController.h"
 #import "MapViewAnnotation.h"
 
 @interface ObraDetalheViewController ()
@@ -36,6 +37,7 @@
 - (void)configureView
 {
     if (self.detailItem) {
+        self.navigationItem.title = self.detailItem.nome;
         self.nomeTextField.text = self.detailItem.nome;
         self.engenheiroTextField.text = self.detailItem.engenheiro;
         if (self.detailItem.latitude != nil) {
@@ -87,10 +89,9 @@
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sucesso" message:@"Obra salva com sucesso." delegate:nil cancelButtonTitle:@"Fechar" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Erro" message:@"Erro ao salvar obra." delegate:nil cancelButtonTitle:@"Fechar" otherButtonTitles:nil];
         [alert show];
+    } else {
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -116,6 +117,17 @@
         self.detailItem.longitude = [NSNumber numberWithDouble:droppedAt.longitude];
         self.latitudeTextField.text = self.detailItem.latitude.stringValue;
         self.longitudeTextField.text = self.detailItem.longitude.stringValue;
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSString *identifier = [segue identifier];
+    if ([identifier isEqualToString:@"avaliacao"]) 
+    {
+        AvaliacaoTableViewController *destination = [segue destinationViewController];
+        destination.managedObjectContext = self.managedObjectContext;
+        destination.obra = self.detailItem;
     }
 }
 
