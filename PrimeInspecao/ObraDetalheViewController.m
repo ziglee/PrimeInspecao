@@ -38,6 +38,12 @@
     if (self.detailItem) {
         self.nomeTextField.text = self.detailItem.nome;
         self.engenheiroTextField.text = self.detailItem.engenheiro;
+        if (self.detailItem.latitude != nil) {
+            self.latitudeTextField.text = self.detailItem.latitude.stringValue;
+        }
+        if (self.detailItem.longitude != nil) {
+            self.longitudeTextField.text = self.detailItem.longitude.stringValue;
+        }
     }
 }
 
@@ -60,7 +66,7 @@
     
         MKPointAnnotation *newAnnotation = [[MKPointAnnotation alloc] init];
         newAnnotation.coordinate = location;
-        newAnnotation.title = @"TESTE";
+        newAnnotation.title = self.detailItem.nome;
     
         [self.mapView addAnnotation:newAnnotation];
     }
@@ -91,13 +97,26 @@
 
 #pragma mark - MapView delegate
 
-- (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >)annotation
 {
-	MKAnnotationView *annotationView = [views objectAtIndex:0];
-	id <MKAnnotation> mp = [annotationView annotation];
-	MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance([mp coordinate], 1500, 1500);
-	[mv setRegion:region animated:YES];
-	[mv selectAnnotation:mp animated:YES];
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+    
+    MKAnnotationView *view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
+    [view setDraggable:YES];
+    return view;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
+{
+    if (newState == MKAnnotationViewDragStateEnding)
+    {
+        CLLocationCoordinate2D droppedAt = annotationView.annotation.coordinate;
+        self.detailItem.latitude = [NSNumber numberWithDouble:droppedAt.latitude];
+        self.detailItem.longitude = [NSNumber numberWithDouble:droppedAt.longitude];
+        self.latitudeTextField.text = self.detailItem.latitude.stringValue;
+        self.longitudeTextField.text = self.detailItem.longitude.stringValue;
+    }
 }
 
 @end
