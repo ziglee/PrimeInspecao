@@ -1,5 +1,5 @@
 //
-//  SecaoPerguntasDetalheViewController.h
+//  PerguntaDetalheViewController.h
 //  PrimeInspecao
 //
 //  Created by Cassio Ribeiro on 21/06/12.
@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "SecaoPerguntas.h"
+#import "Pergunta.h"
 
-@interface SecaoPerguntasDetalheViewController : UITableViewController <UITextFieldDelegate>
+@interface PerguntaDetalheViewController : UIViewController
 
-@property (strong, nonatomic) SecaoPerguntas *detailItem;
-@property (nonatomic, retain) NSMutableArray *perguntas;
+@property (strong, nonatomic) SecaoPerguntas *secaoPerguntas;
+@property (strong, nonatomic) Pergunta *pergunta;
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet UITextField *tituloTextField;
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+@property (strong, nonatomic) IBOutlet UISwitch *obrigatoriaSwitch;
 
 @end

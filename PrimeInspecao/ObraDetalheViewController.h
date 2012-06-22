@@ -7,13 +7,17 @@
 //
 
 #import "Obra.h"
+#import <MapKit/MapKit.h>
 #import <UIKit/UIKit.h>
 
-@interface ObraDetalheViewController : UIViewController
+@interface ObraDetalheViewController : UIViewController < MKMapViewDelegate >
 
 @property (strong, nonatomic) Obra *detailItem;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet UITextField *nomeTextField;
 @property (strong, nonatomic) IBOutlet UITextField *engenheiroTextField;
+@property (strong, nonatomic) IBOutlet UITextField *latitudeTextField;
+@property (strong, nonatomic) IBOutlet UITextField *longitudeTextField;
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @end

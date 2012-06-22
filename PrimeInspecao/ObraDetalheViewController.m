@@ -7,6 +7,7 @@
 //
 
 #import "ObraDetalheViewController.h"
+#import "MapViewAnnotation.h"
 
 @interface ObraDetalheViewController ()
 - (void)configureView;
@@ -14,8 +15,11 @@
 
 @implementation ObraDetalheViewController
 
+@synthesize mapView = _mapView;
 @synthesize detailItem = _detailItem;
 @synthesize nomeTextField = _nomeTextField;
+@synthesize latitudeTextField = _latitudeTextField;
+@synthesize longitudeTextField = _longitudeTextField;
 @synthesize engenheiroTextField = _engenheiroTextField;
 @synthesize managedObjectContext = __managedObjectContext;
 
@@ -48,6 +52,18 @@
     UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Salvar" style:UIBarButtonItemStyleDone target:self action:@selector(saveButton)];
     
     self.navigationItem.rightBarButtonItem = saveButton;
+    
+    if (self.detailItem != nil) {
+        CLLocationCoordinate2D location;
+        location.latitude = self.detailItem.latitude.doubleValue;
+        location.longitude = self.detailItem.longitude.doubleValue;
+    
+        MKPointAnnotation *newAnnotation = [[MKPointAnnotation alloc] init];
+        newAnnotation.coordinate = location;
+        newAnnotation.title = @"TESTE";
+    
+        [self.mapView addAnnotation:newAnnotation];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -59,6 +75,8 @@
 {
     self.detailItem.nome = self.nomeTextField.text;
     self.detailItem.engenheiro = self.engenheiroTextField.text;
+    self.detailItem.latitude = [NSNumber numberWithFloat:[self.latitudeTextField.text floatValue]];
+    self.detailItem.longitude = [NSNumber numberWithFloat:[self.longitudeTextField.text floatValue]];
     
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {
@@ -69,6 +87,17 @@
         [alert show];
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+#pragma mark - MapView delegate
+
+- (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views
+{
+	MKAnnotationView *annotationView = [views objectAtIndex:0];
+	id <MKAnnotation> mp = [annotationView annotation];
+	MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance([mp coordinate], 1500, 1500);
+	[mv setRegion:region animated:YES];
+	[mv selectAnnotation:mp animated:YES];
 }
 
 @end
