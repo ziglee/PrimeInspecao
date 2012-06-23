@@ -19,8 +19,6 @@
 @synthesize mapView = _mapView;
 @synthesize detailItem = _detailItem;
 @synthesize nomeTextField = _nomeTextField;
-@synthesize latitudeTextField = _latitudeTextField;
-@synthesize longitudeTextField = _longitudeTextField;
 @synthesize engenheiroTextField = _engenheiroTextField;
 @synthesize managedObjectContext = __managedObjectContext;
 
@@ -40,12 +38,6 @@
         self.navigationItem.title = self.detailItem.nome;
         self.nomeTextField.text = self.detailItem.nome;
         self.engenheiroTextField.text = self.detailItem.engenheiro;
-        if (self.detailItem.latitude != nil) {
-            self.latitudeTextField.text = self.detailItem.latitude.stringValue;
-        }
-        if (self.detailItem.longitude != nil) {
-            self.longitudeTextField.text = self.detailItem.longitude.stringValue;
-        }
     }
 }
 
@@ -83,8 +75,6 @@
 {
     self.detailItem.nome = self.nomeTextField.text;
     self.detailItem.engenheiro = self.engenheiroTextField.text;
-    self.detailItem.latitude = [NSNumber numberWithFloat:[self.latitudeTextField.text floatValue]];
-    self.detailItem.longitude = [NSNumber numberWithFloat:[self.longitudeTextField.text floatValue]];
     
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {
@@ -115,8 +105,6 @@
         CLLocationCoordinate2D droppedAt = annotationView.annotation.coordinate;
         self.detailItem.latitude = [NSNumber numberWithDouble:droppedAt.latitude];
         self.detailItem.longitude = [NSNumber numberWithDouble:droppedAt.longitude];
-        self.latitudeTextField.text = self.detailItem.latitude.stringValue;
-        self.longitudeTextField.text = self.detailItem.longitude.stringValue;
     }
 }
 

@@ -7,15 +7,23 @@
 //
 
 #import "AvaliacaoTableViewController.h"
+#import "Pergunta.h"
+#import "SecaoPerguntas.h"
 
 @interface AvaliacaoTableViewController ()
 - (void)configureView;
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @implementation AvaliacaoTableViewController
 
 @synthesize obra = _obra;
+@synthesize avaliacao = _avaliacao;
 @synthesize nomeLabel = _nomeLabel;
+@synthesize secoesPerguntas = _secoesPerguntas;
+@synthesize comentCriticosTextView = _comentCriticosTextView;
+@synthesize comentMelhorarTextView = _comentMelhorarTextView;
+@synthesize comentPositivosTextView = _comentPositivosTextView;
 @synthesize managedObjectContext = __managedObjectContext;
 
 #pragma mark - Managing the detail item
@@ -33,6 +41,23 @@
     [super viewDidLoad];
     
     [self configureView];
+    
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(save)];
+    
+    self.navigationItem.rightBarButtonItem = saveButton;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SecaoPerguntas" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"posicao" ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    self.secoesPerguntas = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -44,21 +69,26 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 0;
+    return [self.secoesPerguntas count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    SecaoPerguntas *secaoPerguntas = [self.secoesPerguntas objectAtIndex:section];
+    return [secaoPerguntas.perguntas count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    SecaoPerguntas *secaoPerguntas = [self.secoesPerguntas objectAtIndex:section];
+    return secaoPerguntas.titulo;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    // Configure the cell...
-    
+    [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
@@ -112,6 +142,34 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    SecaoPerguntas *secaoPerguntas = [self.secoesPerguntas objectAtIndex:indexPath.section];
+    NSArray *sortedIngredients = [[NSArray alloc] initWithArray:[secaoPerguntas.perguntas allObjects]];
+    Pergunta *pergunta = [sortedIngredients objectAtIndex:indexPath.row];
+    cell.textLabel.text = pergunta.titulo;
+}
+
+- (void)save
+{
+    if (!self.avaliacao) {
+        self.avaliacao = [NSEntityDescription insertNewObjectForEntityForName:@"Avaliacao" inManagedObjectContext:self.managedObjectContext];
+        self.avaliacao.data = [[NSDate alloc] init];
+    }
+    
+    self.avaliacao.comentCriticos = self.comentCriticosTextView.text;
+    self.avaliacao.comentMelhorar = self.comentMelhorarTextView.text;
+    self.avaliacao.comentPositivos = self.comentPositivosTextView.text;
+    
+    NSError *error = nil;
+	if (![self.managedObjectContext save:&error]) {
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		abort();
+	}
+	
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
