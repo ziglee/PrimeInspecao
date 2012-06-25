@@ -8,9 +8,10 @@
 
 #import "Avaliacao.h"
 #import "Obra.h"
+#import "PerguntaRespostaCell.h"
 #import <UIKit/UIKit.h>
 
-@interface AvaliacaoTableViewController : UITableViewController
+@interface AvaliacaoTableViewController : UITableViewController <PerguntaRespostaCellDelegate>
 
 @property (strong, nonatomic) Obra *obra;
 @property (strong, nonatomic) Avaliacao *avaliacao;

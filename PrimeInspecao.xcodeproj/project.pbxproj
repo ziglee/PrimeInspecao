@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF32ED6D15981F410072AEBC /* PerguntaRespostaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF32ED6C15981F410072AEBC /* PerguntaRespostaCell.m */; };
 		DF5B4F871594050F006C2476 /* PerguntaDetalheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5B4F861594050F006C2476 /* PerguntaDetalheViewController.m */; };
 		DF71B1DE1593803B00D8A52F /* Obra.m in Sources */ = {isa = PBXBuildFile; fileRef = DF71B1DD1593803B00D8A52F /* Obra.m */; };
 		DF71B1E21593803C00D8A52F /* Avaliacao.m in Sources */ = {isa = PBXBuildFile; fileRef = DF71B1E11593803C00D8A52F /* Avaliacao.m */; };
@@ -33,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF32ED6B15981F410072AEBC /* PerguntaRespostaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerguntaRespostaCell.h; sourceTree = "<group>"; };
+		DF32ED6C15981F410072AEBC /* PerguntaRespostaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerguntaRespostaCell.m; sourceTree = "<group>"; };
 		DF5B4F851594050F006C2476 /* PerguntaDetalheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PerguntaDetalheViewController.h; path = PrimeInspecao/PerguntaDetalheViewController.h; sourceTree = "<group>"; };
 		DF5B4F861594050F006C2476 /* PerguntaDetalheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PerguntaDetalheViewController.m; path = PrimeInspecao/PerguntaDetalheViewController.m; sourceTree = "<group>"; };
 		DF71B1DC1593803B00D8A52F /* Obra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Obra.h; path = PrimeInspecao/Obra.h; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 			children = (
 				DFCA8BCA15950CC500790F82 /* AvaliacaoTableViewController.h */,
 				DFCA8BCB15950CC500790F82 /* AvaliacaoTableViewController.m */,
+				DF32ED6B15981F410072AEBC /* PerguntaRespostaCell.h */,
+				DF32ED6C15981F410072AEBC /* PerguntaRespostaCell.m */,
 			);
 			name = Avaliacao;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 				DF5B4F871594050F006C2476 /* PerguntaDetalheViewController.m in Sources */,
 				DF73BD3715944BDA00538178 /* MapViewAnnotation.m in Sources */,
 				DFCA8BCC15950CC500790F82 /* AvaliacaoTableViewController.m in Sources */,
+				DF32ED6D15981F410072AEBC /* PerguntaRespostaCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

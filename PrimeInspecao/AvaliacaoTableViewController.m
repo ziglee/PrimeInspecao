@@ -9,10 +9,10 @@
 #import "AvaliacaoTableViewController.h"
 #import "Pergunta.h"
 #import "SecaoPerguntas.h"
+#import "PerguntaRespostaCell.h"
 
 @interface AvaliacaoTableViewController ()
 - (void)configureView;
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @implementation AvaliacaoTableViewController
@@ -86,9 +86,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    [self configureCell:cell atIndexPath:indexPath];
+    static NSString *CellIdentifier = @"PerguntaRespostaCell";
+    PerguntaRespostaCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    SecaoPerguntas *secaoPerguntas = [self.secoesPerguntas objectAtIndex:indexPath.section];
+    NSArray *sortedPerguntas = [[NSArray alloc] initWithArray:[secaoPerguntas.perguntas allObjects]];
+    Pergunta *pergunta = [sortedPerguntas objectAtIndex:indexPath.row];
+    [cell setPergunta:pergunta];
     return cell;
 }
 
@@ -144,14 +147,6 @@
      */
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-    SecaoPerguntas *secaoPerguntas = [self.secoesPerguntas objectAtIndex:indexPath.section];
-    NSArray *sortedIngredients = [[NSArray alloc] initWithArray:[secaoPerguntas.perguntas allObjects]];
-    Pergunta *pergunta = [sortedIngredients objectAtIndex:indexPath.row];
-    cell.textLabel.text = pergunta.titulo;
-}
-
 - (void)save
 {
     if (!self.avaliacao) {
@@ -170,6 +165,14 @@
 	}
 	
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+# pragma mark - PerguntaRepostaCell Delegate
+
+- (void) onRespostaButtonClicked:(id)sender cell:(PerguntaRespostaCell *)cell;
+{
+    //NSIndexPath *cellPath = [self.tableView indexPathForCell:cell];
+    NSLog(@"Pergunta: [%@], Resposta: [%d]", cell.perguntaObj.titulo, cell.segmentedControl.selectedSegmentIndex);
 }
 
 @end
