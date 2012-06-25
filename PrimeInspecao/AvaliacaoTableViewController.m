@@ -62,7 +62,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 #pragma mark - Table view data source
@@ -149,7 +149,8 @@
 
 - (void)save
 {
-    if (!self.avaliacao) {
+    if (!self.avaliacao) 
+    {
         self.avaliacao = [NSEntityDescription insertNewObjectForEntityForName:@"Avaliacao" inManagedObjectContext:self.managedObjectContext];
         self.avaliacao.data = [[NSDate alloc] init];
     }
@@ -159,7 +160,8 @@
     self.avaliacao.comentPositivos = self.comentPositivosTextView.text;
     
     NSError *error = nil;
-	if (![self.managedObjectContext save:&error]) {
+	if (![self.managedObjectContext save:&error]) 
+    {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 		abort();
 	}

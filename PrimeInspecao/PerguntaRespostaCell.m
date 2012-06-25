@@ -31,7 +31,12 @@
 
 - (void)setPergunta:(Pergunta *)newPergunta
 {
-    self.tituloLabel.text = newPergunta.titulo;
+    NSString *texto = newPergunta.titulo;
+    if (newPergunta.obrigatoria.intValue == 1)
+    {
+        texto = [texto stringByAppendingString: @" *"];
+    }
+    self.tituloLabel.text = texto;
     self.perguntaObj = newPergunta;
 }
 
