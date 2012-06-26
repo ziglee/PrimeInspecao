@@ -7,36 +7,37 @@
         <attribute name="data" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="numero" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="obra" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Obra" inverseName="avaliacoes" inverseEntity="Obra" syncable="YES"/>
-        <relationship name="respostas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resposta" inverseName="avaliacao" inverseEntity="Resposta" syncable="YES"/>
+        <relationship name="respostas" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Resposta" inverseName="avaliacao" inverseEntity="Resposta" syncable="YES"/>
     </entity>
     <entity name="Obra" representedClassName="Obra" syncable="YES">
         <attribute name="engenheiro" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="nome" attributeType="String" syncable="YES"/>
-        <relationship name="avaliacoes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Avaliacao" inverseName="obra" inverseEntity="Avaliacao" syncable="YES"/>
+        <relationship name="avaliacoes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Avaliacao" inverseName="obra" inverseEntity="Avaliacao" syncable="YES"/>
     </entity>
     <entity name="Pergunta" representedClassName="Pergunta" syncable="YES">
         <attribute name="obrigatoria" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="posicao" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="titulo" attributeType="String" syncable="YES"/>
+        <relationship name="respostas" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Resposta" inverseName="pergunta" inverseEntity="Resposta" syncable="YES"/>
         <relationship name="secao" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SecaoPerguntas" inverseName="perguntas" inverseEntity="SecaoPerguntas" syncable="YES"/>
     </entity>
     <entity name="Resposta" representedClassName="Resposta" syncable="YES">
         <attribute name="valor" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="avaliacao" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Avaliacao" inverseName="respostas" inverseEntity="Avaliacao" syncable="YES"/>
-        <relationship name="pergunta" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Pergunta" syncable="YES"/>
+        <relationship name="pergunta" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Pergunta" inverseName="respostas" inverseEntity="Pergunta" syncable="YES"/>
     </entity>
     <entity name="SecaoPerguntas" representedClassName="SecaoPerguntas" syncable="YES">
         <attribute name="posicao" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="perguntas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pergunta" inverseName="secao" inverseEntity="Pergunta" syncable="YES"/>
+        <relationship name="perguntas" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Pergunta" inverseName="secao" inverseEntity="Pergunta" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Avaliacao" positionX="-18" positionY="297" width="128" height="150"/>
-        <element name="Obra" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="Pergunta" positionX="234" positionY="180" width="128" height="105"/>
+        <element name="Avaliacao" positionX="-18" positionY="318" width="128" height="150"/>
+        <element name="Obra" positionX="250" positionY="312" width="128" height="120"/>
+        <element name="Pergunta" positionX="243" positionY="156" width="128" height="105"/>
         <element name="Resposta" positionX="-11" positionY="162" width="128" height="90"/>
-        <element name="SecaoPerguntas" positionX="241" positionY="45" width="128" height="90"/>
+        <element name="SecaoPerguntas" positionX="160" positionY="36" width="128" height="90"/>
     </elements>
 </model>

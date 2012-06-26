@@ -18,7 +18,6 @@
 
 @implementation AvaliacaoTableViewController
 
-@synthesize obra = _obra;
 @synthesize avaliacao = _avaliacao;
 @synthesize nomeLabel = _nomeLabel;
 @synthesize secoesPerguntas = _secoesPerguntas;
@@ -29,11 +28,13 @@
 
 #pragma mark - Managing the detail item
 
-
 - (void)configureView
 {
-    if (self.obra) {
-        self.nomeLabel.text = self.obra.nome;
+    if (self.avaliacao) {
+        self.nomeLabel.text = self.avaliacao.obra.nome;
+        self.comentCriticosTextView.text = self.avaliacao.comentCriticos;
+        self.comentMelhorarTextView.text = self.avaliacao.comentMelhorar;
+        self.comentPositivosTextView.text = self.avaliacao.comentPositivos;
     }
 }
 
@@ -93,6 +94,21 @@
     NSArray *sortedPerguntas = [[NSArray alloc] initWithArray:[secaoPerguntas.perguntas allObjects]];
     Pergunta *pergunta = [sortedPerguntas objectAtIndex:indexPath.row];
     [cell setPergunta:pergunta];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Resposta" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pergunta == %@ and avaliacao == %@", pergunta, self.avaliacao];
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray *respostas = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    if ([respostas count] > 0)
+    {
+        Resposta *resposta = [respostas objectAtIndex:0];
+        [cell setResposta:resposta];
+    }
+    
     return cell;
 }
 
@@ -100,14 +116,17 @@
 
 - (void) onRespostaButtonClicked:(id)sender cell:(PerguntaRespostaCell *)cell;
 {
-    //NSIndexPath *cellPath = [self.tableView indexPathForCell:cell];
-    NSLog(@"Pergunta: [%@], Resposta: [%d]", cell.perguntaObj.titulo, cell.segmentedControl.selectedSegmentIndex);
-    
-    Resposta *resposta = [NSEntityDescription insertNewObjectForEntityForName:@"Resposta" inManagedObjectContext:self.managedObjectContext];
+    Resposta *resposta = cell.respostaObj;
+    if (resposta == nil)
+    {
+        resposta = [NSEntityDescription insertNewObjectForEntityForName:@"Resposta" inManagedObjectContext:self.managedObjectContext];
+    }
     
     resposta.avaliacao = self.avaliacao;
     resposta.pergunta = cell.perguntaObj;
     resposta.valor = [NSNumber numberWithInt:cell.segmentedControl.selectedSegmentIndex];
+    
+    [cell setResposta:resposta];
     
     NSError *error = nil;
 	if (![self.managedObjectContext save:&error]) 
@@ -130,6 +149,5 @@
 		abort();
 	}
 }
-
 
 @end

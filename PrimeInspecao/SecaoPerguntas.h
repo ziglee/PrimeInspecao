@@ -2,7 +2,7 @@
 //  SecaoPerguntas.h
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 21/06/12.
+//  Created by Cassio Ribeiro on 26/06/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,8 +13,8 @@
 
 @interface SecaoPerguntas : NSManagedObject
 
-@property (nonatomic, retain) NSString * titulo;
 @property (nonatomic, retain) NSNumber * posicao;
+@property (nonatomic, retain) NSString * titulo;
 @property (nonatomic, retain) NSSet *perguntas;
 @end
 

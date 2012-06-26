@@ -11,6 +11,7 @@
 @implementation PerguntaRespostaCell
 
 @synthesize perguntaObj;
+@synthesize respostaObj;
 @synthesize tituloLabel;
 @synthesize segmentedControl;
 @synthesize cellDelegate;
@@ -38,6 +39,13 @@
     }
     self.tituloLabel.text = texto;
     self.perguntaObj = newPergunta;
+}
+
+- (void)setResposta:(Resposta *)newResposta
+{
+    NSInteger valor = newResposta.valor.intValue;
+    [segmentedControl setSelectedSegmentIndex:valor];
+    self.respostaObj = newResposta;
 }
 
 #pragma mark - SegmentedControl clicked

@@ -116,6 +116,8 @@
     {
         Avaliacao *avaliacao = [NSEntityDescription insertNewObjectForEntityForName:@"Avaliacao" inManagedObjectContext:self.managedObjectContext];
         avaliacao.data = [[NSDate alloc] init];
+        //avaliacao.obra = self.detailItem;
+        [self.detailItem addAvaliacoesObject:avaliacao];
         
         NSError *error = nil;
         if (![self.managedObjectContext save:&error]) 
@@ -126,7 +128,6 @@
         
         AvaliacaoTableViewController *destination = [segue destinationViewController];
         destination.managedObjectContext = self.managedObjectContext;
-        destination.obra = self.detailItem;
         destination.avaliacao = avaliacao;
     } 
     else if ([identifier isEqualToString:@"avaliacoes"]) 

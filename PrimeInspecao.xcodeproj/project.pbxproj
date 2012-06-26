@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		DF2A941C1599268700E2CDA1 /* AvaliacoesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2A941B1599268700E2CDA1 /* AvaliacoesTableViewController.m */; };
+		DF2A94201599932000E2CDA1 /* Pergunta.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2A941F1599932000E2CDA1 /* Pergunta.m */; };
+		DF2A94231599932100E2CDA1 /* Obra.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2A94221599932100E2CDA1 /* Obra.m */; };
+		DF2A94261599932100E2CDA1 /* SecaoPerguntas.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2A94251599932100E2CDA1 /* SecaoPerguntas.m */; };
+		DF2A94291599932100E2CDA1 /* Resposta.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2A94281599932100E2CDA1 /* Resposta.m */; };
+		DF2A942C1599932100E2CDA1 /* Avaliacao.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2A942B1599932100E2CDA1 /* Avaliacao.m */; };
 		DF32ED6D15981F410072AEBC /* PerguntaRespostaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF32ED6C15981F410072AEBC /* PerguntaRespostaCell.m */; };
 		DF5B4F871594050F006C2476 /* PerguntaDetalheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5B4F861594050F006C2476 /* PerguntaDetalheViewController.m */; };
-		DF71B1DE1593803B00D8A52F /* Obra.m in Sources */ = {isa = PBXBuildFile; fileRef = DF71B1DD1593803B00D8A52F /* Obra.m */; };
-		DF71B1E21593803C00D8A52F /* Avaliacao.m in Sources */ = {isa = PBXBuildFile; fileRef = DF71B1E11593803C00D8A52F /* Avaliacao.m */; };
-		DF71B1EB1593803C00D8A52F /* Resposta.m in Sources */ = {isa = PBXBuildFile; fileRef = DF71B1EA1593803C00D8A52F /* Resposta.m */; };
 		DF71B1EE1593819500D8A52F /* SecaoPerguntasTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF71B1ED1593819500D8A52F /* SecaoPerguntasTableViewController.m */; };
-		DF71B1FC159385B000D8A52F /* Pergunta.m in Sources */ = {isa = PBXBuildFile; fileRef = DF71B1FB159385B000D8A52F /* Pergunta.m */; };
-		DF71B1FF159385B000D8A52F /* SecaoPerguntas.m in Sources */ = {isa = PBXBuildFile; fileRef = DF71B1FE159385B000D8A52F /* SecaoPerguntas.m */; };
 		DF71B20615939D2A00D8A52F /* SecaoPerguntasDetalheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF71B20515939D2A00D8A52F /* SecaoPerguntasDetalheViewController.m */; };
 		DF73BD3315943D0600538178 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF73BD3215943D0600538178 /* MapKit.framework */; };
 		DF73BD3715944BDA00538178 /* MapViewAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DF73BD3615944BDA00538178 /* MapViewAnnotation.m */; };
@@ -37,22 +37,22 @@
 /* Begin PBXFileReference section */
 		DF2A941A1599268700E2CDA1 /* AvaliacoesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvaliacoesTableViewController.h; sourceTree = "<group>"; };
 		DF2A941B1599268700E2CDA1 /* AvaliacoesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvaliacoesTableViewController.m; sourceTree = "<group>"; };
+		DF2A941E1599932000E2CDA1 /* Pergunta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pergunta.h; path = PrimeInspecao/Pergunta.h; sourceTree = "<group>"; };
+		DF2A941F1599932000E2CDA1 /* Pergunta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pergunta.m; path = PrimeInspecao/Pergunta.m; sourceTree = "<group>"; };
+		DF2A94211599932100E2CDA1 /* Obra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Obra.h; path = PrimeInspecao/Obra.h; sourceTree = "<group>"; };
+		DF2A94221599932100E2CDA1 /* Obra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Obra.m; path = PrimeInspecao/Obra.m; sourceTree = "<group>"; };
+		DF2A94241599932100E2CDA1 /* SecaoPerguntas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecaoPerguntas.h; path = PrimeInspecao/SecaoPerguntas.h; sourceTree = "<group>"; };
+		DF2A94251599932100E2CDA1 /* SecaoPerguntas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecaoPerguntas.m; path = PrimeInspecao/SecaoPerguntas.m; sourceTree = "<group>"; };
+		DF2A94271599932100E2CDA1 /* Resposta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Resposta.h; path = PrimeInspecao/Resposta.h; sourceTree = "<group>"; };
+		DF2A94281599932100E2CDA1 /* Resposta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Resposta.m; path = PrimeInspecao/Resposta.m; sourceTree = "<group>"; };
+		DF2A942A1599932100E2CDA1 /* Avaliacao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Avaliacao.h; path = PrimeInspecao/Avaliacao.h; sourceTree = "<group>"; };
+		DF2A942B1599932100E2CDA1 /* Avaliacao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Avaliacao.m; path = PrimeInspecao/Avaliacao.m; sourceTree = "<group>"; };
 		DF32ED6B15981F410072AEBC /* PerguntaRespostaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerguntaRespostaCell.h; sourceTree = "<group>"; };
 		DF32ED6C15981F410072AEBC /* PerguntaRespostaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerguntaRespostaCell.m; sourceTree = "<group>"; };
 		DF5B4F851594050F006C2476 /* PerguntaDetalheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PerguntaDetalheViewController.h; path = PrimeInspecao/PerguntaDetalheViewController.h; sourceTree = "<group>"; };
 		DF5B4F861594050F006C2476 /* PerguntaDetalheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PerguntaDetalheViewController.m; path = PrimeInspecao/PerguntaDetalheViewController.m; sourceTree = "<group>"; };
-		DF71B1DC1593803B00D8A52F /* Obra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Obra.h; path = PrimeInspecao/Obra.h; sourceTree = "<group>"; };
-		DF71B1DD1593803B00D8A52F /* Obra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Obra.m; path = PrimeInspecao/Obra.m; sourceTree = "<group>"; };
-		DF71B1E01593803C00D8A52F /* Avaliacao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Avaliacao.h; path = PrimeInspecao/Avaliacao.h; sourceTree = "<group>"; };
-		DF71B1E11593803C00D8A52F /* Avaliacao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Avaliacao.m; path = PrimeInspecao/Avaliacao.m; sourceTree = "<group>"; };
-		DF71B1E91593803C00D8A52F /* Resposta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Resposta.h; path = PrimeInspecao/Resposta.h; sourceTree = "<group>"; };
-		DF71B1EA1593803C00D8A52F /* Resposta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Resposta.m; path = PrimeInspecao/Resposta.m; sourceTree = "<group>"; };
 		DF71B1EC1593819500D8A52F /* SecaoPerguntasTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecaoPerguntasTableViewController.h; path = PrimeInspecao/SecaoPerguntasTableViewController.h; sourceTree = "<group>"; };
 		DF71B1ED1593819500D8A52F /* SecaoPerguntasTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecaoPerguntasTableViewController.m; path = PrimeInspecao/SecaoPerguntasTableViewController.m; sourceTree = "<group>"; };
-		DF71B1FA159385B000D8A52F /* Pergunta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pergunta.h; path = PrimeInspecao/Pergunta.h; sourceTree = "<group>"; };
-		DF71B1FB159385B000D8A52F /* Pergunta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pergunta.m; path = PrimeInspecao/Pergunta.m; sourceTree = "<group>"; };
-		DF71B1FD159385B000D8A52F /* SecaoPerguntas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecaoPerguntas.h; path = PrimeInspecao/SecaoPerguntas.h; sourceTree = "<group>"; };
-		DF71B1FE159385B000D8A52F /* SecaoPerguntas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecaoPerguntas.m; path = PrimeInspecao/SecaoPerguntas.m; sourceTree = "<group>"; };
 		DF71B20415939D2A00D8A52F /* SecaoPerguntasDetalheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecaoPerguntasDetalheViewController.h; path = PrimeInspecao/SecaoPerguntasDetalheViewController.h; sourceTree = "<group>"; };
 		DF71B20515939D2A00D8A52F /* SecaoPerguntasDetalheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecaoPerguntasDetalheViewController.m; path = PrimeInspecao/SecaoPerguntasDetalheViewController.m; sourceTree = "<group>"; };
 		DF73BD3215943D0600538178 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -101,16 +101,16 @@
 			isa = PBXGroup;
 			children = (
 				DFE73BB915903BE900816FC8 /* PrimeInspecao.xcdatamodeld */,
-				DF71B1FD159385B000D8A52F /* SecaoPerguntas.h */,
-				DF71B1FE159385B000D8A52F /* SecaoPerguntas.m */,
-				DF71B1FA159385B000D8A52F /* Pergunta.h */,
-				DF71B1FB159385B000D8A52F /* Pergunta.m */,
-				DF71B1DC1593803B00D8A52F /* Obra.h */,
-				DF71B1DD1593803B00D8A52F /* Obra.m */,
-				DF71B1E91593803C00D8A52F /* Resposta.h */,
-				DF71B1EA1593803C00D8A52F /* Resposta.m */,
-				DF71B1E01593803C00D8A52F /* Avaliacao.h */,
-				DF71B1E11593803C00D8A52F /* Avaliacao.m */,
+				DF2A942A1599932100E2CDA1 /* Avaliacao.h */,
+				DF2A942B1599932100E2CDA1 /* Avaliacao.m */,
+				DF2A94271599932100E2CDA1 /* Resposta.h */,
+				DF2A94281599932100E2CDA1 /* Resposta.m */,
+				DF2A94241599932100E2CDA1 /* SecaoPerguntas.h */,
+				DF2A94251599932100E2CDA1 /* SecaoPerguntas.m */,
+				DF2A94211599932100E2CDA1 /* Obra.h */,
+				DF2A94221599932100E2CDA1 /* Obra.m */,
+				DF2A941E1599932000E2CDA1 /* Pergunta.h */,
+				DF2A941F1599932000E2CDA1 /* Pergunta.m */,
 			);
 			name = "Model and Model Classes";
 			path = ..;
@@ -281,18 +281,18 @@
 				DFE73BBE15903BE900816FC8 /* PrimeInspecaoMasterViewController.m in Sources */,
 				DFE73BC115903BE900816FC8 /* ObraDetalheViewController.m in Sources */,
 				DFE73BC915903EBA00816FC8 /* ObrasTableViewController.m in Sources */,
-				DF71B1DE1593803B00D8A52F /* Obra.m in Sources */,
-				DF71B1E21593803C00D8A52F /* Avaliacao.m in Sources */,
-				DF71B1EB1593803C00D8A52F /* Resposta.m in Sources */,
 				DF71B1EE1593819500D8A52F /* SecaoPerguntasTableViewController.m in Sources */,
-				DF71B1FC159385B000D8A52F /* Pergunta.m in Sources */,
-				DF71B1FF159385B000D8A52F /* SecaoPerguntas.m in Sources */,
 				DF71B20615939D2A00D8A52F /* SecaoPerguntasDetalheViewController.m in Sources */,
 				DF5B4F871594050F006C2476 /* PerguntaDetalheViewController.m in Sources */,
 				DF73BD3715944BDA00538178 /* MapViewAnnotation.m in Sources */,
 				DFCA8BCC15950CC500790F82 /* AvaliacaoTableViewController.m in Sources */,
 				DF32ED6D15981F410072AEBC /* PerguntaRespostaCell.m in Sources */,
 				DF2A941C1599268700E2CDA1 /* AvaliacoesTableViewController.m in Sources */,
+				DF2A94201599932000E2CDA1 /* Pergunta.m in Sources */,
+				DF2A94231599932100E2CDA1 /* Obra.m in Sources */,
+				DF2A94261599932100E2CDA1 /* SecaoPerguntas.m in Sources */,
+				DF2A94291599932100E2CDA1 /* Resposta.m in Sources */,
+				DF2A942C1599932100E2CDA1 /* Avaliacao.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

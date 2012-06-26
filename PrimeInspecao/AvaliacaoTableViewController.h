@@ -13,7 +13,6 @@
 
 @interface AvaliacaoTableViewController : UITableViewController <PerguntaRespostaCellDelegate>
 
-@property (strong, nonatomic) Obra *obra;
 @property (strong, nonatomic) Avaliacao *avaliacao;
 @property (strong, nonatomic) NSArray *secoesPerguntas;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

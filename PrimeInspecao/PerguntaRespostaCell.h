@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Pergunta.h"
+#import "Resposta.h"
 
 @protocol PerguntaRespostaCellDelegate;
 
@@ -18,8 +19,10 @@
 @property (nonatomic, weak) IBOutlet id cellDelegate;
 
 @property (nonatomic, weak) Pergunta *perguntaObj;
+@property (nonatomic, weak) Resposta *respostaObj;
 
 - (void)setPergunta:(Pergunta *)pergunta;
+- (void)setResposta:(Resposta *)resposta;
 - (IBAction)onSegmentedControlClicked:(id)sender;
 
 @end

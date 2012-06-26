@@ -2,13 +2,14 @@
 //  Obra.h
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 21/06/12.
+//  Created by Cassio Ribeiro on 26/06/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Avaliacao;
 
 @interface Obra : NSManagedObject
 
@@ -21,8 +22,8 @@
 
 @interface Obra (CoreDataGeneratedAccessors)
 
-- (void)addAvaliacoesObject:(NSManagedObject *)value;
-- (void)removeAvaliacoesObject:(NSManagedObject *)value;
+- (void)addAvaliacoesObject:(Avaliacao *)value;
+- (void)removeAvaliacoesObject:(Avaliacao *)value;
 - (void)addAvaliacoes:(NSSet *)values;
 - (void)removeAvaliacoes:(NSSet *)values;
 

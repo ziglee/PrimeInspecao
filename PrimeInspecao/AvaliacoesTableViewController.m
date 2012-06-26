@@ -16,8 +16,8 @@
 
 @implementation AvaliacoesTableViewController
 
-@synthesize dateFormatter = _dateFormatter;
-@synthesize obra = _obra;
+@synthesize dateFormatter;
+@synthesize obra;
 @synthesize fetchedResultsController = __fetchedResultsController;
 @synthesize managedObjectContext = __managedObjectContext;
 
@@ -32,7 +32,6 @@
     self.dateFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     [self.dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-
 }
 
 - (void)viewDidUnload
@@ -93,7 +92,6 @@
     
     AvaliacaoTableViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Avaliacao"];
     controller.managedObjectContext = self.managedObjectContext;
-    controller.obra = self.obra;
     controller.avaliacao = selectedObject;
     
     [self.navigationController pushViewController:controller animated:YES];
@@ -102,7 +100,10 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Avaliacao *avaliacao = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [self.dateFormatter stringFromDate:avaliacao.data];
+    NSString *text = [self.dateFormatter stringFromDate:avaliacao.data];
+    //text = [text stringByAppendingString:@" - "];
+    //text = [text stringByAppendingString:avaliacao.obra.nome];
+    cell.textLabel.text = text;
 }
 
 #pragma mark - Fetched results controller
@@ -114,17 +115,20 @@
     }    
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Avaliacao" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
+    [fetchRequest setEntity:entity];    
     [fetchRequest setFetchBatchSize:20];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"data" ascending:NO];
     NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
     
-    [fetchRequest setSortDescriptors:sortDescriptors];
+    [fetchRequest setSortDescriptors:sortDescriptors]; 
     
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"obra == %@", self.obra];
+    [fetchRequest setPredicate:predicate];
+    
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
@@ -191,6 +195,7 @@
 {
     Avaliacao *avaliacao = [NSEntityDescription insertNewObjectForEntityForName:@"Avaliacao" inManagedObjectContext:self.managedObjectContext];
     avaliacao.data = [[NSDate alloc] init];
+    avaliacao.obra = self.obra;
     
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) 
@@ -201,7 +206,6 @@
     
     AvaliacaoTableViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Avaliacao"];
     controller.managedObjectContext = self.managedObjectContext;
-    controller.obra = self.obra;
     controller.avaliacao = avaliacao;
     
     [self.navigationController pushViewController:controller animated:YES];

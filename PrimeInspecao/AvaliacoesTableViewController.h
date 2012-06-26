@@ -12,7 +12,7 @@
 @interface AvaliacoesTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
-@property (nonatomic, weak) Obra *obra;
+@property (nonatomic, strong) Obra *obra;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
