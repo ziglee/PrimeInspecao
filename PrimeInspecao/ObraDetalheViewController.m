@@ -8,6 +8,7 @@
 
 #import "ObraDetalheViewController.h"
 #import "AvaliacaoTableViewController.h"
+#import "AvaliacoesTableViewController.h"
 #import "MapViewAnnotation.h"
 
 @interface ObraDetalheViewController ()
@@ -113,7 +114,24 @@
     NSString *identifier = [segue identifier];
     if ([identifier isEqualToString:@"avaliacao"]) 
     {
+        Avaliacao *avaliacao = [NSEntityDescription insertNewObjectForEntityForName:@"Avaliacao" inManagedObjectContext:self.managedObjectContext];
+        avaliacao.data = [[NSDate alloc] init];
+        
+        NSError *error = nil;
+        if (![self.managedObjectContext save:&error]) 
+        {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+        
         AvaliacaoTableViewController *destination = [segue destinationViewController];
+        destination.managedObjectContext = self.managedObjectContext;
+        destination.obra = self.detailItem;
+        destination.avaliacao = avaliacao;
+    } 
+    else if ([identifier isEqualToString:@"avaliacoes"]) 
+    {
+        AvaliacoesTableViewController *destination = [segue destinationViewController];
         destination.managedObjectContext = self.managedObjectContext;
         destination.obra = self.detailItem;
     }

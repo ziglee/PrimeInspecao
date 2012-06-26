@@ -49,7 +49,7 @@
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cZm-ID-yVE">
-                                <rect key="frame" x="260" y="252" width="249" height="67"/>
+                                <rect key="frame" x="427" y="264" width="249" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Avaliar esta obra">
@@ -61,6 +61,21 @@
                                 </state>
                                 <connections>
                                     <segue destination="cRU-nn-utr" kind="push" identifier="avaliacao" id="CgB-2o-eXk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="u4K-zI-g9e">
+                                <rect key="frame" x="93" y="264" width="249" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="Avaliações">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BcP-DE-lCx" kind="push" identifier="avaliacoes" id="DKJ-Jn-wm6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -80,11 +95,50 @@
             </objects>
             <point key="canvasLocation" x="582" y="-886"/>
         </scene>
+        <!--Avaliacoes Table View Controller - Avaliações-->
+        <scene sceneID="bNq-H5-tFx">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oqQ-XA-4w7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="BcP-DE-lCx" customClass="AvaliacoesTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4fE-jc-agY">
+                        <rect key="frame" x="0.0" y="64" width="768" height="916"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="QgR-he-O7G" style="IBUITableViewCellStyleDefault" id="z9u-44-GcC">
+                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="735" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QgR-he-O7G">
+                                            <rect key="frame" x="10" y="0.0" width="715" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="BcP-DE-lCx" id="qCY-0d-9Rv"/>
+                            <outlet property="delegate" destination="BcP-DE-lCx" id="rx8-aj-tcs"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Avaliações" id="SSd-tb-Vif"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1493" y="-2108"/>
+        </scene>
         <!--Avaliacao Table View Controller - Avaliação-->
         <scene sceneID="GXy-qi-zsX">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4w-Ll-HQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="cRU-nn-utr" customClass="AvaliacaoTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Avaliacao" id="cRU-nn-utr" customClass="AvaliacaoTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Du6-gm-KX0">
                         <rect key="frame" x="0.0" y="64" width="768" height="916"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,37 +215,26 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="WsM-yF-zrL">
-                                            <rect key="frame" x="20" y="14" width="402" height="21"/>
+                                            <rect key="frame" x="20" y="14" width="474" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="llK-nU-duT">
-                                            <rect key="frame" x="687" y="4" width="50" height="35"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="X">
-                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="highlighted">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="onButtonClicked:" destination="ThG-mL-9KN" eventType="touchUpInside" id="qtk-PG-cKY"/>
-                                            </connections>
-                                        </button>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" id="wN5-rX-mik">
-                                            <rect key="frame" x="430" y="7" width="231" height="30"/>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="wN5-rX-mik">
+                                            <rect key="frame" x="517" y="7" width="231" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <segments>
+                                                <segment title="N/A"/>
                                                 <segment title="1"/>
                                                 <segment title="2"/>
                                                 <segment title="3"/>
                                                 <segment title="4"/>
                                                 <segment title="5"/>
                                             </segments>
+                                            <connections>
+                                                <action selector="onSegmentedControlClicked:" destination="ThG-mL-9KN" eventType="valueChanged" id="s1n-8n-uJ8"/>
+                                            </connections>
                                         </segmentedControl>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -502,56 +545,6 @@
             <point key="canvasLocation" x="-1391" y="-886"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AvaliacaoTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AvaliacaoTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="comentCriticosTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="comentMelhorarTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="comentPositivosTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="nomeLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ObraDetalheViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ObraDetalheViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="engenheiroTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="nomeTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ObrasTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ObrasTableViewController.h"/>
-        </class>
-        <class className="PerguntaDetalheViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PerguntaDetalheViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="obrigatoriaSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="tituloTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="PerguntaRespostaCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PerguntaRespostaCell.h"/>
-            <relationships>
-                <relationship kind="action" name="onButtonClicked:"/>
-                <relationship kind="outlet" name="cellDelegate"/>
-                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="tituloLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="PrimeInspecaoMasterViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PrimeInspecaoMasterViewController.h"/>
-        </class>
-        <class className="SecaoPerguntasDetalheViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SecaoPerguntasDetalheViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tituloTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SecaoPerguntasTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SecaoPerguntasTableViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

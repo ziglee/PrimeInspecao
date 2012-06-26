@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF2A941C1599268700E2CDA1 /* AvaliacoesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2A941B1599268700E2CDA1 /* AvaliacoesTableViewController.m */; };
 		DF32ED6D15981F410072AEBC /* PerguntaRespostaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF32ED6C15981F410072AEBC /* PerguntaRespostaCell.m */; };
 		DF5B4F871594050F006C2476 /* PerguntaDetalheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5B4F861594050F006C2476 /* PerguntaDetalheViewController.m */; };
 		DF71B1DE1593803B00D8A52F /* Obra.m in Sources */ = {isa = PBXBuildFile; fileRef = DF71B1DD1593803B00D8A52F /* Obra.m */; };
@@ -34,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF2A941A1599268700E2CDA1 /* AvaliacoesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvaliacoesTableViewController.h; sourceTree = "<group>"; };
+		DF2A941B1599268700E2CDA1 /* AvaliacoesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvaliacoesTableViewController.m; sourceTree = "<group>"; };
 		DF32ED6B15981F410072AEBC /* PerguntaRespostaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerguntaRespostaCell.h; sourceTree = "<group>"; };
 		DF32ED6C15981F410072AEBC /* PerguntaRespostaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerguntaRespostaCell.m; sourceTree = "<group>"; };
 		DF5B4F851594050F006C2476 /* PerguntaDetalheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PerguntaDetalheViewController.h; path = PrimeInspecao/PerguntaDetalheViewController.h; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 				DFCA8BCB15950CC500790F82 /* AvaliacaoTableViewController.m */,
 				DF32ED6B15981F410072AEBC /* PerguntaRespostaCell.h */,
 				DF32ED6C15981F410072AEBC /* PerguntaRespostaCell.m */,
+				DF2A941A1599268700E2CDA1 /* AvaliacoesTableViewController.h */,
+				DF2A941B1599268700E2CDA1 /* AvaliacoesTableViewController.m */,
 			);
 			name = Avaliacao;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 				DF73BD3715944BDA00538178 /* MapViewAnnotation.m in Sources */,
 				DFCA8BCC15950CC500790F82 /* AvaliacaoTableViewController.m in Sources */,
 				DF32ED6D15981F410072AEBC /* PerguntaRespostaCell.m in Sources */,
+				DF2A941C1599268700E2CDA1 /* AvaliacoesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

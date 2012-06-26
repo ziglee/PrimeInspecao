@@ -40,18 +40,17 @@
     self.perguntaObj = newPergunta;
 }
 
-#pragma mark - Button clicked
-- (IBAction)onButtonClicked:(id)sender
+#pragma mark - SegmentedControl clicked
+
+- (IBAction)onSegmentedControlClicked:(id)sender
 {
     if (cellDelegate != nil && [cellDelegate conformsToProtocol:@protocol(PerguntaRespostaCellDelegate)])
+    {
+        if ([cellDelegate respondsToSelector:@selector(onRespostaButtonClicked:cell:)]) 
         {
-            if ([cellDelegate respondsToSelector:@selector(onRespostaButtonClicked:cell:)]) 
-            {
-                [cellDelegate onRespostaButtonClicked:sender cell:self];
-            }
+            [cellDelegate onRespostaButtonClicked:sender cell:self];
         }
-    
-    segmentedControl.selectedSegmentIndex = -1;
+    }
 }
 
 @end

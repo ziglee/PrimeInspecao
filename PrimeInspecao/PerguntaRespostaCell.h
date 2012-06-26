@@ -20,7 +20,7 @@
 @property (nonatomic, weak) Pergunta *perguntaObj;
 
 - (void)setPergunta:(Pergunta *)pergunta;
-- (IBAction)onButtonClicked:(id)sender;
+- (IBAction)onSegmentedControlClicked:(id)sender;
 
 @end
 
