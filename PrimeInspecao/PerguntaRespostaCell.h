@@ -18,8 +18,8 @@
 @property (nonatomic, weak) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, weak) IBOutlet id cellDelegate;
 
-@property (nonatomic, weak) Pergunta *perguntaObj;
-@property (nonatomic, weak) Resposta *respostaObj;
+@property (nonatomic, strong) Pergunta *perguntaObj;
+@property (nonatomic, strong) Resposta *respostaObj;
 
 - (void)setPergunta:(Pergunta *)pergunta;
 - (void)setResposta:(Resposta *)resposta;

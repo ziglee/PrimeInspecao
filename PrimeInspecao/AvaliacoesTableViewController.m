@@ -101,9 +101,8 @@
 {
     Avaliacao *avaliacao = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSString *text = [self.dateFormatter stringFromDate:avaliacao.data];
-    //text = [text stringByAppendingString:@" - "];
-    //text = [text stringByAppendingString:avaliacao.obra.nome];
     cell.textLabel.text = text;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Nota geral: %1.1f", avaliacao.notaGeral.doubleValue];
 }
 
 #pragma mark - Fetched results controller

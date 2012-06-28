@@ -13,10 +13,12 @@
 
 @interface AvaliacaoTableViewController : UITableViewController <PerguntaRespostaCellDelegate>
 
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (strong, nonatomic) Avaliacao *avaliacao;
 @property (strong, nonatomic) NSArray *secoesPerguntas;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet UILabel *nomeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *dataLabel;
 @property (strong, nonatomic) IBOutlet UITextView *comentCriticosTextView;
 @property (strong, nonatomic) IBOutlet UITextView *comentMelhorarTextView;
 @property (strong, nonatomic) IBOutlet UITextView *comentPositivosTextView;

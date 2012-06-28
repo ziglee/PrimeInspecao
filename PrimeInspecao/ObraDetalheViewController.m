@@ -50,10 +50,6 @@
     
     [self configureView];
     
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Salvar" style:UIBarButtonItemStyleDone target:self action:@selector(saveButton)];
-    
-    self.navigationItem.rightBarButtonItem = saveButton;
-    
     if (self.detailItem != nil) {
         CLLocationCoordinate2D location;
         location.latitude = self.detailItem.latitude.doubleValue;
@@ -67,12 +63,7 @@
     }
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
-}
-
-- (void)saveButton
+- (void)viewWillDisappear:(BOOL)animated
 {
     self.detailItem.nome = self.nomeTextField.text;
     self.detailItem.engenheiro = self.engenheiroTextField.text;
@@ -82,9 +73,12 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Erro" message:@"Erro ao salvar obra." delegate:nil cancelButtonTitle:@"Fechar" otherButtonTitles:nil];
         [alert show];
-    } else {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+    }   
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
 }
 
 #pragma mark - MapView delegate
@@ -112,25 +106,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString *identifier = [segue identifier];
-    if ([identifier isEqualToString:@"avaliacao"]) 
-    {
-        Avaliacao *avaliacao = [NSEntityDescription insertNewObjectForEntityForName:@"Avaliacao" inManagedObjectContext:self.managedObjectContext];
-        avaliacao.data = [[NSDate alloc] init];
-        //avaliacao.obra = self.detailItem;
-        [self.detailItem addAvaliacoesObject:avaliacao];
-        
-        NSError *error = nil;
-        if (![self.managedObjectContext save:&error]) 
-        {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
-        
-        AvaliacaoTableViewController *destination = [segue destinationViewController];
-        destination.managedObjectContext = self.managedObjectContext;
-        destination.avaliacao = avaliacao;
-    } 
-    else if ([identifier isEqualToString:@"avaliacoes"]) 
+    if ([identifier isEqualToString:@"avaliacoes"]) 
     {
         AvaliacoesTableViewController *destination = [segue destinationViewController];
         destination.managedObjectContext = self.managedObjectContext;
