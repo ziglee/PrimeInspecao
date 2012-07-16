@@ -115,8 +115,7 @@
     static NSString *CellIdentifier = @"PerguntaRespostaCell";
     PerguntaRespostaCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     SecaoPerguntas *secaoPerguntas = [self.secoesPerguntas objectAtIndex:indexPath.section];
-    NSArray *sortedPerguntas = [[NSArray alloc] initWithArray:[secaoPerguntas.perguntas allObjects]];
-    Pergunta *pergunta = [sortedPerguntas objectAtIndex:indexPath.row];
+    Pergunta *pergunta = [secaoPerguntas.perguntas objectAtIndex:indexPath.row];
     [cell setPergunta:pergunta];
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];

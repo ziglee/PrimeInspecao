@@ -15,14 +15,19 @@
 
 @property (nonatomic, retain) NSNumber * posicao;
 @property (nonatomic, retain) NSString * titulo;
-@property (nonatomic, retain) NSSet *perguntas;
+@property (nonatomic, retain) NSOrderedSet *perguntas;
 @end
 
 @interface SecaoPerguntas (CoreDataGeneratedAccessors)
 
+- (void)insertObject:(Pergunta *)value inPerguntasAtIndex:(NSUInteger)idx;
+- (void)removeObjectFromPerguntasAtIndex:(NSUInteger)idx;
+- (void)insertPerguntas:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+- (void)removePerguntasAtIndexes:(NSIndexSet *)indexes;
+- (void)replaceObjectInPerguntasAtIndex:(NSUInteger)idx withObject:(Pergunta *)value;
+- (void)replacePerguntasAtIndexes:(NSIndexSet *)indexes withPerguntas:(NSArray *)values;
 - (void)addPerguntasObject:(Pergunta *)value;
 - (void)removePerguntasObject:(Pergunta *)value;
-- (void)addPerguntas:(NSSet *)values;
-- (void)removePerguntas:(NSSet *)values;
-
+- (void)addPerguntas:(NSOrderedSet *)values;
+- (void)removePerguntas:(NSOrderedSet *)values;
 @end

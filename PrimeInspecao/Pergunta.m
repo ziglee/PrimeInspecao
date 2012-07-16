@@ -13,8 +13,8 @@
 
 @implementation Pergunta
 
-@dynamic tipoSimNao;
 @dynamic posicao;
+@dynamic tipoSimNao;
 @dynamic titulo;
 @dynamic respostas;
 @dynamic secao;

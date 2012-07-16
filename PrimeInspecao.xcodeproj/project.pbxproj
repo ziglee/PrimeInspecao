@@ -7,10 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DF109EFA15B4817C000660BE /* Resposta.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109EF915B4817C000660BE /* Resposta.m */; };
+		DF109EFE15B49472000660BE /* SecaoPerguntas.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109EFD15B49472000660BE /* SecaoPerguntas.m */; };
+		DF109F0115B49473000660BE /* Avaliacao.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109F0015B49473000660BE /* Avaliacao.m */; };
+		DF109F0415B49473000660BE /* Resposta.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109F0315B49473000660BE /* Resposta.m */; };
+		DF109F0715B49473000660BE /* Pergunta.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109F0615B49473000660BE /* Pergunta.m */; };
+		DF109F0A15B49473000660BE /* Obra.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109F0915B49473000660BE /* Obra.m */; };
+		DF109F1715B49F75000660BE /* kermit_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = DF109F1415B49F75000660BE /* kermit_empty.png */; };
+		DF109F1815B49F75000660BE /* kermit_full.png in Resources */ = {isa = PBXBuildFile; fileRef = DF109F1515B49F75000660BE /* kermit_full.png */; };
+		DF109F1915B49F75000660BE /* kermit_half.png in Resources */ = {isa = PBXBuildFile; fileRef = DF109F1615B49F75000660BE /* kermit_half.png */; };
+		DF109F1A15B4A3D8000660BE /* SecaoPerguntasHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109F1C15B4A3D8000660BE /* SecaoPerguntasHeaderView.m */; };
+		DF109F1D15B4A3F9000660BE /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109F1015B49F3F000660BE /* RateView.m */; };
+		DF109F2215B4A9EE000660BE /* rate_star_med_half.png in Resources */ = {isa = PBXBuildFile; fileRef = DF109F1F15B4A9EE000660BE /* rate_star_med_half.png */; };
+		DF109F2315B4A9EE000660BE /* rate_star_med_off.png in Resources */ = {isa = PBXBuildFile; fileRef = DF109F2015B4A9EE000660BE /* rate_star_med_off.png */; };
+		DF109F2415B4A9EE000660BE /* rate_star_med_on.png in Resources */ = {isa = PBXBuildFile; fileRef = DF109F2115B4A9EE000660BE /* rate_star_med_on.png */; };
 		DF1ACD40159CD2790037EA64 /* SecaoPerguntasHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1ACD3F159CD2790037EA64 /* SecaoPerguntasHeaderView.xib */; };
 		DF226E10159CA36200AD73AF /* SecaoPerguntasHeaderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DF226E0F159CA36200AD73AF /* SecaoPerguntasHeaderInfo.m */; };
-		DF226E13159CA3AE00AD73AF /* SecaoPerguntasHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF226E12159CA3AE00AD73AF /* SecaoPerguntasHeaderView.m */; };
 		DF226E15159CA73C00AD73AF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF226E14159CA73C00AD73AF /* QuartzCore.framework */; };
 		DF2A941C1599268700E2CDA1 /* AvaliacoesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2A941B1599268700E2CDA1 /* AvaliacoesTableViewController.m */; };
 		DF32ED6D15981F410072AEBC /* PerguntaRespostaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF32ED6C15981F410072AEBC /* PerguntaRespostaCell.m */; };
@@ -32,20 +43,32 @@
 		DFE73BBE15903BE900816FC8 /* PrimeInspecaoMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BBD15903BE900816FC8 /* PrimeInspecaoMasterViewController.m */; };
 		DFE73BC115903BE900816FC8 /* ObraDetalheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BC015903BE900816FC8 /* ObraDetalheViewController.m */; };
 		DFE73BC915903EBA00816FC8 /* ObrasTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BC815903EBA00816FC8 /* ObrasTableViewController.m */; };
-		DFFE727C15B439CA0036E286 /* Pergunta.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFE727B15B439CA0036E286 /* Pergunta.m */; };
-		DFFE727F15B439CB0036E286 /* Obra.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFE727E15B439CB0036E286 /* Obra.m */; };
-		DFFE728515B439CB0036E286 /* SecaoPerguntas.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFE728415B439CB0036E286 /* SecaoPerguntas.m */; };
-		DFFE728815B439CB0036E286 /* Avaliacao.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFE728715B439CB0036E286 /* Avaliacao.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DF109EF815B4817C000660BE /* Resposta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Resposta.h; path = PrimeInspecao/Resposta.h; sourceTree = "<group>"; };
-		DF109EF915B4817C000660BE /* Resposta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Resposta.m; path = PrimeInspecao/Resposta.m; sourceTree = "<group>"; };
+		DF109EFC15B49472000660BE /* SecaoPerguntas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecaoPerguntas.h; path = PrimeInspecao/SecaoPerguntas.h; sourceTree = "<group>"; };
+		DF109EFD15B49472000660BE /* SecaoPerguntas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecaoPerguntas.m; path = PrimeInspecao/SecaoPerguntas.m; sourceTree = "<group>"; };
+		DF109EFF15B49473000660BE /* Avaliacao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Avaliacao.h; path = PrimeInspecao/Avaliacao.h; sourceTree = "<group>"; };
+		DF109F0015B49473000660BE /* Avaliacao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Avaliacao.m; path = PrimeInspecao/Avaliacao.m; sourceTree = "<group>"; };
+		DF109F0215B49473000660BE /* Resposta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Resposta.h; path = PrimeInspecao/Resposta.h; sourceTree = "<group>"; };
+		DF109F0315B49473000660BE /* Resposta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Resposta.m; path = PrimeInspecao/Resposta.m; sourceTree = "<group>"; };
+		DF109F0515B49473000660BE /* Pergunta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pergunta.h; path = PrimeInspecao/Pergunta.h; sourceTree = "<group>"; };
+		DF109F0615B49473000660BE /* Pergunta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pergunta.m; path = PrimeInspecao/Pergunta.m; sourceTree = "<group>"; };
+		DF109F0815B49473000660BE /* Obra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Obra.h; path = PrimeInspecao/Obra.h; sourceTree = "<group>"; };
+		DF109F0915B49473000660BE /* Obra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Obra.m; path = PrimeInspecao/Obra.m; sourceTree = "<group>"; };
+		DF109F0F15B49F3F000660BE /* RateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RateView.h; sourceTree = "<group>"; };
+		DF109F1015B49F3F000660BE /* RateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
+		DF109F1415B49F75000660BE /* kermit_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kermit_empty.png; sourceTree = "<group>"; };
+		DF109F1515B49F75000660BE /* kermit_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kermit_full.png; sourceTree = "<group>"; };
+		DF109F1615B49F75000660BE /* kermit_half.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kermit_half.png; sourceTree = "<group>"; };
+		DF109F1B15B4A3D8000660BE /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = en; path = en.lproj/SecaoPerguntasHeaderView.m; sourceTree = "<group>"; };
+		DF109F1F15B4A9EE000660BE /* rate_star_med_half.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rate_star_med_half.png; sourceTree = "<group>"; };
+		DF109F2015B4A9EE000660BE /* rate_star_med_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rate_star_med_off.png; sourceTree = "<group>"; };
+		DF109F2115B4A9EE000660BE /* rate_star_med_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rate_star_med_on.png; sourceTree = "<group>"; };
 		DF1ACD3F159CD2790037EA64 /* SecaoPerguntasHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecaoPerguntasHeaderView.xib; sourceTree = "<group>"; };
 		DF226E0E159CA36200AD73AF /* SecaoPerguntasHeaderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecaoPerguntasHeaderInfo.h; sourceTree = "<group>"; };
 		DF226E0F159CA36200AD73AF /* SecaoPerguntasHeaderInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecaoPerguntasHeaderInfo.m; sourceTree = "<group>"; };
 		DF226E11159CA3AE00AD73AF /* SecaoPerguntasHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecaoPerguntasHeaderView.h; sourceTree = "<group>"; };
-		DF226E12159CA3AE00AD73AF /* SecaoPerguntasHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecaoPerguntasHeaderView.m; sourceTree = "<group>"; };
 		DF226E14159CA73C00AD73AF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DF2A941A1599268700E2CDA1 /* AvaliacoesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvaliacoesTableViewController.h; sourceTree = "<group>"; };
 		DF2A941B1599268700E2CDA1 /* AvaliacoesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvaliacoesTableViewController.m; sourceTree = "<group>"; };
@@ -81,14 +104,6 @@
 		DFE73BC015903BE900816FC8 /* ObraDetalheViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObraDetalheViewController.m; sourceTree = "<group>"; };
 		DFE73BC715903EBA00816FC8 /* ObrasTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObrasTableViewController.h; sourceTree = "<group>"; };
 		DFE73BC815903EBA00816FC8 /* ObrasTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObrasTableViewController.m; sourceTree = "<group>"; };
-		DFFE727A15B439CA0036E286 /* Pergunta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pergunta.h; path = PrimeInspecao/Pergunta.h; sourceTree = "<group>"; };
-		DFFE727B15B439CA0036E286 /* Pergunta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pergunta.m; path = PrimeInspecao/Pergunta.m; sourceTree = "<group>"; };
-		DFFE727D15B439CB0036E286 /* Obra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Obra.h; path = PrimeInspecao/Obra.h; sourceTree = "<group>"; };
-		DFFE727E15B439CB0036E286 /* Obra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Obra.m; path = PrimeInspecao/Obra.m; sourceTree = "<group>"; };
-		DFFE728315B439CB0036E286 /* SecaoPerguntas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecaoPerguntas.h; path = PrimeInspecao/SecaoPerguntas.h; sourceTree = "<group>"; };
-		DFFE728415B439CB0036E286 /* SecaoPerguntas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecaoPerguntas.m; path = PrimeInspecao/SecaoPerguntas.m; sourceTree = "<group>"; };
-		DFFE728615B439CB0036E286 /* Avaliacao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Avaliacao.h; path = PrimeInspecao/Avaliacao.h; sourceTree = "<group>"; };
-		DFFE728715B439CB0036E286 /* Avaliacao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Avaliacao.m; path = PrimeInspecao/Avaliacao.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,20 +123,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF109F1315B49F69000660BE /* kermitStars */ = {
+			isa = PBXGroup;
+			children = (
+				DF109F1415B49F75000660BE /* kermit_empty.png */,
+				DF109F1515B49F75000660BE /* kermit_full.png */,
+				DF109F1615B49F75000660BE /* kermit_half.png */,
+			);
+			name = kermitStars;
+			sourceTree = "<group>";
+		};
+		DF109F1E15B4A9DF000660BE /* stars */ = {
+			isa = PBXGroup;
+			children = (
+				DF109F1F15B4A9EE000660BE /* rate_star_med_half.png */,
+				DF109F2015B4A9EE000660BE /* rate_star_med_off.png */,
+				DF109F2115B4A9EE000660BE /* rate_star_med_on.png */,
+			);
+			name = stars;
+			sourceTree = "<group>";
+		};
 		DF71B1F3159381CA00D8A52F /* Model and Model Classes */ = {
 			isa = PBXGroup;
 			children = (
-				DFFE728615B439CB0036E286 /* Avaliacao.h */,
-				DFFE728715B439CB0036E286 /* Avaliacao.m */,
-				DFFE728315B439CB0036E286 /* SecaoPerguntas.h */,
-				DFFE728415B439CB0036E286 /* SecaoPerguntas.m */,
-				DFFE727D15B439CB0036E286 /* Obra.h */,
-				DFFE727E15B439CB0036E286 /* Obra.m */,
-				DFFE727A15B439CA0036E286 /* Pergunta.h */,
-				DFFE727B15B439CA0036E286 /* Pergunta.m */,
-				DF109EF815B4817C000660BE /* Resposta.h */,
-				DF109EF915B4817C000660BE /* Resposta.m */,
 				DFE73BB915903BE900816FC8 /* PrimeInspecao.xcdatamodeld */,
+				DF109EFC15B49472000660BE /* SecaoPerguntas.h */,
+				DF109EFD15B49472000660BE /* SecaoPerguntas.m */,
+				DF109EFF15B49473000660BE /* Avaliacao.h */,
+				DF109F0015B49473000660BE /* Avaliacao.m */,
+				DF109F0215B49473000660BE /* Resposta.h */,
+				DF109F0315B49473000660BE /* Resposta.m */,
+				DF109F0515B49473000660BE /* Pergunta.h */,
+				DF109F0615B49473000660BE /* Pergunta.m */,
+				DF109F0815B49473000660BE /* Obra.h */,
+				DF109F0915B49473000660BE /* Obra.m */,
 			);
 			name = "Model and Model Classes";
 			path = ..;
@@ -166,7 +201,7 @@
 				DF226E0E159CA36200AD73AF /* SecaoPerguntasHeaderInfo.h */,
 				DF226E0F159CA36200AD73AF /* SecaoPerguntasHeaderInfo.m */,
 				DF226E11159CA3AE00AD73AF /* SecaoPerguntasHeaderView.h */,
-				DF226E12159CA3AE00AD73AF /* SecaoPerguntasHeaderView.m */,
+				DF109F1C15B4A3D8000660BE /* SecaoPerguntasHeaderView.m */,
 				DF1ACD3F159CD2790037EA64 /* SecaoPerguntasHeaderView.xib */,
 			);
 			name = Avaliacao;
@@ -205,12 +240,16 @@
 		DFE73BAA15903BE900816FC8 /* PrimeInspecao */ = {
 			isa = PBXGroup;
 			children = (
+				DF109F1E15B4A9DF000660BE /* stars */,
+				DF109F1315B49F69000660BE /* kermitStars */,
 				DFE73BAB15903BE900816FC8 /* Supporting Files */,
 				DF71B1F3159381CA00D8A52F /* Model and Model Classes */,
 				DF71B2421593B1B000D8A52F /* Perguntas */,
 				DFCA8BC715950B8A00790F82 /* Obras */,
 				DFCA8BC915950BC100790F82 /* Avaliacao */,
 				DFE73BB615903BE900816FC8 /* MainStoryboard.storyboard */,
+				DF109F0F15B49F3F000660BE /* RateView.h */,
+				DF109F1015B49F3F000660BE /* RateView.m */,
 				DFE73BB315903BE900816FC8 /* PrimeInspecaoAppDelegate.h */,
 				DFE73BB415903BE900816FC8 /* PrimeInspecaoAppDelegate.m */,
 				DFE73BBC15903BE900816FC8 /* PrimeInspecaoMasterViewController.h */,
@@ -283,6 +322,12 @@
 				DFE73BAF15903BE900816FC8 /* InfoPlist.strings in Resources */,
 				DFE73BB815903BE900816FC8 /* MainStoryboard.storyboard in Resources */,
 				DF1ACD40159CD2790037EA64 /* SecaoPerguntasHeaderView.xib in Resources */,
+				DF109F1715B49F75000660BE /* kermit_empty.png in Resources */,
+				DF109F1815B49F75000660BE /* kermit_full.png in Resources */,
+				DF109F1915B49F75000660BE /* kermit_half.png in Resources */,
+				DF109F2215B4A9EE000660BE /* rate_star_med_half.png in Resources */,
+				DF109F2315B4A9EE000660BE /* rate_star_med_off.png in Resources */,
+				DF109F2415B4A9EE000660BE /* rate_star_med_on.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,18 +352,27 @@
 				DF32ED6D15981F410072AEBC /* PerguntaRespostaCell.m in Sources */,
 				DF2A941C1599268700E2CDA1 /* AvaliacoesTableViewController.m in Sources */,
 				DF226E10159CA36200AD73AF /* SecaoPerguntasHeaderInfo.m in Sources */,
-				DF226E13159CA3AE00AD73AF /* SecaoPerguntasHeaderView.m in Sources */,
-				DFFE727C15B439CA0036E286 /* Pergunta.m in Sources */,
-				DFFE727F15B439CB0036E286 /* Obra.m in Sources */,
-				DFFE728515B439CB0036E286 /* SecaoPerguntas.m in Sources */,
-				DFFE728815B439CB0036E286 /* Avaliacao.m in Sources */,
-				DF109EFA15B4817C000660BE /* Resposta.m in Sources */,
+				DF109F1A15B4A3D8000660BE /* SecaoPerguntasHeaderView.m in Sources */,
+				DF109EFE15B49472000660BE /* SecaoPerguntas.m in Sources */,
+				DF109F0115B49473000660BE /* Avaliacao.m in Sources */,
+				DF109F0415B49473000660BE /* Resposta.m in Sources */,
+				DF109F0715B49473000660BE /* Pergunta.m in Sources */,
+				DF109F0A15B49473000660BE /* Obra.m in Sources */,
+				DF109F1D15B4A3F9000660BE /* RateView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		DF109F1C15B4A3D8000660BE /* SecaoPerguntasHeaderView.m */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DF109F1B15B4A3D8000660BE /* en */,
+			);
+			name = SecaoPerguntasHeaderView.m;
+			sourceTree = "<group>";
+		};
 		DFE73BAD15903BE900816FC8 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

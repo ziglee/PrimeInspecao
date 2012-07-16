@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RateView.h"
 
 @interface SecaoPerguntasHeaderView : UIView
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
-@property (nonatomic, weak) IBOutlet UILabel *notaLabel;
+@property (nonatomic, weak) IBOutlet RateView *rateView;
 
 -(void)initWithTitle:(NSString*)title nota:(NSNumber*)nota;
 

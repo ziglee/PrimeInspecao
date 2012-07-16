@@ -14,6 +14,8 @@
 @synthesize respostaObj;
 @synthesize tituloLabel;
 @synthesize segmentedControl;
+@synthesize requiredLabel;
+@synthesize implementedLabel;
 @synthesize requiredSwitch;
 @synthesize implementedSwitch;
 @synthesize cellDelegate;
@@ -38,6 +40,8 @@
     if (newPergunta.tipoSimNao.intValue == 0)
     {
         [segmentedControl setHidden:NO];
+        [requiredLabel setHidden:YES];
+        [implementedLabel setHidden:YES];
         [requiredSwitch setHidden:YES];
         [implementedSwitch setHidden:YES];
         [requiredSwitch setUserInteractionEnabled:NO];
@@ -46,6 +50,8 @@
     else 
     {
         [segmentedControl setHidden:YES];
+        [requiredLabel setHidden:NO];
+        [implementedLabel setHidden:NO];
         [requiredSwitch setHidden:NO];
         [implementedSwitch setHidden:NO];
         [requiredSwitch setUserInteractionEnabled:YES];

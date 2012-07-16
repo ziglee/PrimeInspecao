@@ -36,13 +36,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"posicao" ascending:YES];
-	NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:&sortDescriptor count:1];
-	
-	NSMutableArray *sortedPerguntas = [[NSMutableArray alloc] initWithArray:[self.detailItem.perguntas allObjects]];
-	[sortedPerguntas sortUsingDescriptors:sortDescriptors];
-	self.perguntas = sortedPerguntas;
-    
+	self.perguntas = self.detailItem.perguntas;    
     [self.tableView reloadData]; 
 }
 

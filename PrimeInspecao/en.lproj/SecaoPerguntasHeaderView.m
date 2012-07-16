@@ -11,7 +11,7 @@
 
 @implementation SecaoPerguntasHeaderView
 
-@synthesize titleLabel=_titleLabel, notaLabel=_notaLabel;
+@synthesize titleLabel=_titleLabel, rateView=_rateView;
 
 + (Class)layerClass {
     return [CAGradientLayer class];
@@ -20,7 +20,11 @@
 -(void)initWithTitle:(NSString*)title nota:(NSNumber *)nota
 {
     self.titleLabel.text = title;
-    self.notaLabel.text = [NSString stringWithFormat:@"%1.1f", nota.doubleValue];
+    self.rateView.notSelectedImage = [UIImage imageNamed:@"rate_star_med_off.png"];
+    self.rateView.halfSelectedImage = [UIImage imageNamed:@"rate_star_med_half.png"];
+    self.rateView.fullSelectedImage = [UIImage imageNamed:@"rate_star_med_on.png"];
+    self.rateView.maxRating = 5;
+    self.rateView.rating = nota.doubleValue;
 }
 
 @end

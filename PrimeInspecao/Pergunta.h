@@ -13,8 +13,8 @@
 
 @interface Pergunta : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * tipoSimNao;
 @property (nonatomic, retain) NSNumber * posicao;
+@property (nonatomic, retain) NSNumber * tipoSimNao;
 @property (nonatomic, retain) NSString * titulo;
 @property (nonatomic, retain) NSSet *respostas;
 @property (nonatomic, retain) SecaoPerguntas *secao;

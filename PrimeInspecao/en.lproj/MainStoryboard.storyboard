@@ -148,7 +148,7 @@
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Data" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="JS6-Oe-kgn">
                                     <rect key="frame" x="621" y="24" width="127" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
@@ -236,26 +236,42 @@
                                                 <action selector="onSegmentedControlClicked:" destination="ThG-mL-9KN" eventType="valueChanged" id="s1n-8n-uJ8"/>
                                             </connections>
                                         </segmentedControl>
-                                        <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="7F8-EU-AMw">
-                                            <rect key="frame" x="475" y="8" width="79" height="27"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <switch hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="7F8-EU-AMw">
+                                            <rect key="frame" x="525" y="8" width="79" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <connections>
                                                 <action selector="onSegmentedControlClicked:" destination="ThG-mL-9KN" eventType="valueChanged" id="ZD6-EV-4qK"/>
                                             </connections>
                                         </switch>
-                                        <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="UMU-Eh-WTX">
+                                        <switch hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="UMU-Eh-WTX">
                                             <rect key="frame" x="669" y="8" width="79" height="27"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <connections>
                                                 <action selector="onSegmentedControlClicked:" destination="ThG-mL-9KN" eventType="valueChanged" id="WtQ-6x-cLO"/>
                                             </connections>
                                         </switch>
+                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Req." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="nnx-Zp-TX4">
+                                            <rect key="frame" x="475" y="11" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Impl." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="xcd-Un-dKZ">
+                                            <rect key="frame" x="619" y="11" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
                                     <outlet property="cellDelegate" destination="cRU-nn-utr" id="Li8-en-zOF"/>
+                                    <outlet property="implementedLabel" destination="xcd-Un-dKZ" id="G0D-yz-qjv"/>
                                     <outlet property="implementedSwitch" destination="UMU-Eh-WTX" id="sFI-LH-DTl"/>
+                                    <outlet property="requiredLabel" destination="nnx-Zp-TX4" id="xy1-e4-WN0"/>
                                     <outlet property="requiredSwitch" destination="7F8-EU-AMw" id="fGS-5Z-mg7"/>
                                     <outlet property="segmentedControl" destination="wN5-rX-mik" id="VvT-Gn-V9L"/>
                                     <outlet property="tituloLabel" destination="WsM-yF-zrL" id="iwc-AO-kcd"/>
@@ -556,7 +572,9 @@
             <relationships>
                 <relationship kind="action" name="onSegmentedControlClicked:"/>
                 <relationship kind="outlet" name="cellDelegate"/>
+                <relationship kind="outlet" name="implementedLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="implementedSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="requiredLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="requiredSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="tituloLabel" candidateClass="UILabel"/>

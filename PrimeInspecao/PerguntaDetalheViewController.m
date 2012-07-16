@@ -49,7 +49,10 @@
 {
     if (!self.pergunta) {
         self.pergunta = [NSEntityDescription insertNewObjectForEntityForName:@"Pergunta" inManagedObjectContext:self.managedObjectContext];
-        [self.secaoPerguntas addPerguntasObject:self.pergunta];
+        
+        NSMutableOrderedSet* tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.secaoPerguntas.perguntas];
+        [tempSet addObject:self.pergunta];
+        self.secaoPerguntas.perguntas = tempSet;
 		self.pergunta.posicao = [NSNumber numberWithInteger:[self.secaoPerguntas.perguntas count]];
     }
     

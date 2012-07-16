@@ -102,7 +102,7 @@
     Avaliacao *avaliacao = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSString *text = [self.dateFormatter stringFromDate:avaliacao.data];
     cell.textLabel.text = text;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Nota geral: %1.1f", avaliacao.notaGeral.doubleValue];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Nota geral: %1.0f%%", avaliacao.notaGeral.doubleValue * 20];
 }
 
 #pragma mark - Fetched results controller

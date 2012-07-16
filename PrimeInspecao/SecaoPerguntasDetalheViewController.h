@@ -12,7 +12,7 @@
 @interface SecaoPerguntasDetalheViewController : UITableViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) SecaoPerguntas *detailItem;
-@property (nonatomic, retain) NSMutableArray *perguntas;
+@property (nonatomic, retain) NSOrderedSet *perguntas;
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet UITextField *tituloTextField;

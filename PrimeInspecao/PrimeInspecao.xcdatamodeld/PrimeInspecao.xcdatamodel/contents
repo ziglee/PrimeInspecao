@@ -34,13 +34,13 @@
     <entity name="SecaoPerguntas" representedClassName="SecaoPerguntas" syncable="YES">
         <attribute name="posicao" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="perguntas" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Pergunta" inverseName="secao" inverseEntity="Pergunta" syncable="YES"/>
+        <relationship name="perguntas" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Pergunta" inverseName="secao" inverseEntity="Pergunta" syncable="YES"/>
     </entity>
     <elements>
         <element name="Avaliacao" positionX="-18" positionY="318" width="128" height="165"/>
         <element name="Obra" positionX="250" positionY="312" width="128" height="120"/>
         <element name="Pergunta" positionX="243" positionY="156" width="128" height="120"/>
-        <element name="Resposta" positionX="-11" positionY="162" width="128" height="120"/>
+        <element name="Resposta" positionX="-11" positionY="162" width="128" height="105"/>
         <element name="SecaoPerguntas" positionX="160" positionY="36" width="128" height="90"/>
     </elements>
 </model>
