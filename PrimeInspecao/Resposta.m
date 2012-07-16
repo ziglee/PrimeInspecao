@@ -2,7 +2,7 @@
 //  Resposta.m
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 26/06/12.
+//  Created by Cassio Ribeiro on 16/07/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,7 +13,9 @@
 
 @implementation Resposta
 
+@dynamic requerido;
 @dynamic valor;
+@dynamic implementado;
 @dynamic avaliacao;
 @dynamic pergunta;
 

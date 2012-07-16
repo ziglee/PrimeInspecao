@@ -41,7 +41,7 @@
     if (self.pergunta) {
         self.navigationItem.title = self.pergunta.titulo;
         self.tituloTextField.text = self.pergunta.titulo;
-        [self.obrigatoriaSwitch setOn:self.pergunta.obrigatoria.intValue == 1];
+        [self.obrigatoriaSwitch setOn:self.pergunta.tipoSimNao.intValue == 1];
     }
 }
 
@@ -54,7 +54,7 @@
     }
     
     self.pergunta.titulo = self.tituloTextField.text;
-    self.pergunta.obrigatoria = self.obrigatoriaSwitch.on ? [NSNumber numberWithInt:1] : [NSNumber numberWithInt:0];
+    self.pergunta.tipoSimNao = self.obrigatoriaSwitch.on ? [NSNumber numberWithInt:1] : [NSNumber numberWithInt:0];
     
     NSError *error = nil;
 	if (![self.managedObjectContext save:&error]) {

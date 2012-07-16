@@ -2,7 +2,7 @@
 //  Avaliacao.m
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 28/06/12.
+//  Created by Cassio Ribeiro on 16/07/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -17,8 +17,8 @@
 @dynamic comentMelhorar;
 @dynamic comentPositivos;
 @dynamic data;
-@dynamic numero;
 @dynamic notaGeral;
+@dynamic numero;
 @dynamic obra;
 @dynamic respostas;
 

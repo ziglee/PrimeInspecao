@@ -2,7 +2,7 @@
 //  Pergunta.m
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 26/06/12.
+//  Created by Cassio Ribeiro on 16/07/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,10 +13,10 @@
 
 @implementation Pergunta
 
-@dynamic obrigatoria;
+@dynamic tipoSimNao;
 @dynamic posicao;
 @dynamic titulo;
-@dynamic secao;
 @dynamic respostas;
+@dynamic secao;
 
 @end

@@ -159,7 +159,7 @@
                 NSArray *respostas = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
                 for (Resposta *resposta in respostas) 
                 {
-                    if (resposta.valor.intValue > 0)
+                    if (resposta.valor.intValue >= 0)
                     {
                         respostasSum += resposta.valor.intValue;
                         respostasCount++;
@@ -200,7 +200,17 @@
     
     resposta.avaliacao = self.avaliacao;
     resposta.pergunta = cell.perguntaObj;
-    resposta.valor = [NSNumber numberWithInt:cell.segmentedControl.selectedSegmentIndex];
+    if (cell.perguntaObj.tipoSimNao.intValue == 0) {
+        resposta.valor = [NSNumber numberWithInt:cell.segmentedControl.selectedSegmentIndex - 1];
+    } else {
+        if (cell.requiredSwitch.isOn) {
+            resposta.valor = [NSNumber numberWithInt:cell.implementedSwitch.isOn ? 5 : 0];
+        } else {
+            resposta.valor = [NSNumber numberWithInt:cell.implementedSwitch.isOn ? 0 : -1];
+        }
+        resposta.requerido = [NSNumber numberWithInt: cell.requiredSwitch.isOn ? 1 : 0];
+        resposta.implementado = [NSNumber numberWithInt: cell.implementedSwitch.isOn ? 1 : 0];
+    }
     
     [cell setResposta:resposta];
     
@@ -232,7 +242,7 @@
     
     NSArray *respostas = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
     for (Resposta *resposta in respostas) {
-        if (resposta.valor.intValue > 0)
+        if (resposta.valor.intValue >= 0)
         {
             respostasSum += resposta.valor.intValue;
             respostasCount++;

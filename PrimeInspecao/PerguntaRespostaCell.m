@@ -14,6 +14,8 @@
 @synthesize respostaObj;
 @synthesize tituloLabel;
 @synthesize segmentedControl;
+@synthesize requiredSwitch;
+@synthesize implementedSwitch;
 @synthesize cellDelegate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -33,9 +35,21 @@
 - (void)setPergunta:(Pergunta *)newPergunta
 {
     NSString *texto = newPergunta.titulo;
-    if (newPergunta.obrigatoria.intValue == 1)
+    if (newPergunta.tipoSimNao.intValue == 0)
     {
-        texto = [texto stringByAppendingString: @" *"];
+        [segmentedControl setHidden:NO];
+        [requiredSwitch setHidden:YES];
+        [implementedSwitch setHidden:YES];
+        [requiredSwitch setUserInteractionEnabled:NO];
+        [implementedSwitch setUserInteractionEnabled:NO];
+    } 
+    else 
+    {
+        [segmentedControl setHidden:YES];
+        [requiredSwitch setHidden:NO];
+        [implementedSwitch setHidden:NO];
+        [requiredSwitch setUserInteractionEnabled:YES];
+        [implementedSwitch setUserInteractionEnabled:YES];
     }
     self.tituloLabel.text = texto;
     self.perguntaObj = newPergunta;
@@ -44,7 +58,13 @@
 - (void)setResposta:(Resposta *)newResposta
 {
     NSInteger valor = newResposta.valor.intValue;
-    [segmentedControl setSelectedSegmentIndex:valor];
+    if (perguntaObj.tipoSimNao.intValue == 0) {
+        [segmentedControl setSelectedSegmentIndex:valor + 1];
+    } else {
+        [requiredSwitch setOn: newResposta.requerido.intValue == 1];
+        [implementedSwitch setOn: newResposta.implementado.intValue == 1];
+    }
+
     self.respostaObj = newResposta;
 }
 

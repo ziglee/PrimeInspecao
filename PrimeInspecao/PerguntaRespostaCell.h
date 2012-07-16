@@ -16,6 +16,8 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *tituloLabel;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *segmentedControl;
+@property (nonatomic, weak) IBOutlet UISwitch *requiredSwitch;
+@property (nonatomic, weak) IBOutlet UISwitch *implementedSwitch;
 @property (nonatomic, weak) IBOutlet id cellDelegate;
 
 @property (nonatomic, strong) Pergunta *perguntaObj;

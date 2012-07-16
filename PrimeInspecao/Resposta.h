@@ -2,7 +2,7 @@
 //  Resposta.h
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 26/06/12.
+//  Created by Cassio Ribeiro on 16/07/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,7 +13,9 @@
 
 @interface Resposta : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * requerido;
 @property (nonatomic, retain) NSNumber * valor;
+@property (nonatomic, retain) NSNumber * implementado;
 @property (nonatomic, retain) Avaliacao *avaliacao;
 @property (nonatomic, retain) Pergunta *pergunta;
 
