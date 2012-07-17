@@ -12,14 +12,13 @@
 		DF109F0415B49473000660BE /* Resposta.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109F0315B49473000660BE /* Resposta.m */; };
 		DF109F0715B49473000660BE /* Pergunta.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109F0615B49473000660BE /* Pergunta.m */; };
 		DF109F0A15B49473000660BE /* Obra.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109F0915B49473000660BE /* Obra.m */; };
-		DF109F1715B49F75000660BE /* kermit_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = DF109F1415B49F75000660BE /* kermit_empty.png */; };
-		DF109F1815B49F75000660BE /* kermit_full.png in Resources */ = {isa = PBXBuildFile; fileRef = DF109F1515B49F75000660BE /* kermit_full.png */; };
-		DF109F1915B49F75000660BE /* kermit_half.png in Resources */ = {isa = PBXBuildFile; fileRef = DF109F1615B49F75000660BE /* kermit_half.png */; };
 		DF109F1A15B4A3D8000660BE /* SecaoPerguntasHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109F1C15B4A3D8000660BE /* SecaoPerguntasHeaderView.m */; };
 		DF109F1D15B4A3F9000660BE /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109F1015B49F3F000660BE /* RateView.m */; };
 		DF109F2215B4A9EE000660BE /* rate_star_med_half.png in Resources */ = {isa = PBXBuildFile; fileRef = DF109F1F15B4A9EE000660BE /* rate_star_med_half.png */; };
 		DF109F2315B4A9EE000660BE /* rate_star_med_off.png in Resources */ = {isa = PBXBuildFile; fileRef = DF109F2015B4A9EE000660BE /* rate_star_med_off.png */; };
 		DF109F2415B4A9EE000660BE /* rate_star_med_on.png in Resources */ = {isa = PBXBuildFile; fileRef = DF109F2115B4A9EE000660BE /* rate_star_med_on.png */; };
+		DF109F2615B4B6AE000660BE /* SecaoResumoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF109F2515B4B6AE000660BE /* SecaoResumoView.xib */; };
+		DF109F2915B4BE1E000660BE /* ResumoAvaliacaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109F2815B4BE1E000660BE /* ResumoAvaliacaoViewController.m */; };
 		DF1ACD40159CD2790037EA64 /* SecaoPerguntasHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1ACD3F159CD2790037EA64 /* SecaoPerguntasHeaderView.xib */; };
 		DF226E10159CA36200AD73AF /* SecaoPerguntasHeaderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DF226E0F159CA36200AD73AF /* SecaoPerguntasHeaderInfo.m */; };
 		DF226E15159CA73C00AD73AF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF226E14159CA73C00AD73AF /* QuartzCore.framework */; };
@@ -58,13 +57,13 @@
 		DF109F0915B49473000660BE /* Obra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Obra.m; path = PrimeInspecao/Obra.m; sourceTree = "<group>"; };
 		DF109F0F15B49F3F000660BE /* RateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RateView.h; sourceTree = "<group>"; };
 		DF109F1015B49F3F000660BE /* RateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
-		DF109F1415B49F75000660BE /* kermit_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kermit_empty.png; sourceTree = "<group>"; };
-		DF109F1515B49F75000660BE /* kermit_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kermit_full.png; sourceTree = "<group>"; };
-		DF109F1615B49F75000660BE /* kermit_half.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kermit_half.png; sourceTree = "<group>"; };
 		DF109F1B15B4A3D8000660BE /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = en; path = en.lproj/SecaoPerguntasHeaderView.m; sourceTree = "<group>"; };
 		DF109F1F15B4A9EE000660BE /* rate_star_med_half.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rate_star_med_half.png; sourceTree = "<group>"; };
 		DF109F2015B4A9EE000660BE /* rate_star_med_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rate_star_med_off.png; sourceTree = "<group>"; };
 		DF109F2115B4A9EE000660BE /* rate_star_med_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rate_star_med_on.png; sourceTree = "<group>"; };
+		DF109F2515B4B6AE000660BE /* SecaoResumoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecaoResumoView.xib; sourceTree = "<group>"; };
+		DF109F2715B4BE1E000660BE /* ResumoAvaliacaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResumoAvaliacaoViewController.h; sourceTree = "<group>"; };
+		DF109F2815B4BE1E000660BE /* ResumoAvaliacaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResumoAvaliacaoViewController.m; sourceTree = "<group>"; };
 		DF1ACD3F159CD2790037EA64 /* SecaoPerguntasHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecaoPerguntasHeaderView.xib; sourceTree = "<group>"; };
 		DF226E0E159CA36200AD73AF /* SecaoPerguntasHeaderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecaoPerguntasHeaderInfo.h; sourceTree = "<group>"; };
 		DF226E0F159CA36200AD73AF /* SecaoPerguntasHeaderInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecaoPerguntasHeaderInfo.m; sourceTree = "<group>"; };
@@ -123,16 +122,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DF109F1315B49F69000660BE /* kermitStars */ = {
-			isa = PBXGroup;
-			children = (
-				DF109F1415B49F75000660BE /* kermit_empty.png */,
-				DF109F1515B49F75000660BE /* kermit_full.png */,
-				DF109F1615B49F75000660BE /* kermit_half.png */,
-			);
-			name = kermitStars;
-			sourceTree = "<group>";
-		};
 		DF109F1E15B4A9DF000660BE /* stars */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +181,8 @@
 		DFCA8BC915950BC100790F82 /* Avaliacao */ = {
 			isa = PBXGroup;
 			children = (
+				DF109F2715B4BE1E000660BE /* ResumoAvaliacaoViewController.h */,
+				DF109F2815B4BE1E000660BE /* ResumoAvaliacaoViewController.m */,
 				DFCA8BCA15950CC500790F82 /* AvaliacaoTableViewController.h */,
 				DFCA8BCB15950CC500790F82 /* AvaliacaoTableViewController.m */,
 				DF32ED6B15981F410072AEBC /* PerguntaRespostaCell.h */,
@@ -241,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				DF109F1E15B4A9DF000660BE /* stars */,
-				DF109F1315B49F69000660BE /* kermitStars */,
 				DFE73BAB15903BE900816FC8 /* Supporting Files */,
 				DF71B1F3159381CA00D8A52F /* Model and Model Classes */,
 				DF71B2421593B1B000D8A52F /* Perguntas */,
@@ -254,6 +244,7 @@
 				DFE73BB415903BE900816FC8 /* PrimeInspecaoAppDelegate.m */,
 				DFE73BBC15903BE900816FC8 /* PrimeInspecaoMasterViewController.h */,
 				DFE73BBD15903BE900816FC8 /* PrimeInspecaoMasterViewController.m */,
+				DF109F2515B4B6AE000660BE /* SecaoResumoView.xib */,
 			);
 			path = PrimeInspecao;
 			sourceTree = "<group>";
@@ -322,12 +313,10 @@
 				DFE73BAF15903BE900816FC8 /* InfoPlist.strings in Resources */,
 				DFE73BB815903BE900816FC8 /* MainStoryboard.storyboard in Resources */,
 				DF1ACD40159CD2790037EA64 /* SecaoPerguntasHeaderView.xib in Resources */,
-				DF109F1715B49F75000660BE /* kermit_empty.png in Resources */,
-				DF109F1815B49F75000660BE /* kermit_full.png in Resources */,
-				DF109F1915B49F75000660BE /* kermit_half.png in Resources */,
 				DF109F2215B4A9EE000660BE /* rate_star_med_half.png in Resources */,
 				DF109F2315B4A9EE000660BE /* rate_star_med_off.png in Resources */,
 				DF109F2415B4A9EE000660BE /* rate_star_med_on.png in Resources */,
+				DF109F2615B4B6AE000660BE /* SecaoResumoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +348,7 @@
 				DF109F0715B49473000660BE /* Pergunta.m in Sources */,
 				DF109F0A15B49473000660BE /* Obra.m in Sources */,
 				DF109F1D15B4A3F9000660BE /* RateView.m in Sources */,
+				DF109F2915B4BE1E000660BE /* ResumoAvaliacaoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

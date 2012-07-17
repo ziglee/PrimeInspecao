@@ -126,6 +126,56 @@
             </objects>
             <point key="canvasLocation" x="1465" y="-886"/>
         </scene>
+        <!--Resumo Avaliacao View Controller-->
+        <scene sceneID="bWK-ez-x4Z">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gbG-KY-rQz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="Aze-G2-YPe" customClass="ResumoAvaliacaoViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dmW-5i-RTk">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="9hT-nd-xWR">
+                            <rect key="frame" x="0.0" y="0.0" width="768" height="72"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Titulo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="OfG-8q-pph">
+                                    <rect key="frame" x="20" y="18" width="593" height="36"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Data" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="QNg-fG-mzW">
+                                    <rect key="frame" x="621" y="25" width="127" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="secaoCell" id="jwA-fj-s67">
+                                <rect key="frame" x="0.0" y="94" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Aze-G2-YPe" id="CIU-wW-KvQ"/>
+                            <outlet property="delegate" destination="Aze-G2-YPe" id="qnn-2N-qs3"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="2325" y="-886"/>
+        </scene>
         <!--Avaliacao Table View Controller - Avaliação-->
         <scene sceneID="GXy-qi-zsX">
             <objects>
@@ -293,7 +343,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2337" y="-886"/>
+            <point key="canvasLocation" x="3201" y="-886"/>
         </scene>
         <!--Obras Table View Controller - Obras-->
         <scene sceneID="24">
@@ -535,64 +585,6 @@
             <point key="canvasLocation" x="-1391" y="-886"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AvaliacaoTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AvaliacaoTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="comentCriticosTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="comentMelhorarTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="comentPositivosTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="dataLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nomeLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="AvaliacoesTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AvaliacoesTableViewController.h"/>
-        </class>
-        <class className="ObraDetalheViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ObraDetalheViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="engenheiroTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="nomeTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ObrasTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ObrasTableViewController.h"/>
-        </class>
-        <class className="PerguntaDetalheViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PerguntaDetalheViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="obrigatoriaSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="tituloTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="PerguntaRespostaCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PerguntaRespostaCell.h"/>
-            <relationships>
-                <relationship kind="action" name="onSegmentedControlClicked:"/>
-                <relationship kind="outlet" name="cellDelegate"/>
-                <relationship kind="outlet" name="implementedLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="implementedSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="requiredLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="requiredSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="tituloLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="PrimeInspecaoMasterViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PrimeInspecaoMasterViewController.h"/>
-        </class>
-        <class className="SecaoPerguntasDetalheViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SecaoPerguntasDetalheViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tituloTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SecaoPerguntasTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SecaoPerguntasTableViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
