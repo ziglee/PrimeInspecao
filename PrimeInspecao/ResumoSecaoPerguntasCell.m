@@ -13,6 +13,8 @@
 @synthesize tituloLabel=_tituloLabel;
 @synthesize rateView=_rateView;
 @synthesize porcentagemLabel=_porcentagemLabel;
+@synthesize situacaoImage=_situacaoImage;
+@synthesize sinalizacaoImage=_sinalizacaoImage;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

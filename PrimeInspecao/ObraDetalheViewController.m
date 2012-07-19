@@ -71,6 +71,8 @@
 {
     self.detailItem.nome = self.nomeTextField.text;
     self.detailItem.engenheiro = self.engenheiroTextField.text;
+    self.detailItem.supervisor = self.supervisorTextField.text;
+    self.detailItem.gerente = self.gerenteTextField.text;
     
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {

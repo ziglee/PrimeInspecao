@@ -26,6 +26,10 @@
 @synthesize supervisorLabel = _supervisorLabel;
 @synthesize gerenteLabel = _gerenteLabel;
 @synthesize numeroLabel = _numeroLabel;
+@synthesize notaGeralLabel = _notaGeralLabel;
+@synthesize rateView = _rateView;
+@synthesize situacaoImage = _situacaoImage;
+@synthesize sinalizacaoImage = _sinalizacaoImage;
 @synthesize comentCriticosTextView = _comentCriticosTextView;
 @synthesize comentMelhorarTextView = _comentMelhorarTextView;
 @synthesize comentPositivosTextView = _comentPositivosTextView;
@@ -46,6 +50,20 @@
         self.comentCriticosTextView.text = self.avaliacao.comentCriticos;
         self.comentMelhorarTextView.text = self.avaliacao.comentMelhorar;
         self.comentPositivosTextView.text = self.avaliacao.comentPositivos;
+        self.notaGeralLabel.text = [NSString stringWithFormat:@"%1.0f%%", self.avaliacao.notaGeral.doubleValue * 20];
+        self.rateView.notSelectedImage = [UIImage imageNamed:@"rate_star_off_yellow.png"];
+        self.rateView.halfSelectedImage = [UIImage imageNamed:@"rate_star_half_yellow.png"];
+        self.rateView.fullSelectedImage = [UIImage imageNamed:@"rate_star_on_yellow.png"];
+        self.rateView.maxRating = 5;
+        self.rateView.rating = self.avaliacao.notaGeral.doubleValue;
+        
+        UIImage *sinalizacaoImage = [UIImage imageNamed:@"circle_green.png"];
+        if (self.avaliacao.notaGeral.doubleValue * 20 < 50) {
+            sinalizacaoImage = [UIImage imageNamed:@"circle_red.png"];
+        } else if (self.avaliacao.notaGeral.doubleValue * 20 < 75) {
+            sinalizacaoImage = [UIImage imageNamed:@"circle_yellow.png"];
+        }
+        self.sinalizacaoImage.image = sinalizacaoImage;
     }
 }
 
@@ -98,9 +116,9 @@
     SecaoPerguntas *secao = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.tituloLabel.text = secao.titulo;
-    cell.rateView.notSelectedImage = [UIImage imageNamed:@"rate_star_med_off.png"];
-    cell.rateView.halfSelectedImage = [UIImage imageNamed:@"rate_star_med_half.png"];
-    cell.rateView.fullSelectedImage = [UIImage imageNamed:@"rate_star_med_on.png"];
+    cell.rateView.notSelectedImage = [UIImage imageNamed:@"rate_star_off_yellow.png"];
+    cell.rateView.halfSelectedImage = [UIImage imageNamed:@"rate_star_half_yellow.png"];
+    cell.rateView.fullSelectedImage = [UIImage imageNamed:@"rate_star_on_yellow.png"];
     cell.rateView.maxRating = 5;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -122,13 +140,23 @@
         }
     }
     
+    UIImage *sinalizacaoImage = [UIImage imageNamed:@"circle_red.png"];
+    
     if (respostasCount > 0) {
         cell.rateView.rating = (float) respostasSum / respostasCount;
         cell.porcentagemLabel.text = [NSString stringWithFormat:@"%1.0f%%", cell.rateView.rating * 20];
+        if (cell.rateView.rating * 20 < 50) {
+            sinalizacaoImage = [UIImage imageNamed:@"circle_red.png"];
+        } else if (cell.rateView.rating * 20 < 75) {
+            sinalizacaoImage = [UIImage imageNamed:@"circle_yellow.png"];
+        } else {
+            sinalizacaoImage = [UIImage imageNamed:@"circle_green.png"];
+        }
     } else {
         cell.rateView.rating = 0;
         cell.porcentagemLabel.text = @"0%";
     }
+    cell.sinalizacaoImage.image = sinalizacaoImage;
 }
 
 #pragma mark - Fetched results controller

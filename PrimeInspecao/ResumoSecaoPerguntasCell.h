@@ -13,6 +13,8 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *tituloLabel;
 @property (nonatomic, weak) IBOutlet UILabel *porcentagemLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *sinalizacaoImage;
+@property (nonatomic, weak) IBOutlet UIImageView *situacaoImage;
 @property (nonatomic, weak) IBOutlet RateView *rateView;
 
 @end
