@@ -27,8 +27,9 @@
 @property (strong, nonatomic) IBOutlet UIImageView *situacaoImage;
 @property (strong, nonatomic) IBOutlet RateView *rateView;
 
-@property (nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @property (strong, nonatomic) Avaliacao *avaliacao;
+@property (strong, nonatomic) Avaliacao *avaliacaoAnterior;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 

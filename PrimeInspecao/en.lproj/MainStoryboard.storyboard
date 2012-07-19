@@ -313,7 +313,7 @@
                                             <rect key="frame" x="554" y="6" width="25" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="arrow_up_green.png" id="Yte-MS-f28">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="arrow_right_gray.png" id="Yte-MS-f28">
                                             <rect key="frame" x="644" y="7" width="25" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -403,7 +403,7 @@
                                             <rect key="frame" x="554" y="9" width="25" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="arrow_up_green.png" id="Lpi-ns-eHf">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="arrow_right_gray.png" id="Lpi-ns-eHf">
                                             <rect key="frame" x="644.5" y="9.5" width="25" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -853,7 +853,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow_up_green.png" width="48" height="48"/>
+        <image name="arrow_right_gray.png" width="64" height="64"/>
         <image name="circle_yellow.png" width="64" height="64"/>
     </resources>
     <classes>

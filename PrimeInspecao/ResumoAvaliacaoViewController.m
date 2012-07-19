@@ -20,6 +20,7 @@
 
 @synthesize dateFormatter;
 @synthesize avaliacao = _avaliacao;
+@synthesize avaliacaoAnterior = _avaliacaoAnterior;
 @synthesize nomeLabel = _nomeLabel;
 @synthesize dataLabel = _dataLabel;
 @synthesize engenheiroLabel = _engenheiroLabel;
@@ -64,6 +65,16 @@
             sinalizacaoImage = [UIImage imageNamed:@"circle_yellow.png"];
         }
         self.sinalizacaoImage.image = sinalizacaoImage;
+        
+        if (self.avaliacaoAnterior) {
+            if (self.avaliacao.notaGeral.doubleValue > self.avaliacaoAnterior.notaGeral.doubleValue) {
+                self.situacaoImage.image = [UIImage imageNamed:@"arrow_up_green.png"];
+            } else if (self.avaliacao.notaGeral.doubleValue < self.avaliacaoAnterior.notaGeral.doubleValue) {
+                self.situacaoImage.image = [UIImage imageNamed:@"arrow_down_red.png"];
+            } else {
+                self.situacaoImage.image = [UIImage imageNamed:@"arrow_right_gray.png"];  
+            }
+        }
     }
 }
 
@@ -75,8 +86,24 @@
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:editButton, nil];
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
-    [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-    [self.dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    self.dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    self.dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Avaliacao" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"data" ascending:NO];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];    
+    [fetchRequest setSortDescriptors:sortDescriptors]; 
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"obra == %@ and data < %@", self.avaliacao.obra, self.avaliacao.data];
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray *avaliacoes = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];    
+    if (avaliacoes != nil && avaliacoes.count > 0) {
+        self.avaliacaoAnterior = [avaliacoes objectAtIndex:0];       
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
