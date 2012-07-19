@@ -21,6 +21,8 @@
 @synthesize detailItem = _detailItem;
 @synthesize nomeTextField = _nomeTextField;
 @synthesize engenheiroTextField = _engenheiroTextField;
+@synthesize supervisorTextField = _supervisorTextField;
+@synthesize gerenteTextField = _gerenteTextField;
 @synthesize managedObjectContext = __managedObjectContext;
 
 #pragma mark - Managing the detail item
@@ -39,6 +41,8 @@
         self.navigationItem.title = self.detailItem.nome;
         self.nomeTextField.text = self.detailItem.nome;
         self.engenheiroTextField.text = self.detailItem.engenheiro;
+        self.supervisorTextField.text = self.detailItem.supervisor;
+        self.gerenteTextField.text = self.detailItem.gerente;
     }
 }
 

@@ -16,10 +16,10 @@
 
 @implementation SecaoPerguntasDetalheViewController
 
-@synthesize detailItem = _detailItem;
-@synthesize perguntas = _perguntas;
+@synthesize secaoPerguntas = _secaoPerguntas;
 @synthesize tituloTextField = _tituloTextField;
 @synthesize managedObjectContext = __managedObjectContext;
+@synthesize fetchedResultsController = __fetchedResultsController;
 
 #pragma mark - View lifecycle
 
@@ -34,10 +34,12 @@
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:addButton, self.editButtonItem, nil];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)configureView
 {
-	self.perguntas = self.detailItem.perguntas;    
-    [self.tableView reloadData]; 
+    if (self.secaoPerguntas) {
+        self.navigationItem.title = self.secaoPerguntas.titulo;
+        self.tituloTextField.text = self.secaoPerguntas.titulo;
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -54,7 +56,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.detailItem.perguntas count];
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,23 +83,98 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+        [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
         
-    }   
+        NSError *error = nil;
+        if (![context save:&error]) {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }  
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Pergunta *selectedObject = [self.perguntas objectAtIndex:indexPath.row];
-    
+    Pergunta *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+
     PerguntaDetalheViewController *detalheObra = [self.storyboard instantiateViewControllerWithIdentifier:@"PerguntaDetalhe"];
     detalheObra.managedObjectContext = self.managedObjectContext;
     detalheObra.pergunta = selectedObject;
-    detalheObra.secaoPerguntas = self.detailItem;    
+    detalheObra.secaoPerguntas = self.secaoPerguntas;
     [self.navigationController pushViewController:detalheObra animated:YES];
 }
 
-#pragma mark -
-#pragma mark Editing
+#pragma mark - Fetched results controller
+
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    if (__fetchedResultsController != nil) {
+        return __fetchedResultsController;
+    }    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Pergunta" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"secao == %@", self.secaoPerguntas];
+    [fetchRequest setPredicate:predicate];
+    
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"posicao" ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];     
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    aFetchedResultsController.delegate = self;
+    self.fetchedResultsController = aFetchedResultsController;
+    
+	NSError *error = nil;
+	if (![self.fetchedResultsController performFetch:&error]) {
+	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	    abort();
+	}
+    
+    return __fetchedResultsController;
+}    
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+    UITableView *tableView = self.tableView;
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView endUpdates];
+}
+
+#pragma mark - Editing
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {    
     [super setEditing:editing animated:animated];
@@ -115,8 +193,8 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
 	if (textField == self.tituloTextField) {
-		self.detailItem.titulo = self.tituloTextField.text;
-		self.navigationItem.title = self.detailItem.titulo;
+		self.secaoPerguntas.titulo = self.tituloTextField.text;
+		self.navigationItem.title = self.secaoPerguntas.titulo;
 	}
 	return YES;
 }
@@ -127,17 +205,9 @@
 	return YES;
 }
 
-- (void)configureView
-{
-    if (self.detailItem) {
-        self.navigationItem.title = self.detailItem.titulo;
-        self.tituloTextField.text = self.detailItem.titulo;
-    }
-}
-
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    Pergunta *pergunta = [self.perguntas objectAtIndex:indexPath.row];
+    Pergunta *pergunta = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = pergunta.titulo;
 }
 
@@ -145,7 +215,7 @@
 {
     PerguntaDetalheViewController *detalheObra = [self.storyboard instantiateViewControllerWithIdentifier:@"PerguntaDetalhe"];
     detalheObra.managedObjectContext = self.managedObjectContext;
-    detalheObra.secaoPerguntas = self.detailItem;    
+    detalheObra.secaoPerguntas = self.secaoPerguntas;    
     [self.navigationController pushViewController:detalheObra animated:YES];
 }
 

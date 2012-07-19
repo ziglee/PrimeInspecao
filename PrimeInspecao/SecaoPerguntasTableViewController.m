@@ -19,6 +19,8 @@
 @synthesize fetchedResultsController = __fetchedResultsController;
 @synthesize managedObjectContext = __managedObjectContext;
 
+#pragma mark - View lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -53,6 +55,8 @@
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
+
+#pragma mark - Table view delegate
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -125,7 +129,7 @@
     
     SecaoPerguntasDetalheViewController *detalheObra = [self.storyboard instantiateViewControllerWithIdentifier:@"SecaoPerguntasDetalhe"];
     detalheObra.managedObjectContext = self.managedObjectContext;
-    detalheObra.detailItem = selectedObject;
+    detalheObra.secaoPerguntas = selectedObject;
     
     [self.navigationController pushViewController:detalheObra animated:YES];
 }
@@ -171,20 +175,6 @@
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
-{
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject

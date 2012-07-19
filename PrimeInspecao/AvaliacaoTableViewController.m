@@ -61,8 +61,7 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"SecaoPerguntas" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
+    [fetchRequest setEntity:entity];    
     [fetchRequest setFetchBatchSize:20];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"posicao" ascending:YES];

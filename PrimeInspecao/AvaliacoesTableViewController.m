@@ -8,6 +8,7 @@
 
 #import "AvaliacoesTableViewController.h"
 #import "AvaliacaoTableViewController.h"
+#import "ResumoAvaliacaoViewController.h"
 #import "Avaliacao.h"
 
 @interface AvaliacoesTableViewController ()
@@ -90,7 +91,7 @@
 {
     Avaliacao *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     
-    AvaliacaoTableViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Avaliacao"];
+    ResumoAvaliacaoViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ResumoAvaliacao"];
     controller.managedObjectContext = self.managedObjectContext;
     controller.avaliacao = selectedObject;
     

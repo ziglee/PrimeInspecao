@@ -2,7 +2,7 @@
 //  Obra.h
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 16/07/12.
+//  Created by Cassio Ribeiro on 19/07/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -17,6 +17,8 @@
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSString * nome;
+@property (nonatomic, retain) NSString * supervisor;
+@property (nonatomic, retain) NSString * gerente;
 @property (nonatomic, retain) NSSet *avaliacoes;
 @end
 

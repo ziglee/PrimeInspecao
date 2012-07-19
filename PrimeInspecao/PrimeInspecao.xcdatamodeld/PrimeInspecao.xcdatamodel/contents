@@ -12,9 +12,11 @@
     </entity>
     <entity name="Obra" representedClassName="Obra" syncable="YES">
         <attribute name="engenheiro" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gerente" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="nome" attributeType="String" syncable="YES"/>
+        <attribute name="supervisor" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="avaliacoes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Avaliacao" inverseName="obra" inverseEntity="Avaliacao" syncable="YES"/>
     </entity>
     <entity name="Pergunta" representedClassName="Pergunta" syncable="YES">

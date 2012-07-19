@@ -16,6 +16,8 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet UITextField *nomeTextField;
 @property (strong, nonatomic) IBOutlet UITextField *engenheiroTextField;
+@property (strong, nonatomic) IBOutlet UITextField *supervisorTextField;
+@property (strong, nonatomic) IBOutlet UITextField *gerenteTextField;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
