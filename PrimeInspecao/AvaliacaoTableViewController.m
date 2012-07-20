@@ -27,6 +27,7 @@
 @synthesize sectionInfoArray = sectionInfoArray_;
 @synthesize avaliacao = _avaliacao;
 @synthesize nomeLabel = _nomeLabel;
+@synthesize numeroField = _numeroField;
 @synthesize dataLabel = _dataLabel;
 @synthesize secoesPerguntas = _secoesPerguntas;
 @synthesize comentCriticosTextView = _comentCriticosTextView;
@@ -40,6 +41,7 @@
 {
     if (self.avaliacao) {
         self.nomeLabel.text = self.avaliacao.obra.nome;
+        self.numeroField.text = self.avaliacao.numero;
         self.dataLabel.text = [self.dateFormatter stringFromDate:self.avaliacao.data];
         self.comentCriticosTextView.text = self.avaliacao.comentCriticos;
         self.comentMelhorarTextView.text = self.avaliacao.comentMelhorar;
@@ -227,6 +229,7 @@
     self.avaliacao.comentCriticos = self.comentCriticosTextView.text;
     self.avaliacao.comentMelhorar = self.comentMelhorarTextView.text;
     self.avaliacao.comentPositivos = self.comentPositivosTextView.text;
+    self.avaliacao.numero = self.numeroField.text;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Resposta" inManagedObjectContext:self.managedObjectContext];

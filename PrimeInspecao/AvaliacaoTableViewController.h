@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet UILabel *nomeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dataLabel;
+@property (strong, nonatomic) IBOutlet UITextField *numeroField;
 @property (strong, nonatomic) IBOutlet UITextView *comentCriticosTextView;
 @property (strong, nonatomic) IBOutlet UITextView *comentMelhorarTextView;
 @property (strong, nonatomic) IBOutlet UITextView *comentPositivosTextView;

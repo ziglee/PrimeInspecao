@@ -20,9 +20,9 @@
 -(void)initWithTitle:(NSString*)title nota:(NSNumber *)nota
 {
     self.titleLabel.text = title;
-    self.rateView.notSelectedImage = [UIImage imageNamed:@"rate_star_med_off.png"];
-    self.rateView.halfSelectedImage = [UIImage imageNamed:@"rate_star_med_half.png"];
-    self.rateView.fullSelectedImage = [UIImage imageNamed:@"rate_star_med_on.png"];
+    self.rateView.notSelectedImage = [UIImage imageNamed:@"rate_star_off_yellow.png"];
+    self.rateView.halfSelectedImage = [UIImage imageNamed:@"rate_star_half_yellow.png"];
+    self.rateView.fullSelectedImage = [UIImage imageNamed:@"rate_star_on_yellow.png"];
     self.rateView.maxRating = 5;
     self.rateView.rating = nota.doubleValue;
 }

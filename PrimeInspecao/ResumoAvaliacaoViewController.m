@@ -12,8 +12,9 @@
 #import "ResumoSecaoPerguntasCell.h"
 
 @interface ResumoAvaliacaoViewController ()
-    - (void)configureCell:(ResumoSecaoPerguntasCell *)cell atIndexPath:(NSIndexPath *)indexPath;
-    - (void)configureView;
+- (void)configureCell:(ResumoSecaoPerguntasCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+- (void)configureView;
+- (float) nota: (SecaoPerguntas *)secao avaliacaoAnterior:(Avaliacao *) avaliacao;
 @end
 
 @implementation ResumoAvaliacaoViewController
@@ -104,6 +105,8 @@
     if (avaliacoes != nil && avaliacoes.count > 0) {
         self.avaliacaoAnterior = [avaliacoes objectAtIndex:0];       
     }
+    
+    self.navigationItem.title = @"Resumo da avaliação";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -184,6 +187,43 @@
         cell.porcentagemLabel.text = @"0%";
     }
     cell.sinalizacaoImage.image = sinalizacaoImage;
+    
+    if (self.avaliacaoAnterior) {
+        double notaAnterior = [self nota:secao avaliacaoAnterior:self.avaliacaoAnterior];        
+        if (cell.rateView.rating > notaAnterior) {
+            cell.situacaoImage.image = [UIImage imageNamed:@"arrow_up_green.png"];
+        } else if (cell.rateView.rating < notaAnterior) {
+            cell.situacaoImage.image = [UIImage imageNamed:@"arrow_down_red.png"];
+        } else {
+            cell.situacaoImage.image = [UIImage imageNamed:@"arrow_right_gray.png"];  
+        }
+    }
+}
+
+- (float) nota: (SecaoPerguntas *)secao avaliacaoAnterior:(Avaliacao *) avaliacao { 
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Resposta" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pergunta.secao == %@ and avaliacao == %@", secao, avaliacao];
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray *respostas = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    int respostasCount = 0;
+    int respostasSum = 0;
+    
+    for (Resposta *resposta in respostas) {
+        if (resposta.valor.intValue >= 0) {
+            respostasSum += resposta.valor.intValue;
+            respostasCount++;
+        }
+    }
+    
+    if (respostas == 0)
+        return 0;
+    
+    return (float) respostasSum / respostasCount;
 }
 
 #pragma mark - Fetched results controller

@@ -52,6 +52,9 @@
 {
     [super viewDidLoad];
     
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"Avaliações" style:UIBarButtonItemStyleBordered target:self action:@selector(avaliacoesList)];
+    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:editButton, nil];
+    
     [self configureView];
     
     if (self.detailItem != nil) {
@@ -109,15 +112,14 @@
     }
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void) avaliacoesList
 {
-    NSString *identifier = [segue identifier];
-    if ([identifier isEqualToString:@"avaliacoes"]) 
-    {
-        AvaliacoesTableViewController *destination = [segue destinationViewController];
-        destination.managedObjectContext = self.managedObjectContext;
-        destination.obra = self.detailItem;
-    }
+    
+    AvaliacoesTableViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"AvaliacoesList"];
+    controller.managedObjectContext = self.managedObjectContext;
+    controller.obra = self.detailItem;
+    
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

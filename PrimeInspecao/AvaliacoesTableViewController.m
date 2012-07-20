@@ -33,6 +33,8 @@
     self.dateFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     [self.dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    self.navigationItem.title = [NSString stringWithFormat:@"Avaliações - %@", self.obra.nome];
 }
 
 - (void)viewDidUnload
