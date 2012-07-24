@@ -7,8 +7,13 @@
         <attribute name="data" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="notaGeral" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="numero" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="fotos" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Foto" inverseName="avaliacao" inverseEntity="Foto" syncable="YES"/>
         <relationship name="obra" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Obra" inverseName="avaliacoes" inverseEntity="Obra" syncable="YES"/>
         <relationship name="respostas" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Resposta" inverseName="avaliacao" inverseEntity="Resposta" syncable="YES"/>
+    </entity>
+    <entity name="Foto" representedClassName="Foto" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <relationship name="avaliacao" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Avaliacao" inverseName="fotos" inverseEntity="Avaliacao" syncable="YES"/>
     </entity>
     <entity name="Obra" representedClassName="Obra" syncable="YES">
         <attribute name="engenheiro" optional="YES" attributeType="String" syncable="YES"/>
@@ -44,5 +49,6 @@
         <element name="Pergunta" positionX="243" positionY="156" width="128" height="120"/>
         <element name="Resposta" positionX="-11" positionY="162" width="128" height="105"/>
         <element name="SecaoPerguntas" positionX="160" positionY="36" width="128" height="90"/>
+        <element name="Foto" positionX="160" positionY="192" width="128" height="75"/>
     </elements>
 </model>

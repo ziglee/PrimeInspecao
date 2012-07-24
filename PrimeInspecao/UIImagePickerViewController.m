@@ -69,7 +69,7 @@
     NSData *imageData = UIImagePNGRepresentation(image);
     [imageData writeToFile:savedImagePath atomically:NO]; 
     
-    UIImageWriteToSavedPhotosAlbum(self.imageView.image, nil, nil , nil);
+    //UIImageWriteToSavedPhotosAlbum(self.imageView.image, nil, nil , nil);
 }
 
 - (IBAction)discardPhoto:(id)sender {

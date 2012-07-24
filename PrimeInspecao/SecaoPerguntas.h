@@ -2,7 +2,7 @@
 //  SecaoPerguntas.h
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 16/07/12.
+//  Created by Cassio Ribeiro on 24/07/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
