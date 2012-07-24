@@ -13,6 +13,7 @@
 #import "RateView.h"
 
 @interface ResumoAvaliacaoViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+
 @property (strong, nonatomic) IBOutlet UILabel *nomeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *engenheiroLabel;
 @property (strong, nonatomic) IBOutlet UILabel *supervisorLabel;

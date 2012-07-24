@@ -25,6 +25,7 @@
 
 @synthesize dateFormatter;
 @synthesize sectionInfoArray = sectionInfoArray_;
+@synthesize fotoButton = _fotoButton;
 @synthesize avaliacao = _avaliacao;
 @synthesize nomeLabel = _nomeLabel;
 @synthesize numeroField = _numeroField;

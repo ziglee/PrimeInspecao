@@ -23,6 +23,7 @@
 		DF226E15159CA73C00AD73AF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF226E14159CA73C00AD73AF /* QuartzCore.framework */; };
 		DF2A941C1599268700E2CDA1 /* AvaliacoesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2A941B1599268700E2CDA1 /* AvaliacoesTableViewController.m */; };
 		DF32ED6D15981F410072AEBC /* PerguntaRespostaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF32ED6C15981F410072AEBC /* PerguntaRespostaCell.m */; };
+		DF33CC0B15BE70D2007C5BFE /* UIImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF33CC0A15BE70D2007C5BFE /* UIImagePickerViewController.m */; };
 		DF5B4F871594050F006C2476 /* PerguntaDetalheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5B4F861594050F006C2476 /* PerguntaDetalheViewController.m */; };
 		DF679F0115B7A8E600DDAFC0 /* ResumoSecaoPerguntasCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF679F0015B7A8E600DDAFC0 /* ResumoSecaoPerguntasCell.m */; };
 		DF679F0415B7DEBA00DDAFC0 /* Obra.m in Sources */ = {isa = PBXBuildFile; fileRef = DF679F0315B7DEBA00DDAFC0 /* Obra.m */; };
@@ -82,6 +83,8 @@
 		DF2A941B1599268700E2CDA1 /* AvaliacoesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvaliacoesTableViewController.m; sourceTree = "<group>"; };
 		DF32ED6B15981F410072AEBC /* PerguntaRespostaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerguntaRespostaCell.h; sourceTree = "<group>"; };
 		DF32ED6C15981F410072AEBC /* PerguntaRespostaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerguntaRespostaCell.m; sourceTree = "<group>"; };
+		DF33CC0915BE70D2007C5BFE /* UIImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImagePickerViewController.h; sourceTree = "<group>"; };
+		DF33CC0A15BE70D2007C5BFE /* UIImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImagePickerViewController.m; sourceTree = "<group>"; };
 		DF5B4F851594050F006C2476 /* PerguntaDetalheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PerguntaDetalheViewController.h; path = PrimeInspecao/PerguntaDetalheViewController.h; sourceTree = "<group>"; };
 		DF5B4F861594050F006C2476 /* PerguntaDetalheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PerguntaDetalheViewController.m; path = PrimeInspecao/PerguntaDetalheViewController.m; sourceTree = "<group>"; };
 		DF679EFF15B7A8E600DDAFC0 /* ResumoSecaoPerguntasCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResumoSecaoPerguntasCell.h; sourceTree = "<group>"; };
@@ -280,6 +283,8 @@
 				DFE73BBC15903BE900816FC8 /* PrimeInspecaoMasterViewController.h */,
 				DFE73BBD15903BE900816FC8 /* PrimeInspecaoMasterViewController.m */,
 				DF109F2515B4B6AE000660BE /* SecaoResumoView.xib */,
+				DF33CC0915BE70D2007C5BFE /* UIImagePickerViewController.h */,
+				DF33CC0A15BE70D2007C5BFE /* UIImagePickerViewController.m */,
 			);
 			path = PrimeInspecao;
 			sourceTree = "<group>";
@@ -395,6 +400,7 @@
 				DF109F2915B4BE1E000660BE /* ResumoAvaliacaoViewController.m in Sources */,
 				DF679F0115B7A8E600DDAFC0 /* ResumoSecaoPerguntasCell.m in Sources */,
 				DF679F0415B7DEBA00DDAFC0 /* Obra.m in Sources */,
+				DF33CC0B15BE70D2007C5BFE /* UIImagePickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

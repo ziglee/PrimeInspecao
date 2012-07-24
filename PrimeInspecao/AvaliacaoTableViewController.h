@@ -23,5 +23,6 @@
 @property (strong, nonatomic) IBOutlet UITextView *comentCriticosTextView;
 @property (strong, nonatomic) IBOutlet UITextView *comentMelhorarTextView;
 @property (strong, nonatomic) IBOutlet UITextView *comentPositivosTextView;
+@property (strong, nonatomic) IBOutlet UIButton *fotoButton;
 
 @end
