@@ -13,6 +13,7 @@
 #import "PerguntaRespostaCell.h"
 #import "SecaoPerguntasHeaderInfo.h"
 #import "SecaoPerguntasHeaderView.h"
+#import "UIImagePickerViewController.h"
 
 @interface AvaliacaoTableViewController ()
     @property (nonatomic, strong) NSMutableArray* sectionInfoArray;
@@ -92,6 +93,18 @@
 {
     return YES;
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSString *identifier = [segue identifier];
+    if ([identifier isEqualToString:@"tirarFoto"]) 
+    {
+        UIImagePickerViewController *destination = [segue destinationViewController];
+        destination.managedObjectContext = self.managedObjectContext;
+        destination.avaliacao = self.avaliacao;
+    } 
+}
+
 
 #pragma mark - Table view data source
 

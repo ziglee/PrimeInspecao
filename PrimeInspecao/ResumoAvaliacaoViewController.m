@@ -10,6 +10,7 @@
 #import "AvaliacaoTableViewController.h"
 #import "SecaoPerguntas.h"
 #import "ResumoSecaoPerguntasCell.h"
+#import "FotosTableViewController.h"
 
 @interface ResumoAvaliacaoViewController ()
 - (void)configureCell:(ResumoSecaoPerguntasCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -83,8 +84,10 @@
 {
     [super viewDidLoad];
     
+    UIBarButtonItem *fotosButton = [[UIBarButtonItem alloc] initWithTitle:@"Fotos" style:UIBarButtonItemStyleBordered target:self action:@selector(fotosList)];
+    
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editAvaliacao)];
-    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:editButton, nil];
+    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects: editButton, fotosButton, nil];
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.timeStyle = NSDateFormatterShortStyle;
@@ -315,6 +318,14 @@
     controller.avaliacao = self.avaliacao;
     
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)fotosList
+{
+    FotosTableViewController *fotos = [self.storyboard instantiateViewControllerWithIdentifier:@"FotosList"];
+    fotos.managedObjectContext = self.managedObjectContext;
+    fotos.avaliacao = self.avaliacao;
+    [self.navigationController pushViewController:fotos animated:YES];
 }
 
 @end

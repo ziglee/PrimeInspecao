@@ -13,6 +13,7 @@
     </entity>
     <entity name="Foto" representedClassName="Foto" syncable="YES">
         <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="legenda" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="avaliacao" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Avaliacao" inverseName="fotos" inverseEntity="Avaliacao" syncable="YES"/>
     </entity>
     <entity name="Obra" representedClassName="Obra" syncable="YES">
@@ -49,6 +50,6 @@
         <element name="Pergunta" positionX="243" positionY="156" width="128" height="120"/>
         <element name="Resposta" positionX="-11" positionY="162" width="128" height="105"/>
         <element name="SecaoPerguntas" positionX="160" positionY="36" width="128" height="90"/>
-        <element name="Foto" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="Foto" positionX="160" positionY="192" width="128" height="90"/>
     </elements>
 </model>

@@ -13,13 +13,7 @@
 @implementation Foto
 
 @dynamic image;
+@dynamic legenda;
 @dynamic avaliacao;
-
-+ (void)initialize {
-	if (self == [Foto class]) {
-		UIImageToDataTransformer *transformer = [[UIImageToDataTransformer alloc] init];
-		[NSValueTransformer setValueTransformer:transformer forName:@"UIImageToDataTransformer"];
-	}
-}
 
 @end

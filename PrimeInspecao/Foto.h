@@ -14,6 +14,7 @@
 @interface Foto : NSManagedObject
 
 @property (nonatomic, retain) id image;
+@property (nonatomic, retain) NSString * legenda;
 @property (nonatomic, retain) Avaliacao *avaliacao;
 
 @end

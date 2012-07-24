@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "Foto.h"
 #import "AssetsLibrary/AssetsLibrary.h"
 #import "UIImagePickerViewController.h"
 
@@ -17,6 +18,8 @@
 
 @synthesize imageView;
 @synthesize legendaField;
+@synthesize avaliacao = _avaliacao;
+@synthesize managedObjectContext = __managedObjectContext;
 
 - (void)viewDidLoad
 {
@@ -35,8 +38,10 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
+
+#pragma mark Actions
 
 - (void)takePicture:(id) sender 
 {
@@ -45,7 +50,7 @@
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
     } else {
-        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+        [imagePicker setSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
     }
     
     [imagePicker setDelegate:self];
@@ -53,26 +58,47 @@
     [self presentModalViewController:imagePicker animated:YES];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+- (IBAction)savePhoto:(id)sender {    
+    if (imageView.image != nil) {
+        Foto *foto = [NSEntityDescription insertNewObjectForEntityForName:@"Foto" inManagedObjectContext: self.managedObjectContext];
+        foto.legenda = self.legendaField.text;
+        foto.avaliacao = self.avaliacao;
+        foto.image = imageView.image;
     
-    [self.imageView setImage:image];
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-- (IBAction)savePhoto:(id)sender {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,     NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:@"savedImage.png"];
-    UIImage *image = imageView.image; // imageView is my image from camera
-    NSData *imageData = UIImagePNGRepresentation(image);
-    [imageData writeToFile:savedImagePath atomically:NO]; 
+        NSError *error = nil;
+        if (![self.managedObjectContext save:&error]) 
+        {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+    //    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,     NSUserDomainMask, YES);
+    //    NSString *documentsDirectory = [paths objectAtIndex:0];
+    //    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:@"savedImage.png"];
+    //    UIImage *image = imageView.image; // imageView is my image from camera
+    //    NSData *imageData = UIImagePNGRepresentation(image);
+    //    [imageData writeToFile:savedImagePath atomically:NO]; 
     
     //UIImageWriteToSavedPhotosAlbum(self.imageView.image, nil, nil , nil);
 }
 
 - (IBAction)discardPhoto:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark -
+#pragma mark Image picker delegate methods
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)selectedImage editingInfo:(NSDictionary *)editingInfo {
+    [self.imageView setImage:selectedImage];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 @end

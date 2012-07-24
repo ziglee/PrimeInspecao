@@ -10,7 +10,7 @@
 #import "Foto.h"
 #import "Obra.h"
 #import "Resposta.h"
-
+#import "UIImageToDataTransformer.h"
 
 @implementation Avaliacao
 
@@ -23,5 +23,13 @@
 @dynamic obra;
 @dynamic respostas;
 @dynamic fotos;
+
++ (void)initialize {
+	if (self == [Avaliacao class]) {
+		UIImageToDataTransformer *transformer = [[UIImageToDataTransformer alloc] init];
+		[NSValueTransformer setValueTransformer:transformer forName:@"UIImageToDataTransformer"];
+	}
+}
+
 
 @end
