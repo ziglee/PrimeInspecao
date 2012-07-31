@@ -7,6 +7,8 @@
 //
 
 #import "Foto.h"
+#import "Avaliacao.h"
+#import "Obra.h"
 #import "AssetsLibrary/AssetsLibrary.h"
 #import "UIImagePickerViewController.h"
 
@@ -28,6 +30,8 @@
     UIBarButtonItem *cameraBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(takePicture:)];
     
     [[self navigationItem] setRightBarButtonItem:cameraBarButtonItem];
+    
+    self.navigationItem.title = [NSString stringWithFormat:@"Tirar Foto - %@", self.avaliacao.obra.nome];
     
     //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,     NSUserDomainMask, YES);
     //NSString *documentsDirectory = [paths objectAtIndex:0];

@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "FotoDetalheViewController.h"
 #import "FotosTableViewController.h"
 #import "Foto.h"
 
@@ -21,8 +22,8 @@
 @synthesize dataLabel = _dataLabel;
 @synthesize numeroLabel = _numeroLabel;
 @synthesize managedObjectContext = __managedObjectContext;
-
 @synthesize fetchedResultsController = __fetchedResultsController;
+
 #pragma mark - Managing the detail item
 
 - (void)configureView
@@ -45,6 +46,8 @@
     [self configureView];
     
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects: self.editButtonItem, nil];
+    
+    self.navigationItem.title = @"Fotos";
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -104,12 +107,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Foto *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-
-//    ObraDetalheViewController *detalheObra = [self.storyboard instantiateViewControllerWithIdentifier:@"ObraDetalhe"];
-//    detalheObra.managedObjectContext = self.managedObjectContext;
-//    detalheObra.detailItem = selectedObject;
-//    
-//    [self.navigationController pushViewController:detalheObra animated:YES];
+    FotoDetalheViewController *detalhe = [self.storyboard instantiateViewControllerWithIdentifier:@"FotoDetalhe"];
+    detalhe.foto = selectedObject;
+    [self.navigationController pushViewController:detalhe animated:YES];
 }
 
 #pragma mark - Fetched results controller
@@ -126,7 +126,7 @@
     
     [fetchRequest setFetchBatchSize:20];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"avaliacao" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"legenda" ascending:YES];
     NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
     
     [fetchRequest setSortDescriptors:sortDescriptors];

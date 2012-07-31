@@ -12,7 +12,9 @@
 #import "PerguntaRespostaCell.h"
 #import "RateView.h"
 
-@interface ResumoAvaliacaoViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface ResumoAvaliacaoViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
+    NSMutableData *responseData;
+}
 
 @property (strong, nonatomic) IBOutlet UILabel *nomeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *engenheiroLabel;

@@ -2,7 +2,7 @@
 //  Avaliacao.m
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 24/07/12.
+//  Created by Cassio Ribeiro on 25/07/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -20,9 +20,9 @@
 @dynamic data;
 @dynamic notaGeral;
 @dynamic numero;
+@dynamic fotos;
 @dynamic obra;
 @dynamic respostas;
-@dynamic fotos;
 
 + (void)initialize {
 	if (self == [Avaliacao class]) {
@@ -30,6 +30,5 @@
 		[NSValueTransformer setValueTransformer:transformer forName:@"UIImageToDataTransformer"];
 	}
 }
-
 
 @end

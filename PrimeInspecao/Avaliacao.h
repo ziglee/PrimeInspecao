@@ -2,7 +2,7 @@
 //  Avaliacao.h
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 24/07/12.
+//  Created by Cassio Ribeiro on 25/07/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -19,12 +19,17 @@
 @property (nonatomic, retain) NSDate * data;
 @property (nonatomic, retain) NSNumber * notaGeral;
 @property (nonatomic, retain) NSString * numero;
+@property (nonatomic, retain) NSSet *fotos;
 @property (nonatomic, retain) Obra *obra;
 @property (nonatomic, retain) NSSet *respostas;
-@property (nonatomic, retain) Foto *fotos;
 @end
 
 @interface Avaliacao (CoreDataGeneratedAccessors)
+
+- (void)addFotosObject:(Foto *)value;
+- (void)removeFotosObject:(Foto *)value;
+- (void)addFotos:(NSSet *)values;
+- (void)removeFotos:(NSSet *)values;
 
 - (void)addRespostasObject:(Resposta *)value;
 - (void)removeRespostasObject:(Resposta *)value;

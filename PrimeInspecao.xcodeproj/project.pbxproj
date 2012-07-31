@@ -26,7 +26,6 @@
 		DF33CC3515BF4295007C5BFE /* Obra.m in Sources */ = {isa = PBXBuildFile; fileRef = DF33CC3415BF4295007C5BFE /* Obra.m */; };
 		DF33CC3815BF4295007C5BFE /* SecaoPerguntas.m in Sources */ = {isa = PBXBuildFile; fileRef = DF33CC3715BF4295007C5BFE /* SecaoPerguntas.m */; };
 		DF33CC3B15BF4295007C5BFE /* Pergunta.m in Sources */ = {isa = PBXBuildFile; fileRef = DF33CC3A15BF4295007C5BFE /* Pergunta.m */; };
-		DF33CC3E15BF4296007C5BFE /* Avaliacao.m in Sources */ = {isa = PBXBuildFile; fileRef = DF33CC3D15BF4295007C5BFE /* Avaliacao.m */; };
 		DF33CC4115BF4296007C5BFE /* Resposta.m in Sources */ = {isa = PBXBuildFile; fileRef = DF33CC4015BF4296007C5BFE /* Resposta.m */; };
 		DF5B4F871594050F006C2476 /* PerguntaDetalheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5B4F861594050F006C2476 /* PerguntaDetalheViewController.m */; };
 		DF679F0115B7A8E600DDAFC0 /* ResumoSecaoPerguntasCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF679F0015B7A8E600DDAFC0 /* ResumoSecaoPerguntasCell.m */; };
@@ -57,6 +56,8 @@
 		DFE73BBE15903BE900816FC8 /* PrimeInspecaoMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BBD15903BE900816FC8 /* PrimeInspecaoMasterViewController.m */; };
 		DFE73BC115903BE900816FC8 /* ObraDetalheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BC015903BE900816FC8 /* ObraDetalheViewController.m */; };
 		DFE73BC915903EBA00816FC8 /* ObrasTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE73BC815903EBA00816FC8 /* ObrasTableViewController.m */; };
+		DFF08D9515BF9BB40034D15C /* Avaliacao.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF08D9415BF9BB40034D15C /* Avaliacao.m */; };
+		DFF08D9915BF9D3C0034D15C /* FotoDetalheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF08D9815BF9D3C0034D15C /* FotoDetalheViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,8 +93,6 @@
 		DF33CC3715BF4295007C5BFE /* SecaoPerguntas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecaoPerguntas.m; path = PrimeInspecao/SecaoPerguntas.m; sourceTree = "<group>"; };
 		DF33CC3915BF4295007C5BFE /* Pergunta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pergunta.h; path = PrimeInspecao/Pergunta.h; sourceTree = "<group>"; };
 		DF33CC3A15BF4295007C5BFE /* Pergunta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pergunta.m; path = PrimeInspecao/Pergunta.m; sourceTree = "<group>"; };
-		DF33CC3C15BF4295007C5BFE /* Avaliacao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Avaliacao.h; path = PrimeInspecao/Avaliacao.h; sourceTree = "<group>"; };
-		DF33CC3D15BF4295007C5BFE /* Avaliacao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Avaliacao.m; path = PrimeInspecao/Avaliacao.m; sourceTree = "<group>"; };
 		DF33CC3F15BF4296007C5BFE /* Resposta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Resposta.h; path = PrimeInspecao/Resposta.h; sourceTree = "<group>"; };
 		DF33CC4015BF4296007C5BFE /* Resposta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Resposta.m; path = PrimeInspecao/Resposta.m; sourceTree = "<group>"; };
 		DF5B4F851594050F006C2476 /* PerguntaDetalheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PerguntaDetalheViewController.h; path = PrimeInspecao/PerguntaDetalheViewController.h; sourceTree = "<group>"; };
@@ -138,6 +137,10 @@
 		DFE73BC015903BE900816FC8 /* ObraDetalheViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObraDetalheViewController.m; sourceTree = "<group>"; };
 		DFE73BC715903EBA00816FC8 /* ObrasTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObrasTableViewController.h; sourceTree = "<group>"; };
 		DFE73BC815903EBA00816FC8 /* ObrasTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObrasTableViewController.m; sourceTree = "<group>"; };
+		DFF08D9315BF9BB40034D15C /* Avaliacao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Avaliacao.h; path = PrimeInspecao/Avaliacao.h; sourceTree = "<group>"; };
+		DFF08D9415BF9BB40034D15C /* Avaliacao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Avaliacao.m; path = PrimeInspecao/Avaliacao.m; sourceTree = "<group>"; };
+		DFF08D9715BF9D3C0034D15C /* FotoDetalheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FotoDetalheViewController.h; sourceTree = "<group>"; };
+		DFF08D9815BF9D3C0034D15C /* FotoDetalheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FotoDetalheViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +187,8 @@
 				DF33CC0A15BE70D2007C5BFE /* UIImagePickerViewController.m */,
 				DF33CC2D15BF3AA7007C5BFE /* FotosTableViewController.h */,
 				DF33CC2E15BF3AA7007C5BFE /* FotosTableViewController.m */,
+				DFF08D9715BF9D3C0034D15C /* FotoDetalheViewController.h */,
+				DFF08D9815BF9D3C0034D15C /* FotoDetalheViewController.m */,
 			);
 			name = Fotos;
 			sourceTree = "<group>";
@@ -194,6 +199,8 @@
 				DF33CC1715BF1C78007C5BFE /* UIImageToDataTransformer.h */,
 				DF33CC1815BF1C78007C5BFE /* UIImageToDataTransformer.m */,
 				DFE73BB915903BE900816FC8 /* PrimeInspecao.xcdatamodeld */,
+				DFF08D9315BF9BB40034D15C /* Avaliacao.h */,
+				DFF08D9415BF9BB40034D15C /* Avaliacao.m */,
 				DF33CC3015BF4294007C5BFE /* Foto.h */,
 				DF33CC3115BF4294007C5BFE /* Foto.m */,
 				DF33CC3315BF4295007C5BFE /* Obra.h */,
@@ -202,8 +209,6 @@
 				DF33CC3715BF4295007C5BFE /* SecaoPerguntas.m */,
 				DF33CC3915BF4295007C5BFE /* Pergunta.h */,
 				DF33CC3A15BF4295007C5BFE /* Pergunta.m */,
-				DF33CC3C15BF4295007C5BFE /* Avaliacao.h */,
-				DF33CC3D15BF4295007C5BFE /* Avaliacao.m */,
 				DF33CC3F15BF4296007C5BFE /* Resposta.h */,
 				DF33CC4015BF4296007C5BFE /* Resposta.m */,
 			);
@@ -425,8 +430,9 @@
 				DF33CC3515BF4295007C5BFE /* Obra.m in Sources */,
 				DF33CC3815BF4295007C5BFE /* SecaoPerguntas.m in Sources */,
 				DF33CC3B15BF4295007C5BFE /* Pergunta.m in Sources */,
-				DF33CC3E15BF4296007C5BFE /* Avaliacao.m in Sources */,
 				DF33CC4115BF4296007C5BFE /* Resposta.m in Sources */,
+				DFF08D9515BF9BB40034D15C /* Avaliacao.m in Sources */,
+				DFF08D9915BF9D3C0034D15C /* FotoDetalheViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,7 +26,6 @@
 
 @synthesize dateFormatter;
 @synthesize sectionInfoArray = sectionInfoArray_;
-@synthesize fotoButton = _fotoButton;
 @synthesize avaliacao = _avaliacao;
 @synthesize nomeLabel = _nomeLabel;
 @synthesize numeroField = _numeroField;
@@ -63,6 +62,10 @@
     
     [self configureView];
     
+    UIBarButtonItem *cameraBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(takePicture:)];
+    
+    [[self navigationItem] setRightBarButtonItem:cameraBarButtonItem];
+    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"SecaoPerguntas" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];    
@@ -93,18 +96,6 @@
 {
     return YES;
 }
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    NSString *identifier = [segue identifier];
-    if ([identifier isEqualToString:@"tirarFoto"]) 
-    {
-        UIImagePickerViewController *destination = [segue destinationViewController];
-        destination.managedObjectContext = self.managedObjectContext;
-        destination.avaliacao = self.avaliacao;
-    } 
-}
-
 
 #pragma mark - Table view data source
 
@@ -280,6 +271,17 @@
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 		abort();
 	}
+}
+
+#pragma mark Actions
+
+- (void)takePicture:(id) sender 
+{
+    UIImagePickerViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"TirarFoto"];
+    controller.managedObjectContext = self.managedObjectContext;
+    controller.avaliacao = self.avaliacao;
+    
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

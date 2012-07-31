@@ -84,10 +84,12 @@
 {
     [super viewDidLoad];
     
+    UIBarButtonItem *exportarButton = [[UIBarButtonItem alloc] initWithTitle:@"Exportar" style:UIBarButtonItemStyleBordered target:self action:@selector(generatePdfButtonPressed:)];
+    
     UIBarButtonItem *fotosButton = [[UIBarButtonItem alloc] initWithTitle:@"Fotos" style:UIBarButtonItemStyleBordered target:self action:@selector(fotosList)];
     
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editAvaliacao)];
-    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects: editButton, fotosButton, nil];
+    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects: editButton, fotosButton, exportarButton, nil];
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.timeStyle = NSDateFormatterShortStyle;
@@ -326,6 +328,69 @@
     fotos.managedObjectContext = self.managedObjectContext;
     fotos.avaliacao = self.avaliacao;
     [self.navigationController pushViewController:fotos animated:YES];
+}
+
+- (void)generatePdfButtonPressed:(id)sender
+{
+    NSMutableDictionary* data = [NSMutableDictionary dictionaryWithObjectsAndKeys: self.avaliacao.obra.nome, @"nome", nil];
+    
+    if (self.avaliacao.obra.engenheiro)
+        [data setObject: self.avaliacao.obra.engenheiro forKey: @"engenheiro"];    
+    if (self.avaliacao.obra.supervisor)
+        [data setObject: self.avaliacao.obra.supervisor forKey: @"supervisor"];
+    if (self.avaliacao.obra.gerente)
+        [data setObject: self.avaliacao.obra.gerente forKey: @"gerente"];
+    if (self.avaliacao.data)
+        [data setObject: [self.dateFormatter stringFromDate:self.avaliacao.data] forKey: @"data"];
+    if (self.avaliacao.numero)
+        [data setObject: self.avaliacao.numero forKey: @"numero"];
+    if (self.avaliacao.notaGeral)
+        [data setObject: self.avaliacao.notaGeral forKey: @"notaGeral"];
+    
+    NSMutableDictionary* info = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"M2I4MzViZDItNzhhOS00MTMwLWFiOTEtMTc4ZjY1MjI5ZTM3OjI1MTUyMDU", @"accessKey", @"samples/WelcomeTemplate.doc", @"templateName", @"result.pdf", @"outputName", @"mailto:ziglee@gmail.com:pdf", @"storeTo", data, @"data", @"y", @"devMode", @"Prime avaliação", @"mailSubject", nil];
+    
+    NSError *error = nil;
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:&error];
+    NSString* jsonText = [[NSString alloc] initWithData:jsonData                                        encoding:NSUTF8StringEncoding];
+
+    NSLog(@"Json: %@", jsonText);
+
+    NSData* dataBody =[jsonText dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://dws.docmosis.com/services/rs/render"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:dataBody];
+    
+    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    if (theConnection) {
+        responseData = [NSMutableData data];
+    } else {
+        NSLog(@"Conexão nula");        
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    [responseData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [responseData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"Connection failed: %@", [error description]);
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+    
+    if (json != nil) {        
+        NSLog(@"json: %@", json);
+    } else {
+        NSLog(@"error: %@", [error description]);
+    }
 }
 
 @end

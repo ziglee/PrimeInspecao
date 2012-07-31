@@ -7,7 +7,7 @@
         <attribute name="data" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="notaGeral" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="numero" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="fotos" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Foto" inverseName="avaliacao" inverseEntity="Foto" syncable="YES"/>
+        <relationship name="fotos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Foto" inverseName="avaliacao" inverseEntity="Foto" syncable="YES"/>
         <relationship name="obra" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Obra" inverseName="avaliacoes" inverseEntity="Obra" syncable="YES"/>
         <relationship name="respostas" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Resposta" inverseName="avaliacao" inverseEntity="Resposta" syncable="YES"/>
     </entity>
@@ -45,11 +45,11 @@
         <relationship name="perguntas" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Pergunta" inverseName="secao" inverseEntity="Pergunta" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Avaliacao" positionX="-18" positionY="318" width="128" height="165"/>
+        <element name="Avaliacao" positionX="-18" positionY="318" width="128" height="180"/>
+        <element name="Foto" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Obra" positionX="250" positionY="312" width="128" height="120"/>
         <element name="Pergunta" positionX="243" positionY="156" width="128" height="120"/>
         <element name="Resposta" positionX="-11" positionY="162" width="128" height="105"/>
         <element name="SecaoPerguntas" positionX="160" positionY="36" width="128" height="90"/>
-        <element name="Foto" positionX="160" positionY="192" width="128" height="90"/>
     </elements>
 </model>
