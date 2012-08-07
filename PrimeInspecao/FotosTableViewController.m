@@ -9,6 +9,7 @@
 #import "FotoDetalheViewController.h"
 #import "FotosTableViewController.h"
 #import "Foto.h"
+#import "SecaoPerguntas.h"
 
 @interface FotosTableViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -100,7 +101,7 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Foto *foto = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = foto.legenda;
+    cell.textLabel.text = foto.secao.titulo;
 	cell.imageView.image = foto.image;
 }
 
@@ -134,7 +135,7 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"avaliacao == %@", self.avaliacao];
     [fetchRequest setPredicate:predicate];
     
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"secao.titulo" cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     

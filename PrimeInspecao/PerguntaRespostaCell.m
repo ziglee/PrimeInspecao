@@ -63,13 +63,19 @@
 
 - (void)setResposta:(Resposta *)newResposta
 {
-    NSInteger valor = newResposta.valor.intValue;
-    if (perguntaObj.tipoSimNao.intValue == 0) {
-        [segmentedControl setSelectedSegmentIndex:valor + 1];
+    if (newResposta) {
+        NSInteger valor = newResposta.valor.intValue;
+        if (perguntaObj.tipoSimNao.intValue == 0) {
+            [segmentedControl setSelectedSegmentIndex:valor + 1];
+        } else {
+            [requiredSwitch setOn: newResposta.requerido.intValue == 1];
+            [implementedSwitch setOn: newResposta.implementado.intValue == 1];
+        }    
     } else {
-        [requiredSwitch setOn: newResposta.requerido.intValue == 1];
-        [implementedSwitch setOn: newResposta.implementado.intValue == 1];
-    }
+        [segmentedControl setSelectedSegmentIndex:0];
+        [requiredSwitch setOn: NO];
+        [implementedSwitch setOn: NO];
+    }    
 
     self.respostaObj = newResposta;
 }

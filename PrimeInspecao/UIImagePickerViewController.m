@@ -6,20 +6,24 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "SecaoPerguntas.h"
 #import "Foto.h"
 #import "Avaliacao.h"
 #import "Obra.h"
 #import "AssetsLibrary/AssetsLibrary.h"
 #import "UIImagePickerViewController.h"
+#import "NSData+CITBase64.h"
 
 @interface UIImagePickerViewController ()
-
+@property (strong, nonatomic) NSArray *secoes;
 @end
 
 @implementation UIImagePickerViewController
 
+@synthesize secoes;
 @synthesize imageView;
 @synthesize legendaField;
+@synthesize secaoPickerView;
 @synthesize avaliacao = _avaliacao;
 @synthesize managedObjectContext = __managedObjectContext;
 
@@ -27,11 +31,13 @@
 {
     [super viewDidLoad];
 	    
-    UIBarButtonItem *cameraBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(takePicture:)];
-    
-    [[self navigationItem] setRightBarButtonItem:cameraBarButtonItem];
-    
     self.navigationItem.title = [NSString stringWithFormat:@"Tirar Foto - %@", self.avaliacao.obra.nome];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SecaoPerguntas" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    self.secoes = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
     
     //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,     NSUserDomainMask, YES);
     //NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -47,7 +53,7 @@
 
 #pragma mark Actions
 
-- (void)takePicture:(id) sender 
+- (IBAction)takePicture:(id) sender 
 {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
@@ -68,13 +74,18 @@
         foto.legenda = self.legendaField.text;
         foto.avaliacao = self.avaliacao;
         foto.image = imageView.image;
-    
+        
+        NSInteger row = [secaoPickerView selectedRowInComponent:0];
+        foto.secao = [secoes objectAtIndex:row];
+        
         NSError *error = nil;
         if (![self.managedObjectContext save:&error]) 
         {
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
+
+        [self performSelectorInBackground:@selector(savePhotoInBackground:) withObject:imageView.image];
     
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -87,6 +98,13 @@
     //    [imageData writeToFile:savedImagePath atomically:NO]; 
     
     //UIImageWriteToSavedPhotosAlbum(self.imageView.image, nil, nil , nil);
+}
+
+- (void) savePhotoInBackground:(UIImage *)image
+{
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.1);
+    NSString *encodedString = [imageData stringInBase64FromData];
+    NSLog(@"Image size: %d", [encodedString length]);
 }
 
 - (IBAction)discardPhoto:(id)sender {
@@ -103,6 +121,26 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
 	[self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark UIPickerView data source
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView;
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
+{
+    return [secoes count];
+}
+
+#pragma mark UIPickerView delegate
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    SecaoPerguntas *secao = [secoes objectAtIndex:row];
+    return secao.titulo;
 }
 
 @end

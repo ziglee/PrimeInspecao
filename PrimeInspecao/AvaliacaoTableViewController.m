@@ -136,6 +136,8 @@
     {
         Resposta *resposta = [respostas objectAtIndex:0];
         [cell setResposta:resposta];
+    } else {
+        [cell setResposta:nil];
     }
     
     return cell;

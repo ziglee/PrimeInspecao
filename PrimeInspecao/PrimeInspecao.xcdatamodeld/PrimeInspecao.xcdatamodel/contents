@@ -13,8 +13,9 @@
     </entity>
     <entity name="Foto" representedClassName="Foto" syncable="YES">
         <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="legenda" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="avaliacao" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Avaliacao" inverseName="fotos" inverseEntity="Avaliacao" syncable="YES"/>
+        <attribute name="legenda" attributeType="String" syncable="YES"/>
+        <relationship name="avaliacao" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Avaliacao" inverseName="fotos" inverseEntity="Avaliacao" syncable="YES"/>
+        <relationship name="secao" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SecaoPerguntas" inverseName="fotos" inverseEntity="SecaoPerguntas" syncable="YES"/>
     </entity>
     <entity name="Obra" representedClassName="Obra" syncable="YES">
         <attribute name="engenheiro" optional="YES" attributeType="String" syncable="YES"/>
@@ -41,7 +42,8 @@
     </entity>
     <entity name="SecaoPerguntas" representedClassName="SecaoPerguntas" syncable="YES">
         <attribute name="posicao" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="titulo" attributeType="String" syncable="YES"/>
+        <relationship name="fotos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Foto" inverseName="secao" inverseEntity="Foto" syncable="YES"/>
         <relationship name="perguntas" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Pergunta" inverseName="secao" inverseEntity="Pergunta" syncable="YES"/>
     </entity>
     <elements>
@@ -50,6 +52,6 @@
         <element name="Obra" positionX="250" positionY="312" width="128" height="120"/>
         <element name="Pergunta" positionX="243" positionY="156" width="128" height="120"/>
         <element name="Resposta" positionX="-11" positionY="162" width="128" height="105"/>
-        <element name="SecaoPerguntas" positionX="160" positionY="36" width="128" height="90"/>
+        <element name="SecaoPerguntas" positionX="160" positionY="36" width="128" height="105"/>
     </elements>
 </model>

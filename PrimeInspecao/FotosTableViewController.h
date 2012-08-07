@@ -17,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *numeroLabel;
 
 @property (strong, nonatomic) Avaliacao *avaliacao;
-@property (nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 

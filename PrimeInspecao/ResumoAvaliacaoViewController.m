@@ -9,8 +9,10 @@
 #import "ResumoAvaliacaoViewController.h"
 #import "AvaliacaoTableViewController.h"
 #import "SecaoPerguntas.h"
+#import "Foto.h"
 #import "ResumoSecaoPerguntasCell.h"
 #import "FotosTableViewController.h"
+#import "NSData+CITBase64.h"
 
 @interface ResumoAvaliacaoViewController ()
 - (void)configureCell:(ResumoSecaoPerguntasCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -332,7 +334,7 @@
 
 - (void)generatePdfButtonPressed:(id)sender
 {
-    NSMutableDictionary* data = [NSMutableDictionary dictionaryWithObjectsAndKeys: self.avaliacao.obra.nome, @"nome", nil];
+    NSMutableDictionary* data = [NSMutableDictionary dictionaryWithObjectsAndKeys: self.avaliacao.obra.nome, @"obra", nil];
     
     if (self.avaliacao.obra.engenheiro)
         [data setObject: self.avaliacao.obra.engenheiro forKey: @"engenheiro"];    
@@ -345,9 +347,34 @@
     if (self.avaliacao.numero)
         [data setObject: self.avaliacao.numero forKey: @"numero"];
     if (self.avaliacao.notaGeral)
-        [data setObject: self.avaliacao.notaGeral forKey: @"notaGeral"];
+        [data setObject: [NSNumber numberWithDouble:self.avaliacao.notaGeral.doubleValue * 20] forKey: @"nota"];
     
-    NSMutableDictionary* info = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"M2I4MzViZDItNzhhOS00MTMwLWFiOTEtMTc4ZjY1MjI5ZTM3OjI1MTUyMDU", @"accessKey", @"samples/WelcomeTemplate.doc", @"templateName", @"result.pdf", @"outputName", @"mailto:ziglee@gmail.com:pdf", @"storeTo", data, @"data", @"y", @"devMode", @"Prime avaliação", @"mailSubject", nil];
+    NSMutableArray* secoes = [NSMutableArray arrayWithCapacity:1];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Foto" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"avaliacao == %@", self.avaliacao];
+    [fetchRequest setPredicate:predicate];
+    NSArray *fotos = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    for (Foto *foto in fotos) {
+        NSData *imageData = UIImageJPEGRepresentation(foto.image, 0.01);
+        NSString *encodedString = [imageData stringInBase64FromData];
+        NSMutableArray* row = [NSMutableDictionary dictionaryWithObjectsAndKeys: foto.legenda, @"secaonome", [@"image:base64:" stringByAppendingString:encodedString], @"secaofoto", nil];
+        [secoes addObject: row];    
+    }
+    [data setObject: secoes forKey: @"secoes"];
+    
+    [data setObject: @"[userImage:circle_red.png]" forKey: @"sinal"];
+    [data setObject: @"[userImage:arrow_up_green.png]" forKey: @"situacao"];
+    [data setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"star1"];
+    [data setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"star2"];
+    [data setObject: @"[userImage:rate_star_half_yellow.png]" forKey: @"star3"];
+    [data setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"star4"];
+    [data setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"star5"];
+    
+    NSMutableDictionary* info = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"M2I4MzViZDItNzhhOS00MTMwLWFiOTEtMTc4ZjY1MjI5ZTM3OjI1MTUyMDU", @"accessKey", @"prime/template.odt", @"templateName", @"avaliacao.pdf", @"outputName", @"mailto:ziglee@gmail.com:pdf", @"storeTo", data, @"data", @"y", @"devMode", @"Prime avaliação", @"mailSubject", nil];
     
     NSError *error = nil;
     NSData* jsonData = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:&error];
@@ -355,7 +382,7 @@
 
     NSLog(@"Json: %@", jsonText);
 
-    NSData* dataBody =[jsonText dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* dataBody = [jsonText dataUsingEncoding:NSUTF8StringEncoding];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://dws.docmosis.com/services/rs/render"]];
     [request setHTTPMethod:@"POST"];

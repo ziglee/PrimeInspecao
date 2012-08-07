@@ -2,20 +2,21 @@
 //  SecaoPerguntas.h
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 24/07/12.
+//  Created by Cassio Ribeiro on 06/08/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Pergunta;
+@class Foto, Pergunta;
 
 @interface SecaoPerguntas : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * posicao;
 @property (nonatomic, retain) NSString * titulo;
 @property (nonatomic, retain) NSOrderedSet *perguntas;
+@property (nonatomic, retain) NSSet *fotos;
 @end
 
 @interface SecaoPerguntas (CoreDataGeneratedAccessors)
@@ -30,4 +31,9 @@
 - (void)removePerguntasObject:(Pergunta *)value;
 - (void)addPerguntas:(NSOrderedSet *)values;
 - (void)removePerguntas:(NSOrderedSet *)values;
+- (void)addFotosObject:(Foto *)value;
+- (void)removeFotosObject:(Foto *)value;
+- (void)addFotos:(NSSet *)values;
+- (void)removeFotos:(NSSet *)values;
+
 @end
