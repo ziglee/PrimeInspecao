@@ -386,6 +386,7 @@
         for (Resposta *resposta in respostas) {
             NSMutableDictionary* respostaData = [NSMutableDictionary dictionaryWithObjectsAndKeys: resposta.pergunta.titulo, @"rtitulo", resposta.valor, @"rvalor", resposta.pergunta.tipoSimNao, @"rtipoSimNao", resposta.implementado, @"rimplementado", resposta.requerido, @"rrequerido", nil];
             
+            [respostaData setObject: @"[userImage:circle_yellow.png]" forKey: @"rsinal"];
             [respostaData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"rstar1"];
             [respostaData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"rstar2"];
             [respostaData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"rstar3"];
@@ -393,6 +394,8 @@
             [respostaData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"rstar5"];
             
             if (resposta.pergunta.tipoSimNao.intValue == 1) {
+                [respostaData setObject: @"[userImage:cancel.png]" forKey: @"rsinal"];
+                
                 if (resposta.implementado.intValue == 1) {
                     [respostaData setObject: @"[userImage:accepted.png]" forKey: @"rimplementado"];
                 } else {
@@ -404,8 +407,20 @@
                 } else {
                     [respostaData setObject: @"[userImage:cancel.png]" forKey: @"rrequerido"];
                 }
+                
+                if (resposta.implementado.intValue == 1 && resposta.requerido.intValue == 1) {
+                    [respostaData setObject: @"[userImage:accepted.png]" forKey: @"rsinal"];
+                }
+            } else {
+                if (resposta.valor.intValue < 2.5) {
+                    [respostaData setObject: @"[userImage:circle_red.png]" forKey: @"rsinal"];
+                } else if (resposta.valor.intValue < 3.75) {
+                    [respostaData setObject: @"[userImage:circle_yellow.png]" forKey: @"rsinal"];
+                } else {
+                    [respostaData setObject: @"[userImage:circle_green.png]" forKey: @"rsinal"];
+                }    
             }
-            
+             
             if (resposta.valor.intValue >= 1) {
                 [respostaData setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"rstar1"];
             }
@@ -522,12 +537,14 @@
         [fetchRequest setPredicate:predicate];
         NSArray *fotos = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
         
-        for (Foto *foto in fotos) {
+        for (int i = 0; i < [fotos count]; i++) {
+            Foto *foto = [fotos objectAtIndex:i];            
             UIImage *image = [foto.image resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(300, 440) interpolationQuality:kCGInterpolationMedium];
             NSData *imageData = UIImageJPEGRepresentation(image, 0.8f);
-            NSString *encodedString = [imageData stringInBase64FromData];
+            NSString *encodedString = [imageData stringInBase64FromData];            
             NSMutableArray* row = [NSMutableDictionary dictionaryWithObjectsAndKeys: foto.legenda, @"flegenda", [@"image:base64:" stringByAppendingString:encodedString], @"fimage", nil];
-            [fotosData addObject: row];    
+            
+            [fotosData addObject: row];
         }
         [secaoData setObject: fotosData forKey: @"fotos"];
 
