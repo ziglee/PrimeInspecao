@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+#import <MapKit/MapKit.h>
 
 @class ObraDetalheViewController;
 
-#import <CoreData/CoreData.h>
+@interface PrimeInspecaoMasterViewController : UIViewController < CLLocationManagerDelegate, MKMapViewDelegate >
 
-@interface PrimeInspecaoMasterViewController : UIViewController
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 

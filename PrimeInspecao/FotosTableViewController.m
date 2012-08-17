@@ -53,7 +53,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return YES;
+    return UIInterfaceOrientationPortrait == interfaceOrientation;
 }
 
 #pragma mark - Table view data source
@@ -101,8 +101,8 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Foto *foto = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = foto.secao.titulo;
-	cell.imageView.image = foto.image;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", foto.secao.titulo, foto.legenda];
+	//cell.imageView.image = foto.image;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

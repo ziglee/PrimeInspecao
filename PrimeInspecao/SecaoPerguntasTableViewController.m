@@ -32,7 +32,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return YES;
+    return UIInterfaceOrientationPortrait == interfaceOrientation;
 }
 
 #pragma mark - Table view data source

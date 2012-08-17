@@ -87,7 +87,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return YES;
+    return UIInterfaceOrientationPortrait == interfaceOrientation;
 }
 
 #pragma mark - MapView delegate
