@@ -213,7 +213,7 @@
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
     SecaoPerguntas *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:self.managedObjectContext];
     
-    newManagedObject.titulo = @"<Título da seção>";
+    newManagedObject.titulo = @"Nova seção...";
     newManagedObject.posicao = [NSNumber numberWithInt:[self.tableView numberOfRowsInSection:0] + 1];
     
     NSError *error = nil;
