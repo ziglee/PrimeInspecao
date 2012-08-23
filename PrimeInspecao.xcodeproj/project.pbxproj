@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4982FA8315E6D0F800127F75 /* negative.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4982FA8215E6D0F800127F75 /* negative.gif */; };
+		4982FA8615E6D12500127F75 /* alert.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4982FA8515E6D12500127F75 /* alert.gif */; };
+		49D527D315E67B38000C7169 /* bg-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D527D215E67B38000C7169 /* bg-01.png */; };
+		49D527D515E682B4000C7169 /* engineering.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D527D415E682B4000C7169 /* engineering.png */; };
+		49D527D715E688E0000C7169 /* botao-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D527D615E688E0000C7169 /* botao-01.png */; };
+		49D527D915E68BFC000C7169 /* positive.gif in Resources */ = {isa = PBXBuildFile; fileRef = 49D527D815E68BFC000C7169 /* positive.gif */; };
 		DF109F1A15B4A3D8000660BE /* SecaoPerguntasHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109F1C15B4A3D8000660BE /* SecaoPerguntasHeaderView.m */; };
 		DF109F1D15B4A3F9000660BE /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109F1015B49F3F000660BE /* RateView.m */; };
 		DF109F2215B4A9EE000660BE /* rate_star_half_green.png in Resources */ = {isa = PBXBuildFile; fileRef = DF109F1F15B4A9EE000660BE /* rate_star_half_green.png */; };
@@ -65,6 +71,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4982FA8215E6D0F800127F75 /* negative.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = negative.gif; sourceTree = "<group>"; };
+		4982FA8515E6D12500127F75 /* alert.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = alert.gif; sourceTree = "<group>"; };
+		49D527D215E67B38000C7169 /* bg-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-01.png"; sourceTree = "<group>"; };
+		49D527D415E682B4000C7169 /* engineering.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = engineering.png; sourceTree = "<group>"; };
+		49D527D615E688E0000C7169 /* botao-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "botao-01.png"; sourceTree = "<group>"; };
+		49D527D815E68BFC000C7169 /* positive.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = positive.gif; sourceTree = "<group>"; };
 		DF109F0F15B49F3F000660BE /* RateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RateView.h; sourceTree = "<group>"; };
 		DF109F1015B49F3F000660BE /* RateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
 		DF109F1B15B4A3D8000660BE /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = en; path = en.lproj/SecaoPerguntasHeaderView.m; sourceTree = "<group>"; };
@@ -340,6 +352,12 @@
 		DFE73BAB15903BE900816FC8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4982FA8515E6D12500127F75 /* alert.gif */,
+				4982FA8215E6D0F800127F75 /* negative.gif */,
+				49D527D815E68BFC000C7169 /* positive.gif */,
+				49D527D615E688E0000C7169 /* botao-01.png */,
+				49D527D415E682B4000C7169 /* engineering.png */,
+				49D527D215E67B38000C7169 /* bg-01.png */,
 				DFE73BAC15903BE900816FC8 /* PrimeInspecao-Info.plist */,
 				DFE73BAD15903BE900816FC8 /* InfoPlist.strings */,
 				DFE73BB015903BE900816FC8 /* main.m */,
@@ -415,6 +433,12 @@
 				DFA7A64A15B87C2600ED2FC8 /* rate_star_off_yellow.png in Resources */,
 				DFA7A64C15B89E6D00ED2FC8 /* arrow_right_gray.png in Resources */,
 				DFA7A64E15B8EDDC00ED2FC8 /* prime.jpeg in Resources */,
+				49D527D315E67B38000C7169 /* bg-01.png in Resources */,
+				49D527D515E682B4000C7169 /* engineering.png in Resources */,
+				49D527D715E688E0000C7169 /* botao-01.png in Resources */,
+				49D527D915E68BFC000C7169 /* positive.gif in Resources */,
+				4982FA8315E6D0F800127F75 /* negative.gif in Resources */,
+				4982FA8615E6D12500127F75 /* alert.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
