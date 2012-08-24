@@ -19,6 +19,8 @@
 
 @implementation PrimeInspecaoMasterViewController
 
+@synthesize annotations = _annotations;
+@synthesize obrasAnnot = _obrasAnnot;
 @synthesize mapView = _mapView;
 @synthesize managedObjectContext = __managedObjectContext;
 
