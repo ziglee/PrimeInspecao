@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50d" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Avaliacao" representedClassName="Avaliacao" syncable="YES">
         <attribute name="comentCriticos" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="comentMelhorar" optional="YES" attributeType="String" syncable="YES"/>
@@ -48,9 +48,9 @@
     </entity>
     <elements>
         <element name="Avaliacao" positionX="-18" positionY="318" width="128" height="180"/>
-        <element name="Foto" positionX="160" positionY="192" width="128" height="90"/>
-        <element name="Obra" positionX="250" positionY="312" width="128" height="120"/>
-        <element name="Pergunta" positionX="243" positionY="156" width="128" height="120"/>
+        <element name="Foto" positionX="178" positionY="180" width="128" height="90"/>
+        <element name="Obra" positionX="250" positionY="405" width="128" height="120"/>
+        <element name="Pergunta" positionX="448" positionY="159" width="128" height="120"/>
         <element name="Resposta" positionX="-11" positionY="162" width="128" height="105"/>
         <element name="SecaoPerguntas" positionX="160" positionY="36" width="128" height="105"/>
     </elements>
