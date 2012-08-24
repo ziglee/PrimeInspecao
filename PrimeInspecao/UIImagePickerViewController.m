@@ -84,8 +84,6 @@
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
-
-        [self performSelectorInBackground:@selector(savePhotoInBackground:) withObject:imageView.image];
     
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -98,13 +96,6 @@
     //    [imageData writeToFile:savedImagePath atomically:NO]; 
     
     //UIImageWriteToSavedPhotosAlbum(self.imageView.image, nil, nil , nil);
-}
-
-- (void) savePhotoInBackground:(UIImage *)image
-{
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.1);
-    NSString *encodedString = [imageData stringInBase64FromData];
-    NSLog(@"Image size: %d", [encodedString length]);
 }
 
 - (IBAction)discardPhoto:(id)sender {

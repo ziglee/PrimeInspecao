@@ -8,7 +8,7 @@
 
 #import "Obra.h"
 #import "Avaliacao.h"
-
+#import "UIImageToDataTransformer.h"
 
 @implementation Obra
 
@@ -19,5 +19,12 @@
 @dynamic nome;
 @dynamic supervisor;
 @dynamic avaliacoes;
+
++ (void)initialize {
+    if (self == [Obra class]) {
+        UIImageToDataTransformer *transformer = [[UIImageToDataTransformer alloc] init];
+        [NSValueTransformer setValueTransformer:transformer forName:@"UIImageToDataTransformer"];
+    }
+}
 
 @end

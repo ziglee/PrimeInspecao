@@ -121,8 +121,6 @@
     return YES;
 }
 
-#pragma mark - Table view delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     SecaoPerguntas *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];

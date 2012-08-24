@@ -7,7 +7,6 @@
 //
 
 #import "PrimeInspecaoAppDelegate.h"
-
 #import "PrimeInspecaoMasterViewController.h"
 
 @implementation PrimeInspecaoAppDelegate
