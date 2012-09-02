@@ -340,7 +340,7 @@
 
 - (void)generatePdfButtonPressed:(id)sender
 {
-    PreReportViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PreReport"];
+    PreReportViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SendReport"];
     controller.managedObjectContext = self.managedObjectContext;
     controller.avaliacao = self.avaliacao;
     

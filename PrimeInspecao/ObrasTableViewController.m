@@ -167,7 +167,7 @@
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
     NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:self.managedObjectContext];
     
-    [newManagedObject setValue:@"<Nome da obra>" forKey:@"nome"];
+    [newManagedObject setValue:@"Nova obra..." forKey:@"nome"];
     
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {

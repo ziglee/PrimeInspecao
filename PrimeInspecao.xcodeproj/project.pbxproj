@@ -48,6 +48,7 @@
 		DFA7A64A15B87C2600ED2FC8 /* rate_star_off_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = DFA7A64715B87C2600ED2FC8 /* rate_star_off_yellow.png */; };
 		DFA7A64C15B89E6D00ED2FC8 /* arrow_right_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = DFA7A64B15B89E6D00ED2FC8 /* arrow_right_gray.png */; };
 		DFA7A64E15B8EDDC00ED2FC8 /* prime.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DFA7A64D15B8EDDC00ED2FC8 /* prime.jpeg */; };
+		DFADD42115E8441000A5D6D7 /* PreReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFADD41E15E838BB00A5D6D7 /* PreReportViewController.m */; };
 		DFCA8BCC15950CC500790F82 /* AvaliacaoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCA8BCB15950CC500790F82 /* AvaliacaoTableViewController.m */; };
 		DFD14A0815D0B16B008C6908 /* Pergunta.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD14A0715D0B16B008C6908 /* Pergunta.m */; };
 		DFD14A0B15D0B16C008C6908 /* Obra.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD14A0A15D0B16C008C6908 /* Obra.m */; };
@@ -79,7 +80,6 @@
 		49D527D815E68BFC000C7169 /* positive.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = positive.gif; sourceTree = "<group>"; };
 		DF109F0F15B49F3F000660BE /* RateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RateView.h; sourceTree = "<group>"; };
 		DF109F1015B49F3F000660BE /* RateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
-		DF109F1B15B4A3D8000660BE /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = en; path = en.lproj/SecaoPerguntasHeaderView.m; sourceTree = "<group>"; };
 		DF109F1F15B4A9EE000660BE /* rate_star_half_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rate_star_half_green.png; sourceTree = "<group>"; };
 		DF109F2015B4A9EE000660BE /* rate_star_off_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rate_star_off_green.png; sourceTree = "<group>"; };
 		DF109F2115B4A9EE000660BE /* rate_star_on_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rate_star_on_green.png; sourceTree = "<group>"; };
@@ -91,6 +91,9 @@
 		DF226E0F159CA36200AD73AF /* SecaoPerguntasHeaderInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecaoPerguntasHeaderInfo.m; sourceTree = "<group>"; };
 		DF226E11159CA3AE00AD73AF /* SecaoPerguntasHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecaoPerguntasHeaderView.h; sourceTree = "<group>"; };
 		DF226E14159CA73C00AD73AF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DF298A8015E848AA008FAE51 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DF298A8115E848AA008FAE51 /* pt */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = pt; path = pt.lproj/SecaoPerguntasHeaderView.m; sourceTree = "<group>"; };
+		DF298A8215E848AA008FAE51 /* pt */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = pt; path = pt.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		DF2A941A1599268700E2CDA1 /* AvaliacoesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvaliacoesTableViewController.h; sourceTree = "<group>"; };
 		DF2A941B1599268700E2CDA1 /* AvaliacoesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvaliacoesTableViewController.m; sourceTree = "<group>"; };
 		DF32ED6B15981F410072AEBC /* PerguntaRespostaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerguntaRespostaCell.h; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 		DFA7A64715B87C2600ED2FC8 /* rate_star_off_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rate_star_off_yellow.png; sourceTree = "<group>"; };
 		DFA7A64B15B89E6D00ED2FC8 /* arrow_right_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right_gray.png; sourceTree = "<group>"; };
 		DFA7A64D15B8EDDC00ED2FC8 /* prime.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = prime.jpeg; sourceTree = "<group>"; };
+		DFADD41D15E838BB00A5D6D7 /* PreReportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreReportViewController.h; sourceTree = "<group>"; };
+		DFADD41E15E838BB00A5D6D7 /* PreReportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreReportViewController.m; sourceTree = "<group>"; };
 		DFCA8BCA15950CC500790F82 /* AvaliacaoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvaliacaoTableViewController.h; sourceTree = "<group>"; };
 		DFCA8BCB15950CC500790F82 /* AvaliacaoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvaliacaoTableViewController.m; sourceTree = "<group>"; };
 		DFD14A0615D0B16B008C6908 /* Pergunta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pergunta.h; path = PrimeInspecao/Pergunta.h; sourceTree = "<group>"; };
@@ -150,12 +155,10 @@
 		DFE73BA615903BE900816FC8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		DFE73BA815903BE900816FC8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DFE73BAC15903BE900816FC8 /* PrimeInspecao-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PrimeInspecao-Info.plist"; sourceTree = "<group>"; };
-		DFE73BAE15903BE900816FC8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DFE73BB015903BE900816FC8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DFE73BB215903BE900816FC8 /* PrimeInspecao-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PrimeInspecao-Prefix.pch"; sourceTree = "<group>"; };
 		DFE73BB315903BE900816FC8 /* PrimeInspecaoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrimeInspecaoAppDelegate.h; sourceTree = "<group>"; };
 		DFE73BB415903BE900816FC8 /* PrimeInspecaoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrimeInspecaoAppDelegate.m; sourceTree = "<group>"; };
-		DFE73BB715903BE900816FC8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		DFE73BBA15903BE900816FC8 /* PrimeInspecao.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PrimeInspecao.xcdatamodel; sourceTree = "<group>"; };
 		DFE73BBC15903BE900816FC8 /* PrimeInspecaoMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrimeInspecaoMasterViewController.h; sourceTree = "<group>"; };
 		DFE73BBD15903BE900816FC8 /* PrimeInspecaoMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrimeInspecaoMasterViewController.m; sourceTree = "<group>"; };
@@ -345,6 +348,8 @@
 				DF475D1F15D3F08F0032F6BE /* UIImage+RoundedCorner.m */,
 				DF475D2115D3F0D80032F6BE /* UIImage+Alpha.h */,
 				DF475D2215D3F0D80032F6BE /* UIImage+Alpha.m */,
+				DFADD41D15E838BB00A5D6D7 /* PreReportViewController.h */,
+				DFADD41E15E838BB00A5D6D7 /* PreReportViewController.m */,
 			);
 			path = PrimeInspecao;
 			sourceTree = "<group>";
@@ -449,6 +454,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFADD42115E8441000A5D6D7 /* PreReportViewController.m in Sources */,
 				DFE73BB115903BE900816FC8 /* main.m in Sources */,
 				DFE73BB515903BE900816FC8 /* PrimeInspecaoAppDelegate.m in Sources */,
 				DFE73BBB15903BE900816FC8 /* PrimeInspecao.xcdatamodeld in Sources */,
@@ -490,7 +496,7 @@
 		DF109F1C15B4A3D8000660BE /* SecaoPerguntasHeaderView.m */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DF109F1B15B4A3D8000660BE /* en */,
+				DF298A8115E848AA008FAE51 /* pt */,
 			);
 			name = SecaoPerguntasHeaderView.m;
 			sourceTree = "<group>";
@@ -498,7 +504,7 @@
 		DFE73BAD15903BE900816FC8 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DFE73BAE15903BE900816FC8 /* en */,
+				DF298A8015E848AA008FAE51 /* pt */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -506,7 +512,7 @@
 		DFE73BB615903BE900816FC8 /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DFE73BB715903BE900816FC8 /* en */,
+				DF298A8215E848AA008FAE51 /* pt */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";

@@ -46,9 +46,7 @@
         [implementedSwitch setHidden:YES];
         [requiredSwitch setUserInteractionEnabled:NO];
         [implementedSwitch setUserInteractionEnabled:NO];
-    } 
-    else 
-    {
+    } else {
         [segmentedControl setHidden:YES];
         [requiredLabel setHidden:NO];
         [implementedLabel setHidden:NO];
