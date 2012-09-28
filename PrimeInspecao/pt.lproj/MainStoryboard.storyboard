@@ -15,6 +15,15 @@
                             <view contentMode="scaleToFill" id="kYk-lN-JLR">
                                 <rect key="frame" x="8" y="328" width="752" height="476"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="i2D-dD-lBd">
+                                        <rect key="frame" x="12" y="14" width="728" height="449"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="4" id="vcV-hN-al9"/>
+                                        </connections>
+                                    </mapView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.92941182850000004" green="0.92941182850000004" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <view contentMode="scaleToFill" id="oIy-rO-6Xf">
@@ -73,13 +82,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="i2D-dD-lBd">
-                                <rect key="frame" x="20" y="342" width="728" height="449"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="4" id="vcV-hN-al9"/>
-                                </connections>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1382,7 +1384,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UIImagePickerViewController.h"/>
             <relationships>
                 <relationship kind="action" name="discardPhoto:"/>
-                <relationship kind="action" name="pickAlbum:"/>
+                <relationship kind="action" name="pickAlbum:" candidateClass="UIButton"/>
                 <relationship kind="action" name="savePhoto:"/>
                 <relationship kind="action" name="takePicture:"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>

@@ -1060,12 +1060,12 @@
         CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), 30));
         
         NSString *str = [secao.titulo uppercaseString];
-        stringSize = [str sizeWithFont:legendaFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
+        stringSize = [str sizeWithFont:secaoFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
         stringRenderingRect = CGRectMake(kBorderInset + 15,
                                          rowY + 8,
                                          kWidth - 3 * kBorderInset,
                                          20);
-        [str drawInRect:stringRenderingRect withFont:legendaFont lineBreakMode:UILineBreakModeTailTruncation];
+        [str drawInRect:stringRenderingRect withFont:secaoFont lineBreakMode:UILineBreakModeTailTruncation];
         
         rowY += 30;
         
@@ -1092,12 +1092,12 @@
             CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, 200, 200));
             
             str = foto.legenda;
-            stringSize = [str sizeWithFont:secaoFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
+            stringSize = [str sizeWithFont:legendaFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
             stringRenderingRect = CGRectMake(kBorderInset * 2 + 200,
                                              rowY + kBorderInset,
                                              300,
                                              160);
-            [str drawInRect:stringRenderingRect withFont:secaoFont lineBreakMode:UILineBreakModeTailTruncation];
+            [str drawInRect:stringRenderingRect withFont:legendaFont lineBreakMode:UILineBreakModeTailTruncation];
             
             rowY += rowHeight;
         }
