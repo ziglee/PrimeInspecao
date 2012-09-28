@@ -2,8 +2,8 @@
 //  Avaliacao.h
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 06/08/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Cassio Landim on 27/09/12.
+//
 //
 
 #import <Foundation/Foundation.h>
@@ -18,7 +18,7 @@
 @property (nonatomic, retain) NSString * comentPositivos;
 @property (nonatomic, retain) NSDate * data;
 @property (nonatomic, retain) NSNumber * notaGeral;
-@property (nonatomic, retain) NSString * numero;
+@property (nonatomic, retain) NSNumber * numero;
 @property (nonatomic, retain) NSSet *fotos;
 @property (nonatomic, retain) Obra *obra;
 @property (nonatomic, retain) NSSet *respostas;

@@ -11,7 +11,7 @@
 #import "PerguntaRespostaCell.h"
 #import <UIKit/UIKit.h>
 
-@interface AvaliacaoTableViewController : UITableViewController <PerguntaRespostaCellDelegate>
+@interface AvaliacaoTableViewController : UITableViewController <PerguntaRespostaCellDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (strong, nonatomic) Avaliacao *avaliacao;

@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50d" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="fBI-KY-4DR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12B19" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="fBI-KY-4DR">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--Obra Detalhe View Controller - Detail-->
         <scene sceneID="16">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="15" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ObraDetalhe" title="Detail" id="4" customClass="ObraDetalheViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="26">
                         <rect key="frame" x="0.0" y="64" width="768" height="916"/>
@@ -22,6 +20,26 @@
                             <view contentMode="scaleToFill" id="oIy-rO-6Xf">
                                 <rect key="frame" x="8" y="11" width="752" height="308"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Engenheiro" minimumFontSize="17" id="ws2-8C-0WY">
+                                        <rect key="frame" x="12" y="77" width="726" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Supervisor" minimumFontSize="17" id="7xj-wd-oW9">
+                                        <rect key="frame" x="12" y="145" width="726" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gerente" minimumFontSize="17" id="hqg-Wa-66m">
+                                        <rect key="frame" x="12" y="214" width="726" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                    </textField>
+                                </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="0.16" colorSpace="calibratedWhite"/>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="ubB-v8-UbN">
@@ -43,39 +61,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Engenheiro" lineBreakMode="tailTruncation" minimumFontSize="10" id="zyB-R3-sVv">
-                                <rect key="frame" x="20" y="93" width="87" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="ZLD-Kr-I77">
                                 <rect key="frame" x="20" y="190" width="728" height="31"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Supervisor" lineBreakMode="tailTruncation" minimumFontSize="10" id="fxa-nc-gUf">
-                                <rect key="frame" x="20" y="161" width="87" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="OTe-4G-YVj">
                                 <rect key="frame" x="20" y="258" width="728" height="31"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Gerente" lineBreakMode="tailTruncation" minimumFontSize="10" id="gpZ-dr-eIe">
-                                <rect key="frame" x="20" y="229" width="87" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="i2D-dD-lBd">
                                 <rect key="frame" x="20" y="342" width="728" height="449"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
@@ -94,18 +91,21 @@
                     <connections>
                         <outlet property="engenheiroTextField" destination="pRM-bZ-ZTw" id="8MK-9E-Omh"/>
                         <outlet property="gerenteTextField" destination="OTe-4G-YVj" id="TZZ-xF-4sm"/>
+                        <outlet property="label1TextField" destination="ws2-8C-0WY" id="d2p-EQ-C6h"/>
+                        <outlet property="label2TextField" destination="7xj-wd-oW9" id="mKN-4u-OfN"/>
+                        <outlet property="label3TextField" destination="hqg-Wa-66m" id="LDq-YC-vpW"/>
                         <outlet property="mapView" destination="i2D-dD-lBd" id="Zjk-P9-PIS"/>
                         <outlet property="nomeTextField" destination="ubB-v8-UbN" id="WSw-0d-ReR"/>
                         <outlet property="supervisorTextField" destination="ZLD-Kr-I77" id="mf8-t5-yHH"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="15" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="582" y="-886"/>
         </scene>
         <!--Avaliacoes Table View Controller - Avaliações-->
         <scene sceneID="bNq-H5-tFx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oqQ-XA-4w7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="AvaliacoesList" id="BcP-DE-lCx" customClass="AvaliacoesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4fE-jc-agY">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
@@ -146,13 +146,13 @@
                     <navigationItem key="navigationItem" title="Avaliações" id="SSd-tb-Vif"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oqQ-XA-4w7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1465" y="-886"/>
         </scene>
         <!--Pre Report View Controller-->
         <scene sceneID="con-N2-IGT">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S8h-yv-SNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SendReport" id="YYo-HE-o5f" customClass="PreReportViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LaB-Js-B9G">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
@@ -213,13 +213,37 @@
                         <outlet property="emailTextField" destination="s8I-XN-76W" id="YLf-Zt-OdS"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S8h-yv-SNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2325" y="-2066"/>
+        </scene>
+        <!--Preview Pdf View Controller-->
+        <scene sceneID="Sdo-rr-sZO">
+            <objects>
+                <viewController storyboardIdentifier="PreviewPdf" id="3Fv-EM-7tD" customClass="PreviewPdfViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cSH-G7-KaJ">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" id="LxP-tm-yev">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="LxP-tm-yev" id="r8N-4j-uxY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Puv-8H-ON3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3201" y="-2066"/>
         </scene>
         <!--Resumo Avaliacao View Controller-->
         <scene sceneID="bWK-ez-x4Z">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gbG-KY-rQz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="ResumoAvaliacao" id="Aze-G2-YPe" customClass="ResumoAvaliacaoViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dmW-5i-RTk">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
@@ -233,28 +257,28 @@
                                     <rect key="frame" x="7" y="7" width="753" height="171"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nome do gerente" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="PAa-xM-HYl">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nome do engenheiro" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="PAa-xM-HYl">
                                             <rect key="frame" x="138" y="52" width="400" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Gerente:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="sB9-AN-TQE">
-                                            <rect key="frame" x="14" y="52" width="83" height="24"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Engenheiro:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="sB9-AN-TQE">
+                                            <rect key="frame" x="14" y="52" width="116" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="pm9-RQ-qwZ">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="pm9-RQ-qwZ">
                                             <rect key="frame" x="653" y="127" width="80" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nº Visitas:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ddI-Fu-bUr">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Visita:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ddI-Fu-bUr">
                                             <rect key="frame" x="537" y="127" width="99" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -268,7 +292,7 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="01/01/2011" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="QNg-fG-mzW">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="01/01/2011" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="QNg-fG-mzW">
                                             <rect key="frame" x="601" y="91" width="132" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -292,29 +316,29 @@
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nome do engenheiro" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="LyZ-Hy-KXG">
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nome do supervisor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="LyZ-Hy-KXG">
                                     <rect key="frame" x="145" y="95" width="400" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Engenheiro:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="GbQ-wd-mJC">
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Supervisor:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="GbQ-wd-mJC">
                                     <rect key="frame" x="20" y="95" width="117" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nome do supervisor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="U0H-iP-Qm3">
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nome do gerente" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="U0H-iP-Qm3">
                                     <rect key="frame" x="145" y="132" width="400" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Supervisor:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Etd-H6-Bdy">
-                                    <rect key="frame" x="20" y="132" width="112" height="24"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Gerente:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Etd-H6-Bdy">
+                                    <rect key="frame" x="20" y="132" width="117" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -519,24 +543,27 @@
                         <outlet property="comentMelhorarTextView" destination="6Nq-z7-NBN" id="DcX-0e-dqj"/>
                         <outlet property="comentPositivosTextView" destination="3Io-2L-Er0" id="lTb-ci-lBA"/>
                         <outlet property="dataLabel" destination="QNg-fG-mzW" id="JsQ-6S-Zdc"/>
-                        <outlet property="engenheiroLabel" destination="LyZ-Hy-KXG" id="Zbh-GW-Abc"/>
-                        <outlet property="gerenteLabel" destination="PAa-xM-HYl" id="PEx-OD-usw"/>
+                        <outlet property="engenheiroLabel" destination="PAa-xM-HYl" id="fto-Z5-ZJv"/>
+                        <outlet property="gerenteLabel" destination="U0H-iP-Qm3" id="XbE-Pa-fpD"/>
+                        <outlet property="label1" destination="sB9-AN-TQE" id="39q-aP-7tb"/>
+                        <outlet property="label2" destination="GbQ-wd-mJC" id="Qza-7X-UBg"/>
+                        <outlet property="label3" destination="Etd-H6-Bdy" id="B1g-Y7-WSn"/>
                         <outlet property="nomeLabel" destination="OfG-8q-pph" id="S26-2M-f8v"/>
                         <outlet property="notaGeralLabel" destination="LIQ-cH-ZfN" id="Hpr-hB-SHp"/>
                         <outlet property="numeroLabel" destination="pm9-RQ-qwZ" id="PfH-B0-0fx"/>
                         <outlet property="rateView" destination="hkc-Hu-zgV" id="Ae0-yr-Wo1"/>
                         <outlet property="sinalizacaoImage" destination="pU5-v3-diU" id="TY9-cM-Yvl"/>
                         <outlet property="situacaoImage" destination="Yte-MS-f28" id="lgT-u2-eo9"/>
-                        <outlet property="supervisorLabel" destination="U0H-iP-Qm3" id="1jX-BY-Y9n"/>
+                        <outlet property="supervisorLabel" destination="LyZ-Hy-KXG" id="9ik-Pc-nJh"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gbG-KY-rQz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2325" y="-886"/>
         </scene>
         <!--Avaliacao Table View Controller - Avaliação-->
         <scene sceneID="GXy-qi-zsX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c4w-Ll-HQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="Avaliacao" id="cRU-nn-utr" customClass="AvaliacaoTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="45" sectionHeaderHeight="22" sectionFooterHeight="22" id="Du6-gm-KX0">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
@@ -564,18 +591,21 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nº Visitas:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="gTj-Lp-4rN">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Visita:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="gTj-Lp-4rN">
                                             <rect key="frame" x="14" y="83" width="99" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="prQ-CC-8mr">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="prQ-CC-8mr">
                                             <rect key="frame" x="128" y="79" width="211" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="cRU-nn-utr" id="7dE-av-TI0"/>
+                                            </connections>
                                         </textField>
                                         <view contentMode="scaleToFill" id="nKd-KD-mCU">
                                             <rect key="frame" x="0.0" y="38" width="753" height="5"/>
@@ -697,29 +727,29 @@
                                                 <action selector="onSegmentedControlClicked:" destination="ThG-mL-9KN" eventType="valueChanged" id="s1n-8n-uJ8"/>
                                             </connections>
                                         </segmentedControl>
-                                        <switch hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="7F8-EU-AMw">
-                                            <rect key="frame" x="525" y="8" width="79" height="27"/>
+                                        <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="7F8-EU-AMw">
+                                            <rect key="frame" x="528" y="8" width="79" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <connections>
                                                 <action selector="onSegmentedControlClicked:" destination="ThG-mL-9KN" eventType="valueChanged" id="ZD6-EV-4qK"/>
                                             </connections>
                                         </switch>
-                                        <switch hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="UMU-Eh-WTX">
-                                            <rect key="frame" x="669" y="8" width="79" height="27"/>
+                                        <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="UMU-Eh-WTX">
+                                            <rect key="frame" x="670" y="8" width="79" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <connections>
                                                 <action selector="onSegmentedControlClicked:" destination="ThG-mL-9KN" eventType="valueChanged" id="WtQ-6x-cLO"/>
                                             </connections>
                                         </switch>
-                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Req." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="nnx-Zp-TX4">
-                                            <rect key="frame" x="475" y="11" width="42" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Necessário" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="nnx-Zp-TX4">
+                                            <rect key="frame" x="472.5" y="11" width="51" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Impl." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="xcd-Un-dKZ">
-                                            <rect key="frame" x="619" y="11" width="42" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Implantado" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="xcd-Un-dKZ">
+                                            <rect key="frame" x="613.5" y="11" width="51" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -755,13 +785,13 @@
                         <outlet property="numeroField" destination="prQ-CC-8mr" id="m3Y-dV-5oA"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c4w-Ll-HQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3201" y="-886"/>
         </scene>
         <!--Fotos Table View Controller-->
         <scene sceneID="gDP-Ab-OrW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Urr-sl-xDw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="FotosList" id="f2b-LO-HpE" customClass="FotosTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="aY5-Q2-RUb">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
@@ -784,13 +814,13 @@
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Urr-sl-xDw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3201" y="301"/>
         </scene>
         <!--Foto Detalhe View Controller-->
         <scene sceneID="gjP-4T-kdx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="N9b-5w-8Z4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="FotoDetalhe" id="CiH-fy-5Aa" customClass="FotoDetalheViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MS8-2b-hBP">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
@@ -807,13 +837,13 @@
                         <outlet property="imageView" destination="Nfd-Gt-SoF" id="oKn-c1-xLB"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N9b-5w-8Z4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4099" y="301"/>
         </scene>
         <!--Obras Table View Controller - Lista de Obras-->
         <scene sceneID="24">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="23" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="" clearsSelectionOnViewWillAppear="NO" id="19" customClass="ObrasTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="20">
                         <rect key="frame" x="0.0" y="64" width="768" height="916"/>
@@ -849,13 +879,13 @@
                     <navigationItem key="navigationItem" title="Lista de Obras" id="40"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="23" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-387" y="-886"/>
         </scene>
         <!--Secao Perguntas Table View Controller - Seções-->
         <scene sceneID="Fqf-m1-RF3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nsE-in-zFf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="oFO-ry-T0p" customClass="SecaoPerguntasTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dRV-L3-dZb">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
@@ -888,13 +918,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Seções" id="c2Z-iQ-TVJ"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nsE-in-zFf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-387" y="342"/>
         </scene>
         <!--Secao Perguntas Detalhe View Controller-->
         <scene sceneID="w9Y-KC-JHi">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ggH-lo-2x0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="SecaoPerguntasDetalhe" id="U4O-Xa-6sH" customClass="SecaoPerguntasDetalheViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="R5Z-cU-Znq">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
@@ -936,13 +966,13 @@
                         <outlet property="tituloTextField" destination="dw6-E3-52p" id="GYf-ak-OWT"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggH-lo-2x0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="582" y="342"/>
         </scene>
         <!--Pergunta Detalhe View Controller-->
         <scene sceneID="EIo-fR-QBM">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i4n-Q3-Zfp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="PerguntaDetalhe" id="OaS-X5-QPS" customClass="PerguntaDetalheViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dUb-CA-TKR">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
@@ -991,13 +1021,13 @@
                         <outlet property="tituloTextField" destination="Jgb-CR-H2J" id="BLc-fc-4k9"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i4n-Q3-Zfp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1465" y="342"/>
         </scene>
         <!--Image Picker View Controller-->
         <scene sceneID="GkW-O4-jPG">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kxw-pf-AhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="TirarFoto" id="XLr-tn-YNk" customClass="UIImagePickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VJW-ar-BYb">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
@@ -1013,7 +1043,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92941182850000004" green="0.92941182850000004" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="BYR-ZT-JEh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="BYR-ZT-JEh">
                                 <rect key="frame" x="20" y="76" width="450" height="391"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -1022,7 +1052,7 @@
                                 <rect key="frame" x="20" y="20" width="728" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zkY-5V-WSh">
                                 <rect key="frame" x="498" y="415" width="120" height="50"/>
@@ -1040,7 +1070,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Kpb-pM-WG5">
-                                <rect key="frame" x="626" y="415" width="120" height="50"/>
+                                <rect key="frame" x="626" y="415" width="122" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Cancelar" backgroundImage="botao-02.png">
@@ -1055,7 +1085,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QCK-0Q-BsC">
-                                <rect key="frame" x="523" y="79" width="200" height="49"/>
+                                <rect key="frame" x="498" y="79" width="120" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Tirar foto" backgroundImage="botao-01.png">
@@ -1087,6 +1117,21 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IXX-0t-Coi">
+                                <rect key="frame" x="626" y="79" width="120" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Buscar album" backgroundImage="botao-01.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pickAlbum:" destination="XLr-tn-YNk" eventType="touchUpInside" id="hLw-5u-Jxg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1098,13 +1143,13 @@
                         <outlet property="secaoPickerView" destination="mm7-yV-YVT" id="sFW-5i-gB0"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kxw-pf-AhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4099" y="-886"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eEG-Gs-7Kx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iCL-1b-ukC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="fBI-KY-4DR" sceneMemberID="viewController">
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Omq-f7-BHm">
@@ -1114,13 +1159,13 @@
                         <segue destination="hG7-gN-xu7" kind="relationship" relationship="rootViewController" id="h9h-eD-TGt"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iCL-1b-ukC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2399" y="-886"/>
         </scene>
         <!--Prime Inspecao Master View Controller - Prime :: Incorporações e Construções-->
         <scene sceneID="dKx-Ke-G4E">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BaB-U8-nZm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="hG7-gN-xu7" customClass="PrimeInspecaoMasterViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fce-tW-CPt">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
@@ -1189,6 +1234,7 @@
                         <outlet property="mapView" destination="Hxm-v9-cNr" id="Rlw-ys-Fk2"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BaB-U8-nZm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1391" y="-886"/>
         </scene>
@@ -1238,6 +1284,9 @@
             <relationships>
                 <relationship kind="outlet" name="engenheiroTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="gerenteTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="label1TextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="label2TextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="label3TextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="nomeTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="supervisorTextField" candidateClass="UITextField"/>
@@ -1274,6 +1323,12 @@
                 <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
+        <class className="PreviewPdfViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PreviewPdfViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
         <class className="PrimeInspecaoMasterViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PrimeInspecaoMasterViewController.h"/>
             <relationships>
@@ -1292,6 +1347,9 @@
                 <relationship kind="outlet" name="dataLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="engenheiroLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="gerenteLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label3" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="nomeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="notaGeralLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="numeroLabel" candidateClass="UILabel"/>
@@ -1324,6 +1382,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UIImagePickerViewController.h"/>
             <relationships>
                 <relationship kind="action" name="discardPhoto:"/>
+                <relationship kind="action" name="pickAlbum:"/>
                 <relationship kind="action" name="savePhoto:"/>
                 <relationship kind="action" name="takePicture:"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>

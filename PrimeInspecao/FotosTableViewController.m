@@ -31,7 +31,7 @@
 {
     if (self.avaliacao) {
         self.nomeLabel.text = self.avaliacao.obra.nome;
-        self.numeroLabel.text = self.avaliacao.numero;
+        self.numeroLabel.text = [NSString stringWithFormat:@"%@", self.avaliacao.numero];
         self.dataLabel.text = [self.dateFormatter stringFromDate:self.avaliacao.data];
     }
 }

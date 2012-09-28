@@ -12,8 +12,20 @@
 #import "PerguntaRespostaCell.h"
 #import "RateView.h"
 
+#define kBorderInset            20.0
+#define kBorderWidth            1.0
+#define kMarginInset            10.0
+#define kWidth                  612.0
+#define kHeight                 792.0
+
+//Line drawing
+#define kLineWidth              1.0
+
 @interface ResumoAvaliacaoViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
     NSMutableData *responseData;
+    CGSize pageSize;
+    UIAlertView *alert;
+    NSInteger currentPage;
 }
 
 @property (strong, nonatomic) IBOutlet UILabel *nomeLabel;
@@ -23,6 +35,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *numeroLabel;
 @property (strong, nonatomic) IBOutlet UILabel *notaGeralLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dataLabel;
+@property (strong, nonatomic) IBOutlet UILabel *label1;
+@property (strong, nonatomic) IBOutlet UILabel *label2;
+@property (strong, nonatomic) IBOutlet UILabel *label3;
 @property (strong, nonatomic) IBOutlet UITextView *comentCriticosTextView;
 @property (strong, nonatomic) IBOutlet UITextView *comentMelhorarTextView;
 @property (strong, nonatomic) IBOutlet UITextView *comentPositivosTextView;

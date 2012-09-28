@@ -25,6 +25,7 @@
 @synthesize legendaField;
 @synthesize secaoPickerView;
 @synthesize avaliacao = _avaliacao;
+@synthesize popVC = _popVC;
 @synthesize managedObjectContext = __managedObjectContext;
 
 - (void)viewDidLoad
@@ -66,6 +67,33 @@
     [imagePicker setDelegate:self];
     
     [self presentModalViewController:imagePicker animated:YES];
+}
+
+- (IBAction)pickAlbum:(UIButton*)sender
+{
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+        [imagePicker setDelegate:self];
+        
+        self.popVC = [[UIPopoverController alloc]
+                                       initWithContentViewController: imagePicker];
+        self.popVC.delegate = self;
+        [self.popVC setPopoverContentSize:CGSizeMake(500, 500)];
+        
+        CGSize size = CGSizeMake(100, 100);
+        [self.popVC presentPopoverFromRect: CGRectMake(sender.center.x, sender.center.y, size.width, size.height)
+                               inView:self.view
+             permittedArrowDirections:UIPopoverArrowDirectionAny
+                             animated:YES];
+    } else {
+        [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+        
+        [imagePicker setDelegate:self];
+        
+        [self presentModalViewController:imagePicker animated:YES];
+    }
 }
 
 - (IBAction)savePhoto:(id)sender {    

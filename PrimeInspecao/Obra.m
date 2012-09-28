@@ -2,13 +2,13 @@
 //  Obra.m
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 06/08/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Cassio Landim on 27/09/12.
+//
 //
 
 #import "Obra.h"
 #import "Avaliacao.h"
-#import "UIImageToDataTransformer.h"
+
 
 @implementation Obra
 
@@ -18,13 +18,10 @@
 @dynamic longitude;
 @dynamic nome;
 @dynamic supervisor;
+@dynamic label1;
+@dynamic label2;
+@dynamic label3;
+@dynamic label4;
 @dynamic avaliacoes;
-
-+ (void)initialize {
-    if (self == [Obra class]) {
-        UIImageToDataTransformer *transformer = [[UIImageToDataTransformer alloc] init];
-        [NSValueTransformer setValueTransformer:transformer forName:@"UIImageToDataTransformer"];
-    }
-}
 
 @end

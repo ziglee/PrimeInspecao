@@ -32,7 +32,7 @@
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-    [self.dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [self.dateFormatter setDateStyle:NSDateFormatterShortStyle];
     
     self.navigationItem.title = [NSString stringWithFormat:@"Avaliações - %@", self.obra.nome];
 }
@@ -100,11 +100,22 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    Avaliacao *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    
+    ResumoAvaliacaoViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ResumoAvaliacao"];
+    controller.managedObjectContext = self.managedObjectContext;
+    controller.avaliacao = selectedObject;
+    
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Avaliacao *avaliacao = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSString *text = [self.dateFormatter stringFromDate:avaliacao.data];
-    cell.textLabel.text = text;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ - Visita: %@", text, (avaliacao.numero ? avaliacao.numero : @"")];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"Nota geral: %1.0f%%", avaliacao.notaGeral.doubleValue * 20];
 }
 
@@ -195,9 +206,18 @@
 
 - (void)insertNewObject
 {
+    Avaliacao *lastAvaliacao = nil;
+    @try {
+        lastAvaliacao = [[self fetchedResultsController] objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    }
+    @catch (NSException * e) {}
+    
     Avaliacao *avaliacao = [NSEntityDescription insertNewObjectForEntityForName:@"Avaliacao" inManagedObjectContext:self.managedObjectContext];
     avaliacao.data = [[NSDate alloc] init];
     avaliacao.obra = self.obra;
+    
+    if (lastAvaliacao)
+        avaliacao.numero = [NSNumber numberWithInt:lastAvaliacao.numero.intValue + 1];
     
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) 

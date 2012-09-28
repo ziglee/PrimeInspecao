@@ -71,7 +71,6 @@
     float imageHeight = MAX(self.minImageSize.height, self.frame.size.height);
     
     for (int i = 0; i < self.imageViews.count; ++i) {
-        
         UIImageView *imageView = [self.imageViews objectAtIndex:i];
         CGRect imageFrame = CGRectMake(self.leftMargin + i*(self.midMargin+imageWidth), 0, imageWidth, imageHeight);
         imageView.frame = imageFrame;

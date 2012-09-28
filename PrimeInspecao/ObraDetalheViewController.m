@@ -23,6 +23,9 @@
 @synthesize engenheiroTextField = _engenheiroTextField;
 @synthesize supervisorTextField = _supervisorTextField;
 @synthesize gerenteTextField = _gerenteTextField;
+@synthesize label1TextField = _label1TextField;
+@synthesize label2TextField = _label2TextField;
+@synthesize label3TextField = _label3TextField;
 @synthesize managedObjectContext = __managedObjectContext;
 
 #pragma mark - Managing the detail item
@@ -43,6 +46,9 @@
         self.engenheiroTextField.text = self.detailItem.engenheiro;
         self.supervisorTextField.text = self.detailItem.supervisor;
         self.gerenteTextField.text = self.detailItem.gerente;
+        self.label1TextField.text = self.detailItem.label1;
+        self.label2TextField.text = self.detailItem.label2;
+        self.label3TextField.text = self.detailItem.label3;
     }
 }
 
@@ -76,6 +82,9 @@
     self.detailItem.engenheiro = self.engenheiroTextField.text;
     self.detailItem.supervisor = self.supervisorTextField.text;
     self.detailItem.gerente = self.gerenteTextField.text;
+    self.detailItem.label1 = self.label1TextField.text;
+    self.detailItem.label2 = self.label2TextField.text;
+    self.detailItem.label3 = self.label3TextField.text;
     
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {

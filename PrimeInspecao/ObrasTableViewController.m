@@ -168,6 +168,12 @@
     NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:self.managedObjectContext];
     
     [newManagedObject setValue:@"Nova obra..." forKey:@"nome"];
+    [newManagedObject setValue:@"Engenheiro" forKey:@"label1"];
+    [newManagedObject setValue:@"Supervisor" forKey:@"label2"];
+    [newManagedObject setValue:@"Gerente" forKey:@"label3"];
+    [newManagedObject setValue:@"" forKey:@"engenheiro"];
+    [newManagedObject setValue:@"" forKey:@"supervisor"];
+    [newManagedObject setValue:@"" forKey:@"gerente"];
     
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {

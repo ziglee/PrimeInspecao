@@ -42,7 +42,7 @@
 {
     if (self.avaliacao) {
         self.nomeLabel.text = self.avaliacao.obra.nome;
-        self.numeroField.text = self.avaliacao.numero;
+        self.numeroField.text = [NSString stringWithFormat:@"%@", self.avaliacao.numero];
         self.dataLabel.text = [self.dateFormatter stringFromDate:self.avaliacao.data];
         self.comentCriticosTextView.text = self.avaliacao.comentCriticos;
         self.comentMelhorarTextView.text = self.avaliacao.comentMelhorar;
@@ -236,7 +236,7 @@
     self.avaliacao.comentCriticos = self.comentCriticosTextView.text;
     self.avaliacao.comentMelhorar = self.comentMelhorarTextView.text;
     self.avaliacao.comentPositivos = self.comentPositivosTextView.text;
-    self.avaliacao.numero = self.numeroField.text;
+    self.avaliacao.numero = [NSNumber numberWithInt:[self.numeroField.text intValue]];
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Resposta" inManagedObjectContext:self.managedObjectContext];
@@ -284,6 +284,26 @@
     controller.avaliacao = self.avaliacao;
     
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    /* for backspace */
+    if([string length]==0){
+        return YES;
+    }
+    
+    /*  limit to only numeric characters  */
+    
+    NSCharacterSet *myCharSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    for (int i = 0; i < [string length]; i++) {
+        unichar c = [string characterAtIndex:i];
+        if ([myCharSet characterIsMember:c]) {
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 @end

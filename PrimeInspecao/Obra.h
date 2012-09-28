@@ -2,8 +2,8 @@
 //  Obra.h
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 06/08/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Cassio Landim on 27/09/12.
+//
 //
 
 #import <Foundation/Foundation.h>
@@ -19,6 +19,10 @@
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSString * nome;
 @property (nonatomic, retain) NSString * supervisor;
+@property (nonatomic, retain) NSString * label1;
+@property (nonatomic, retain) NSString * label2;
+@property (nonatomic, retain) NSString * label3;
+@property (nonatomic, retain) NSString * label4;
 @property (nonatomic, retain) NSSet *avaliacoes;
 @end
 

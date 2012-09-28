@@ -9,6 +9,7 @@
 #import "ResumoAvaliacaoViewController.h"
 #import "AvaliacaoTableViewController.h"
 #import "PreReportViewController.h"
+#import "PreviewPdfViewController.h"
 #import "SecaoPerguntas.h"
 #import "Foto.h"
 #import "ResumoSecaoPerguntasCell.h"
@@ -22,6 +23,13 @@
 - (void)configureCell:(ResumoSecaoPerguntasCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 - (void)configureView;
 - (float) nota: (SecaoPerguntas *)secao avaliacaoAnterior:(Avaliacao *) avaliacao;
+- (void)drawPageNumber:(NSInteger)pageNum;
+- (void)drawPrimeLogo;
+- (void)drawObraInfo;
+- (void)drawQuadroResumo;
+- (void)drawRespostas;
+- (void)drawFotos;
+- (void)drawObservacoes;
 @end
 
 @implementation ResumoAvaliacaoViewController
@@ -36,6 +44,9 @@
 @synthesize gerenteLabel = _gerenteLabel;
 @synthesize numeroLabel = _numeroLabel;
 @synthesize notaGeralLabel = _notaGeralLabel;
+@synthesize label1 = _label1;
+@synthesize label2 = _label2;
+@synthesize label3 = _label3;
 @synthesize rateView = _rateView;
 @synthesize situacaoImage = _situacaoImage;
 @synthesize sinalizacaoImage = _sinalizacaoImage;
@@ -54,7 +65,10 @@
         self.engenheiroLabel.text = self.avaliacao.obra.engenheiro;
         self.supervisorLabel.text = self.avaliacao.obra.supervisor;
         self.gerenteLabel.text = self.avaliacao.obra.gerente;
-        self.numeroLabel.text = self.avaliacao.numero;
+        self.label1.text = [NSString stringWithFormat:@"%@:", self.avaliacao.obra.label1];
+        self.label2.text = [NSString stringWithFormat:@"%@:", self.avaliacao.obra.label2];
+        self.label3.text = [NSString stringWithFormat:@"%@:", self.avaliacao.obra.label3];
+        self.numeroLabel.text = [NSString stringWithFormat:@"%@", self.avaliacao.numero];
         self.dataLabel.text = [self.dateFormatter stringFromDate:self.avaliacao.data];
         self.comentCriticosTextView.text = self.avaliacao.comentCriticos;
         self.comentMelhorarTextView.text = self.avaliacao.comentMelhorar;
@@ -340,307 +354,67 @@
 
 - (void)generatePdfButtonPressed:(id)sender
 {
+    /*
     PreReportViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SendReport"];
     controller.managedObjectContext = self.managedObjectContext;
     controller.avaliacao = self.avaliacao;
-    
     [self presentModalViewController:controller animated:YES];
-
-}
-
-- (void)generatePdfButtonPressed2:(id)sender
-{
-    NSMutableDictionary* data = [NSMutableDictionary dictionaryWithObjectsAndKeys: self.avaliacao.obra.nome, @"obra", nil];
+     */
     
-    if (self.avaliacao.obra.engenheiro)
-        [data setObject: self.avaliacao.obra.engenheiro forKey: @"engenheiro"];    
-    if (self.avaliacao.obra.supervisor)
-        [data setObject: self.avaliacao.obra.supervisor forKey: @"supervisor"];
-    if (self.avaliacao.obra.gerente)
-        [data setObject: self.avaliacao.obra.gerente forKey: @"gerente"];
-    if (self.avaliacao.comentCriticos)
-        [data setObject: self.avaliacao.comentCriticos forKey: @"ptscriticos"];
-    if (self.avaliacao.comentMelhorar)
-        [data setObject: self.avaliacao.comentMelhorar forKey: @"ptsamelhorar"];
-    if (self.avaliacao.comentPositivos)
-        [data setObject: self.avaliacao.comentPositivos forKey: @"ptspositivos"];
-    if (self.avaliacao.data)
-        [data setObject: [self.dateFormatter stringFromDate:self.avaliacao.data] forKey: @"data"];
-    if (self.avaliacao.numero)
-        [data setObject: self.avaliacao.numero forKey: @"numero"];
-    if (self.avaliacao.notaGeral)
-        [data setObject: [NSString stringWithFormat:@"%1.0f%%", self.avaliacao.notaGeral.doubleValue * 20] forKey: @"nota"];
+    alert = [[UIAlertView alloc] initWithTitle:@"Prime Inspeção" message:@"Gerando relatório..." delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+    [alert show];
     
-    NSMutableArray* secoesData = [NSMutableArray arrayWithCapacity:1];
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SecaoPerguntas" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    NSArray *secoes = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
-    
-    for (SecaoPerguntas *secao in secoes) {
-        NSMutableDictionary* secaoData = [NSMutableDictionary dictionaryWithObjectsAndKeys: secao.titulo, @"snome", secao.titulo.uppercaseString, @"snomeupper", nil];
-        NSMutableArray* respostasData = [NSMutableArray arrayWithCapacity:1];
+    if(alert != nil) {
+        UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Resposta" inManagedObjectContext:self.managedObjectContext];
-        [fetchRequest setEntity:entity];
-        
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pergunta.secao == %@ and avaliacao == %@", secao, self.avaliacao];
-        [fetchRequest setPredicate:predicate];
-        
-        NSArray *respostas = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
-        
-        int respostasCount = 0;
-        int respostasSum = 0;
-        
-        for (Resposta *resposta in respostas) {
-            NSMutableDictionary* respostaData = [NSMutableDictionary dictionaryWithObjectsAndKeys: resposta.pergunta.titulo, @"rtitulo", resposta.valor, @"rvalor", resposta.pergunta.tipoSimNao, @"rtipoSimNao", resposta.implementado, @"rimplementado", resposta.requerido, @"rrequerido", nil];
-            
-            [respostaData setObject: @"[userImage:circle_yellow.png]" forKey: @"rsinal"];
-            [respostaData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"rstar1"];
-            [respostaData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"rstar2"];
-            [respostaData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"rstar3"];
-            [respostaData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"rstar4"];
-            [respostaData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"rstar5"];
-            
-            if (resposta.pergunta.tipoSimNao.intValue == 1) {
-                [respostaData setObject: @"[userImage:cancel.png]" forKey: @"rsinal"];
-                
-                if (resposta.implementado.intValue == 1) {
-                    [respostaData setObject: @"[userImage:accepted.png]" forKey: @"rimplementado"];
-                } else {
-                    [respostaData setObject: @"[userImage:cancel.png]" forKey: @"rimplementado"];
-                }
-                
-                if (resposta.requerido.intValue == 1) {
-                    [respostaData setObject: @"[userImage:accepted.png]" forKey: @"rrequerido"];
-                } else {
-                    [respostaData setObject: @"[userImage:cancel.png]" forKey: @"rrequerido"];
-                }
-                
-                if (resposta.implementado.intValue == 1 && resposta.requerido.intValue == 1) {
-                    [respostaData setObject: @"[userImage:accepted.png]" forKey: @"rsinal"];
-                }
-            } else {
-                if (resposta.valor.intValue < 2.5) {
-                    [respostaData setObject: @"[userImage:circle_red.png]" forKey: @"rsinal"];
-                } else if (resposta.valor.intValue < 3.75) {
-                    [respostaData setObject: @"[userImage:circle_yellow.png]" forKey: @"rsinal"];
-                } else {
-                    [respostaData setObject: @"[userImage:circle_green.png]" forKey: @"rsinal"];
-                }    
-            }
-             
-            if (resposta.valor.intValue >= 1) {
-                [respostaData setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"rstar1"];
-            }
-            if (resposta.valor.intValue >= 2) {
-                [respostaData setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"rstar2"];
-            }
-            if (resposta.valor.intValue >= 3) {
-                [respostaData setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"rstar3"];
-            }
-            if (resposta.valor.intValue >= 4) {
-                [respostaData setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"rstar4"];
-            }
-            if (resposta.valor.intValue >= 5) {
-                [respostaData setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"rstar5"];
-            }
-            
-            [respostasData addObject:respostaData];
-            
-            if (resposta.valor.intValue >= 0) {
-                respostasSum += resposta.valor.intValue;
-                respostasCount++;
-            }
-        }
-        
-        float rating = 0;
-        
-        [secaoData setObject: respostasData forKey: @"respostas"];
-        [secaoData setObject: @"N.A." forKey: @"snota"];
-        [secaoData setObject: @"[userImage:circle_yellow.png]" forKey: @"ssinal"];
-        [secaoData setObject: @"[userImage:arrow_right_gray.png]" forKey: @"ssituacao"];
-        [secaoData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"sstar1"];
-        [secaoData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"sstar2"];
-        [secaoData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"sstar3"];
-        [secaoData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"sstar4"];
-        [secaoData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"sstar5"];
-        [secaoData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"s2star1"];
-        [secaoData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"s2star2"];
-        [secaoData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"s2star3"];
-        [secaoData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"s2star4"];
-        [secaoData setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"s2star5"];
-        
-        if (respostasCount > 0) {
-            rating = (float) respostasSum / respostasCount;
-            [secaoData setObject: [NSString stringWithFormat:@"%1.0f%%", rating * 20] forKey: @"snota"];
-            if (rating * 20 < 50) {
-                [secaoData setObject: @"[userImage:circle_red.png]" forKey: @"ssinal"];
-                [secaoData setObject: @"[userImage:circle_red.png]" forKey: @"s2sinal"];
-            } else if (rating * 20 < 75) {
-                [secaoData setObject: @"[userImage:circle_yellow.png]" forKey: @"ssinal"];
-                [secaoData setObject: @"[userImage:circle_yellow.png]" forKey: @"s2sinal"];
-            } else {
-                [secaoData setObject: @"[userImage:circle_green.png]" forKey: @"ssinal"];
-                [secaoData setObject: @"[userImage:circle_green.png]" forKey: @"s2sinal"];
-            }
-            
-            if (rating >= 1) {
-                [secaoData setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"sstar1"];
-                [secaoData setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"s2star1"];
-            } else if (rating >= 0.5) {
-                [secaoData setObject: @"[userImage:rate_star_half_yellow.png]" forKey: @"sstar1"];
-                [secaoData setObject: @"[userImage:rate_star_half_yellow.png]" forKey: @"s2star1"];
-            }
-            
-            if (rating >= 2) {
-                [secaoData setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"sstar2"];
-                [secaoData setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"s2star2"];
-            } else if (rating >= 1.5) {
-                [secaoData setObject: @"[userImage:rate_star_half_yellow.png]" forKey: @"sstar2"];
-                [secaoData setObject: @"[userImage:rate_star_half_yellow.png]" forKey: @"s2star2"];
-            }
-            
-            if (rating >= 3) {
-                [secaoData setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"sstar3"];
-                [secaoData setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"s2star3"];
-            } else if (rating >= 2.5) {
-                [secaoData setObject: @"[userImage:rate_star_half_yellow.png]" forKey: @"sstar3"];
-                [secaoData setObject: @"[userImage:rate_star_half_yellow.png]" forKey: @"s2star3"];
-            }
-            
-            if (rating >= 4) {
-                [secaoData setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"sstar4"];
-                [secaoData setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"s2star4"];
-            } else if (rating >= 3.5) {
-                [secaoData setObject: @"[userImage:rate_star_half_yellow.png]" forKey: @"sstar4"];
-                [secaoData setObject: @"[userImage:rate_star_half_yellow.png]" forKey: @"s2star4"];
-            }
-            
-            if (rating >= 5) {
-                [secaoData setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"sstar5"];
-                [secaoData setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"s2star5"];
-            } else if (rating >= 4.5) {
-                [secaoData setObject: @"[userImage:rate_star_half_yellow.png]" forKey: @"sstar5"];
-                [secaoData setObject: @"[userImage:rate_star_half_yellow.png]" forKey: @"s2star5"];
-            }
-        }
-        
-        if (self.avaliacaoAnterior) {
-            double notaAnterior = [self nota:secao avaliacaoAnterior:self.avaliacaoAnterior];        
-            if (rating > notaAnterior) {
-                [secaoData setObject: @"[userImage:arrow_up_green.png]" forKey: @"ssituacao"];
-            } else if (rating < notaAnterior) {
-                [secaoData setObject: @"[userImage:arrow_down_red.png]" forKey: @"ssituacao"];
-            } else {
-                [secaoData setObject: @"[userImage:arrow_right_gray.png]" forKey: @"ssituacao"];
-            }
-        }
-        
-        NSMutableArray* fotosData = [NSMutableArray arrayWithCapacity:1];
-        
-        fetchRequest = [[NSFetchRequest alloc] init];
-        entity = [NSEntityDescription entityForName:@"Foto" inManagedObjectContext:self.managedObjectContext];
-        [fetchRequest setEntity:entity];
-        predicate = [NSPredicate predicateWithFormat:@"avaliacao == %@ and secao == %@", self.avaliacao, secao];
-        [fetchRequest setPredicate:predicate];
-        NSArray *fotos = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
-        
-        for (int i = 0; i < [fotos count]; i++) {
-            Foto *foto = [fotos objectAtIndex:i];            
-            UIImage *image = [foto.image resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(300, 440) interpolationQuality:kCGInterpolationMedium];
-            NSData *imageData = UIImageJPEGRepresentation(image, 0.8f);
-            NSString *encodedString = [imageData stringInBase64FromData];            
-            NSMutableArray* row = [NSMutableDictionary dictionaryWithObjectsAndKeys: foto.legenda, @"flegenda", [@"image:base64:" stringByAppendingString:encodedString], @"fimage", nil];
-            
-            [fotosData addObject: row];
-        }
-        [secaoData setObject: fotosData forKey: @"fotos"];
-
-        
-        [secoesData addObject: secaoData];    
-    }
-    [data setObject: secoesData forKey: @"secoes"];
-        
-    [data setObject: @"[userImage:circle_yellow.png]" forKey: @"sinal"];
-    [data setObject: @"[userImage:arrow_right_gray.png]" forKey: @"situacao"];
-    [data setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"star1"];
-    [data setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"star2"];
-    [data setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"star3"];
-    [data setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"star4"];
-    [data setObject: @"[userImage:rate_star_off_yellow.png]" forKey: @"star5"];
-    
-    if (self.avaliacao.notaGeral.doubleValue * 20 < 50) {
-        [data setObject: @"[userImage:circle_red.png]" forKey: @"sinal"];
-    } else if (self.avaliacao.notaGeral.doubleValue * 20 < 75) {
-        [data setObject: @"[userImage:circle_yellow.png]" forKey: @"sinal"];
-    } else {
-        [data setObject: @"[userImage:circle_green.png]" forKey: @"sinal"];
+        indicator.center = CGPointMake(alert.bounds.size.width/2, alert.bounds.size.height-45);
+        [indicator startAnimating];
+        [alert addSubview:indicator];
     }
     
-    if (self.avaliacao.notaGeral.doubleValue >= 1) {
-        [data setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"star1"];
-    } else if (self.avaliacao.notaGeral.doubleValue >= 0.5) {
-        [data setObject: @"[userImage:rate_star_half_yellow.png]" forKey: @"star1"];
-    }
+    currentPage = 1;
     
-    if (self.avaliacao.notaGeral.doubleValue >= 2) {
-        [data setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"star2"];
-    } else if (self.avaliacao.notaGeral.doubleValue >= 1.5) {
-        [data setObject: @"[userImage:rate_star_half_yellow.png]" forKey: @"star2"];
-    }
+    pageSize = CGSizeMake(612, 792);
+    NSString *fileName = @"report.pdf";
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *pdfFileName = [documentsDirectory stringByAppendingPathComponent:fileName];
     
-    if (self.avaliacao.notaGeral.doubleValue >= 3) {
-        [data setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"star3"];
-    } else if (self.avaliacao.notaGeral.doubleValue >= 2.5) {
-        [data setObject: @"[userImage:rate_star_half_yellow.png]" forKey: @"star3"];
-    }
+    UIGraphicsBeginPDFContextToFile(pdfFileName, CGRectZero, nil);
     
-    if (self.avaliacao.notaGeral.doubleValue >= 4) {
-        [data setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"star4"];
-    } else if (self.avaliacao.notaGeral.doubleValue >= 3.5) {
-        [data setObject: @"[userImage:rate_star_half_yellow.png]" forKey: @"star4"];
-    }
+    // Primeira pagina (dados da obra)
+    UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, pageSize.width, pageSize.height), nil);
+    [self drawPrimeLogo];
+    [self drawPageNumber:currentPage];
+    [self drawObraInfo];
     
-    if (self.avaliacao.notaGeral.doubleValue >= 5) {
-        [data setObject: @"[userImage:rate_star_on_yellow.png]" forKey: @"star5"];
-    } else if (self.avaliacao.notaGeral.doubleValue >= 4.5) {
-        [data setObject: @"[userImage:rate_star_half_yellow.png]" forKey: @"star5"];
-    }
+    // Segunda pagina (Resumo da avaliacao)
+    UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, pageSize.width, pageSize.height), nil);
+    [self drawPageNumber:++currentPage];    
+    [self drawQuadroResumo];    
     
-    if (self.avaliacaoAnterior) {
-        if (self.avaliacao.notaGeral.doubleValue > self.avaliacaoAnterior.notaGeral.doubleValue) {
-            [data setObject: @"[userImage:arrow_up_green.png]" forKey: @"situacao"];
-        } else if (self.avaliacao.notaGeral.doubleValue < self.avaliacaoAnterior.notaGeral.doubleValue) {
-            [data setObject: @"[userImage:arrow_down_red.png]" forKey: @"situacao"];
-        } else {
-            [data setObject: @"[userImage:arrow_right_gray.png]" forKey: @"situacao"];
-        }
-    }
+    // Terceira pagina (Detalhes das respostas)
+    UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, pageSize.width, pageSize.height), nil);
+    [self drawPageNumber:++currentPage];
+    [self drawRespostas];
     
-    NSMutableDictionary* info = [NSMutableDictionary dictionaryWithObjectsAndKeys: @"M2I4MzViZDItNzhhOS00MTMwLWFiOTEtMTc4ZjY1MjI5ZTM3OjI1MTUyMDU", @"accessKey", @"prime/template.odt", @"templateName", @"avaliacao.pdf", @"outputName", @"mailto:ziglee@gmail.com:pdf", @"storeTo", data, @"data", @"Prime avaliação", @"mailSubject", nil];
+    // Fotos da avaliacao
+    UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, pageSize.width, pageSize.height), nil);
+    [self drawPageNumber:++currentPage];
+    [self drawFotos];
     
-    NSError *error = nil;
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:&error];
-    NSString* jsonText = [[NSString alloc] initWithData:jsonData                                        encoding:NSUTF8StringEncoding];
-
-    NSLog(@"Json: %@", jsonText);
-
-    NSData* dataBody = [jsonText dataUsingEncoding:NSUTF8StringEncoding];
+    // Observacoes
+    UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, pageSize.width, pageSize.height), nil);
+    [self drawPageNumber:++currentPage];
+    [self drawObservacoes];
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://dws.docmosis.com/services/rs/render"]];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:dataBody];
+    // Close the PDF context and write the contents out.
+    UIGraphicsEndPDFContext();
     
-    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    if (theConnection) {
-        responseData = [NSMutableData data];       
-    } else {
-        NSLog(@"Conexão nula");        
-    }
+    [alert dismissWithClickedButtonIndex:0 animated:YES];
+    
+    PreviewPdfViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PreviewPdf"]; 
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -664,6 +438,746 @@
     } else {
         NSLog(@"error: %@", [error description]);
     }
+}
+
+#pragma mark - PDF Generation
+
+- (void)drawPrimeLogo
+{
+    UIImage * bgImage = [UIImage imageNamed:@"bg-01.png"];
+    [bgImage drawInRect:CGRectMake(0, 0, kWidth, kHeight)];
+    
+    UIImage * demoImage = [UIImage imageNamed:@"prime.jpeg"];
+    [demoImage drawInRect:CGRectMake((pageSize.width/2 - demoImage.size.width/3), kBorderInset, demoImage.size.width/1.5, demoImage.size.height/1.5)];
+}
+
+- (void)drawPageNumber:(NSInteger)pageNumber
+{
+    NSString* pageNumberString = [NSString stringWithFormat:@"- Página %d -", pageNumber];
+    UIFont* theFont = [UIFont systemFontOfSize:12];
+    
+    CGSize pageNumberStringSize = [pageNumberString sizeWithFont:theFont
+                                               constrainedToSize:pageSize
+                                                   lineBreakMode:UILineBreakModeWordWrap];
+    
+    CGRect stringRenderingRect = CGRectMake(kBorderInset,
+                                            pageSize.height - 40.0,
+                                            pageSize.width - 2*kBorderInset,
+                                            pageNumberStringSize.height);
+    
+    [pageNumberString drawInRect:stringRenderingRect withFont:theFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
+}
+
+- (void)drawObraInfo{
+    UIFont* theFont = [UIFont boldSystemFontOfSize:14];
+    
+    // Nome
+    NSString* obraNomeString = [NSString stringWithFormat:@"Obra: %@", self.avaliacao.obra.nome];
+    
+    CGSize pageNumberStringSize = [obraNomeString sizeWithFont:theFont
+                                             constrainedToSize:pageSize
+                                                 lineBreakMode:UILineBreakModeWordWrap];
+    
+    CGRect stringRenderingRect = CGRectMake(kBorderInset,
+                                            kBorderInset + 600,
+                                            300,
+                                            pageNumberStringSize.height);
+    
+    [obraNomeString drawInRect:stringRenderingRect withFont:theFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
+    
+    // Label1
+    NSString* label1String = [NSString stringWithFormat:@"%@: %@", self.avaliacao.obra.label1, self.avaliacao.obra.engenheiro];
+    
+    pageNumberStringSize = [label1String sizeWithFont:theFont
+                                             constrainedToSize:pageSize
+                                                 lineBreakMode:UILineBreakModeWordWrap];
+    
+    stringRenderingRect = CGRectMake(kBorderInset,
+                                            kBorderInset + 620,
+                                            300,
+                                            pageNumberStringSize.height);
+    
+    [label1String drawInRect:stringRenderingRect withFont:theFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
+    
+    // Label2
+    NSString* label2String = [NSString stringWithFormat:@"%@: %@", self.avaliacao.obra.label2, self.avaliacao.obra.supervisor];
+    
+    pageNumberStringSize = [label2String sizeWithFont:theFont
+                                    constrainedToSize:pageSize
+                                        lineBreakMode:UILineBreakModeWordWrap];
+    
+    stringRenderingRect = CGRectMake(kBorderInset,
+                                     kBorderInset + 640,
+                                     300,
+                                     pageNumberStringSize.height);
+    
+    [label2String drawInRect:stringRenderingRect withFont:theFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
+    
+    // Label3
+    NSString* label3String = [NSString stringWithFormat:@"%@: %@", self.avaliacao.obra.label3, self.avaliacao.obra.gerente];
+    
+    pageNumberStringSize = [label2String sizeWithFont:theFont
+                                    constrainedToSize:pageSize
+                                        lineBreakMode:UILineBreakModeWordWrap];
+    
+    stringRenderingRect = CGRectMake(kBorderInset,
+                                     kBorderInset + 660,
+                                     300,
+                                     pageNumberStringSize.height);
+    
+    [label3String drawInRect:stringRenderingRect withFont:theFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
+
+    // Data
+    NSString* dataString = [NSString stringWithFormat:@"Data: %@", [self.dateFormatter stringFromDate: self.avaliacao.data]];
+    
+    pageNumberStringSize = [dataString sizeWithFont:theFont
+                                    constrainedToSize:pageSize
+                                        lineBreakMode:UILineBreakModeWordWrap];
+    
+    stringRenderingRect = CGRectMake(kBorderInset,
+                                     kBorderInset + 680,
+                                     300,
+                                     pageNumberStringSize.height);
+    
+    [dataString drawInRect:stringRenderingRect withFont:theFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
+    
+    // Visita
+    NSString* visitaString = [NSString stringWithFormat:@"Visita: #%@", self.avaliacao.numero];
+    
+    pageNumberStringSize = [visitaString sizeWithFont:theFont
+                                    constrainedToSize:pageSize
+                                        lineBreakMode:UILineBreakModeWordWrap];
+    
+    stringRenderingRect = CGRectMake(kBorderInset,
+                                     kBorderInset + 700,
+                                     300,
+                                     pageNumberStringSize.height);
+    
+    [visitaString drawInRect:stringRenderingRect withFont:theFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
+}
+
+- (void)drawQuadroResumo
+{
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    CGContextSetRGBFillColor(currentContext, 0.7, 0.7, 0.7, 1);
+    CGContextFillRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset), 30));
+    CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset), 30));
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset) - 60, 30));
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset) - 120, 30));
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset) - 180, 30));
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset) - 290, 30));
+    
+    UIFont* theFont = [UIFont boldSystemFontOfSize:12];
+    
+    NSString* str = @"QUADRO RESUMO";
+    CGSize stringSize = [str sizeWithFont:theFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeWordWrap];
+    CGRect stringRenderingRect = CGRectMake(kBorderInset + 85,
+                                            kBorderInset + 8,
+                                            stringSize.width,
+                                            stringSize.height);
+    [str drawInRect:stringRenderingRect withFont:theFont];
+    
+    str = @"AVALIAÇÃO";
+    stringSize = [str sizeWithFont:theFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeWordWrap];
+    stringRenderingRect = CGRectMake(kBorderInset + 303,
+                                            kBorderInset + 8,
+                                            stringSize.width,
+                                            stringSize.height);
+    [str drawInRect:stringRenderingRect withFont:theFont];
+    
+    str = @"SIN.";
+    stringSize = [str sizeWithFont:theFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeWordWrap];
+    stringRenderingRect = CGRectMake(kBorderInset + 410,
+                                     kBorderInset + 8,
+                                     stringSize.width,
+                                     stringSize.height);
+    [str drawInRect:stringRenderingRect withFont:theFont];
+    
+    str = @"SIT.";
+    stringSize = [str sizeWithFont:theFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeWordWrap];
+    stringRenderingRect = CGRectMake(kBorderInset + 472,
+                                     kBorderInset + 8,
+                                     stringSize.width,
+                                     stringSize.height);
+    [str drawInRect:stringRenderingRect withFont:theFont];
+    
+    UIFont* normalFont = [UIFont systemFontOfSize:12];
+    
+    int rowHeightOffset = 0;
+    int rowHeight = 30;
+    
+    int rowY = kBorderInset + rowHeight * (++rowHeightOffset);
+    
+    CGContextSetRGBFillColor(currentContext, 0.8, 0.8, 0.8, 1);
+    CGContextFillRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), rowHeight));
+    CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), rowHeight));
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 60, rowHeight));
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 120, rowHeight));
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 180, rowHeight));
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 290, rowHeight));
+
+    UIImage * starOnImage = [UIImage imageNamed:@"rate_star_on_yellow.png"];
+    UIImage * starHalfImage = [UIImage imageNamed:@"rate_star_half_yellow.png"];
+    UIImage * starOffImage = [UIImage imageNamed:@"rate_star_off_yellow.png"];
+    
+    CGSize starSize = starOnImage.size;
+    
+    if (self.avaliacao.notaGeral.doubleValue <= 4) {
+        [starOffImage drawInRect:CGRectMake(390, rowY + 7, starSize.width/2, starSize.height/2)];
+    }
+    if (self.avaliacao.notaGeral.doubleValue <= 3) {
+        [starOffImage drawInRect:CGRectMake(370, rowY + 7, starSize.width/2, starSize.height/2)];
+    }
+    if (self.avaliacao.notaGeral.doubleValue <= 2) {
+        [starOffImage drawInRect:CGRectMake(350, rowY + 7, starSize.width/2, starSize.height/2)];
+    }
+    if (self.avaliacao.notaGeral.doubleValue <= 1) {
+        [starOffImage drawInRect:CGRectMake(330, rowY + 7, starSize.width/2, starSize.height/2)];
+    }
+    if (self.avaliacao.notaGeral.doubleValue == 0) {
+        [starOffImage drawInRect:CGRectMake(310, rowY + 7, starSize.width/2, starSize.height/2)];
+    }
+    
+    if (self.avaliacao.notaGeral.doubleValue >= 1) {
+        [starOnImage drawInRect:CGRectMake(310, rowY + 7, starSize.width/2, starSize.height/2)];
+    } else if (self.avaliacao.notaGeral.doubleValue > 0 && self.avaliacao.notaGeral.doubleValue < 1) {
+        [starHalfImage drawInRect:CGRectMake(310, rowY + 7, starSize.width/2, starSize.height/2)];
+    }
+    
+    if (self.avaliacao.notaGeral.doubleValue >= 2) {
+        [starOnImage drawInRect:CGRectMake(330, rowY + 7, starSize.width/2, starSize.height/2)];
+    } else if (self.avaliacao.notaGeral.doubleValue > 1 && self.avaliacao.notaGeral.doubleValue < 2) {
+        [starHalfImage drawInRect:CGRectMake(330, rowY + 7, starSize.width/2, starSize.height/2)];
+    }
+    
+    if (self.avaliacao.notaGeral.doubleValue >= 3) {
+        [starOnImage drawInRect:CGRectMake(350, rowY + 7, starSize.width/2, starSize.height/2)];
+    } else if (self.avaliacao.notaGeral.doubleValue > 2 && self.avaliacao.notaGeral.doubleValue < 3) {
+        [starHalfImage drawInRect:CGRectMake(350, rowY + 7, starSize.width/2, starSize.height/2)];
+    }
+    
+    if (self.avaliacao.notaGeral.doubleValue >= 4) {
+        [starOnImage drawInRect:CGRectMake(370, rowY + 7, starSize.width/2, starSize.height/2)];
+    } else if (self.avaliacao.notaGeral.doubleValue > 3 && self.avaliacao.notaGeral.doubleValue < 4) {
+        [starHalfImage drawInRect:CGRectMake(370, rowY + 7, starSize.width/2, starSize.height/2)];
+    }
+    
+    if (self.avaliacao.notaGeral.doubleValue >= 5) {
+        [starOnImage drawInRect:CGRectMake(390, rowY + 7, starSize.width/2, starSize.height/2)];
+    } else if (self.avaliacao.notaGeral.doubleValue > 4 && self.avaliacao.notaGeral.doubleValue < 5) {
+        [starHalfImage drawInRect:CGRectMake(390, rowY + 7, starSize.width/2, starSize.height/2)];
+    }
+    
+    if (self.avaliacao.notaGeral.doubleValue * 20 < 50) {
+        UIImage * image = [UIImage imageNamed:@"circle_red.png"];
+        CGSize imageSize = image.size;
+        [image drawInRect:CGRectMake(431, rowY + 5, imageSize.width/3, imageSize.height/3)];
+    } else if (self.avaliacao.notaGeral.doubleValue * 20 < 75) {
+        UIImage * image = [UIImage imageNamed:@"circle_yellow.png"];
+        CGSize imageSize = image.size;
+        [image drawInRect:CGRectMake(431, rowY + 5, imageSize.width/3, imageSize.height/3)];
+    } else {
+        UIImage * image = [UIImage imageNamed:@"circle_green.png"];
+        CGSize imageSize = image.size;
+        [image drawInRect:CGRectMake(431, rowY + 5, imageSize.width/3, imageSize.height/3)];
+    }
+    
+    if (self.avaliacaoAnterior) {
+        if (self.avaliacao.notaGeral.doubleValue > self.avaliacaoAnterior.notaGeral.doubleValue) {
+            UIImage * image = [UIImage imageNamed:@"arrow_up_green.png"];
+            CGSize imageSize = image.size;
+            [image drawInRect:CGRectMake(492, rowY + 6, imageSize.width/2.5, imageSize.height/2.5)];
+        } else if (self.avaliacao.notaGeral.doubleValue < self.avaliacaoAnterior.notaGeral.doubleValue) {
+            UIImage * image = [UIImage imageNamed:@"arrow_down_red.png"];
+            CGSize imageSize = image.size;
+            [image drawInRect:CGRectMake(492, rowY + 6, imageSize.width/2.5, imageSize.height/2.5)];
+        } else {
+            UIImage * image = [UIImage imageNamed:@"arrow_right_gray.png"];
+            CGSize imageSize = image.size;
+            [image drawInRect:CGRectMake(492, rowY + 6, imageSize.width/3.3, imageSize.height/3.3)];
+        }
+    }
+    
+    str = @"NOTA GERAL";
+    stringSize = [str sizeWithFont:normalFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeWordWrap];
+    stringRenderingRect = CGRectMake(kBorderInset + 15,
+                                     rowY + 8,
+                                     stringSize.width,
+                                     stringSize.height);
+    [str drawInRect:stringRenderingRect withFont:normalFont];
+    
+    str = [NSString stringWithFormat:@"%1.0f%%", self.avaliacao.notaGeral.doubleValue * 20];
+    stringSize = [str sizeWithFont:normalFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeWordWrap];
+    stringRenderingRect = CGRectMake(527,
+                                     rowY + 8,
+                                     50,
+                                     stringSize.height);
+    [str drawInRect:stringRenderingRect withFont:normalFont lineBreakMode:UILineBreakModeWordWrap alignment:NSTextAlignmentRight];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SecaoPerguntas" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSArray *secoes = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    for (SecaoPerguntas *secao in secoes) {
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Resposta" inManagedObjectContext:self.managedObjectContext];
+        [fetchRequest setEntity:entity];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pergunta.secao == %@ and avaliacao == %@", secao, self.avaliacao];
+        [fetchRequest setPredicate:predicate];
+        
+        NSArray *respostas = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+        
+        int respostasCount = 0;
+        int respostasSum = 0;
+        
+        for (Resposta *resposta in respostas) {
+            if (resposta.valor.intValue >= 0) {
+                respostasSum += resposta.valor.intValue;
+                respostasCount++;
+            }
+        }
+        
+        rowY = kBorderInset + rowHeight * (++rowHeightOffset);
+        
+        CGContextSetRGBFillColor(currentContext, 0.95, 0.95, 0.95, 1);
+        CGContextFillRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), rowHeight));
+        CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
+        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), rowHeight));
+        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 60, rowHeight));
+        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 120, rowHeight));
+        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 180, rowHeight));
+        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 290, rowHeight));
+        
+        str = secao.titulo;
+        stringSize = [str sizeWithFont:normalFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
+        stringRenderingRect = CGRectMake(kBorderInset + 15,
+                                         rowY + 8,
+                                         260,
+                                         25);
+        [str drawInRect:stringRenderingRect withFont:normalFont lineBreakMode:UILineBreakModeTailTruncation];
+        
+        float rating = 0;
+        
+        if (respostasCount > 0) {
+            rating = (float) respostasSum / respostasCount;
+            
+            if (rating * 20 < 50) {
+                UIImage * image = [UIImage imageNamed:@"circle_red.png"];
+                CGSize imageSize = image.size;
+                [image drawInRect:CGRectMake(431, rowY + 5, imageSize.width/3, imageSize.height/3)];
+            } else if (rating * 20 < 75) {
+                UIImage * image = [UIImage imageNamed:@"circle_yellow.png"];
+                CGSize imageSize = image.size;
+                [image drawInRect:CGRectMake(431, rowY + 5, imageSize.width/3, imageSize.height/3)];
+            } else {
+                UIImage * image = [UIImage imageNamed:@"circle_green.png"];
+                CGSize imageSize = image.size;
+                [image drawInRect:CGRectMake(431, rowY + 5, imageSize.width/3, imageSize.height/3)];
+            }
+            
+            if (rating <= 4) {
+                [starOffImage drawInRect:CGRectMake(390, rowY + 7, starSize.width/2, starSize.height/2)];
+            }
+            if (rating <= 3) {
+                [starOffImage drawInRect:CGRectMake(370, rowY + 7, starSize.width/2, starSize.height/2)];
+            }
+            if (rating <= 2) {
+                [starOffImage drawInRect:CGRectMake(350, rowY + 7, starSize.width/2, starSize.height/2)];
+            }
+            if (rating <= 1) {
+                [starOffImage drawInRect:CGRectMake(330, rowY + 7, starSize.width/2, starSize.height/2)];
+            }
+            if (rating == 0) {
+                [starOffImage drawInRect:CGRectMake(310, rowY + 7, starSize.width/2, starSize.height/2)];
+            }
+            
+            if (rating >= 1) {
+                [starOnImage drawInRect:CGRectMake(310, rowY + 7, starSize.width/2, starSize.height/2)];
+            } else if (rating > 0 && rating < 1) {
+                [starHalfImage drawInRect:CGRectMake(310, rowY + 7, starSize.width/2, starSize.height/2)];
+            }
+            
+            if (rating >= 2) {
+                [starOnImage drawInRect:CGRectMake(330, rowY + 7, starSize.width/2, starSize.height/2)];
+            } else if (rating > 1 && rating < 2) {
+                [starHalfImage drawInRect:CGRectMake(330, rowY + 7, starSize.width/2, starSize.height/2)];
+            }
+            
+            if (rating >= 3) {
+                [starOnImage drawInRect:CGRectMake(350, rowY + 7, starSize.width/2, starSize.height/2)];
+            } else if (rating > 2 && rating < 3) {
+                [starHalfImage drawInRect:CGRectMake(350, rowY + 7, starSize.width/2, starSize.height/2)];
+            }
+
+            if (rating >= 4) {
+                [starOnImage drawInRect:CGRectMake(370, rowY + 7, starSize.width/2, starSize.height/2)];
+            } else if (rating > 3 && rating < 4) {
+                [starHalfImage drawInRect:CGRectMake(370, rowY + 7, starSize.width/2, starSize.height/2)];
+            }
+
+            if (rating >= 5) {
+                [starOnImage drawInRect:CGRectMake(390, rowY + 7, starSize.width/2, starSize.height/2)];
+            } else if (rating > 4 && rating < 5) {
+                [starHalfImage drawInRect:CGRectMake(390, rowY + 7, starSize.width/2, starSize.height/2)];
+            }
+        }
+        
+        if (self.avaliacaoAnterior) {
+            double notaAnterior = [self nota:secao avaliacaoAnterior:self.avaliacaoAnterior];
+            if (rating > notaAnterior) {
+                UIImage * image = [UIImage imageNamed:@"arrow_up_green.png"];
+                CGSize imageSize = image.size;
+                [image drawInRect:CGRectMake(492, rowY + 6, imageSize.width/2.5, imageSize.height/2.5)];
+            } else if (rating < notaAnterior) {
+                UIImage * image = [UIImage imageNamed:@"arrow_down_red.png"];
+                CGSize imageSize = image.size;
+                [image drawInRect:CGRectMake(492, rowY + 6, imageSize.width/2.5, imageSize.height/2.5)];
+            } else {
+                UIImage * image = [UIImage imageNamed:@"arrow_right_gray.png"];
+                CGSize imageSize = image.size;
+                [image drawInRect:CGRectMake(492, rowY + 6, imageSize.width/3.3, imageSize.height/3.3)];
+            }
+        }
+        
+        str = [NSString stringWithFormat:@"%1.0f%%", rating * 20];
+        stringSize = [str sizeWithFont:normalFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeWordWrap];
+        stringRenderingRect = CGRectMake(527,
+                                         rowY + 8,
+                                         50,
+                                         stringSize.height);
+        [str drawInRect:stringRenderingRect withFont:normalFont lineBreakMode:UILineBreakModeWordWrap alignment:NSTextAlignmentRight];
+    }
+}
+
+- (void)drawRespostas
+{
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    CGContextSetRGBFillColor(currentContext, 0.7, 0.7, 0.7, 1);
+    CGContextFillRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset), 30));
+    CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset), 30));
+    
+    UIFont* theFont = [UIFont boldSystemFontOfSize:12];
+    
+    NSString* str = @"DETALHES DA AVALIACAO";
+    CGSize stringSize = [str sizeWithFont:theFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeWordWrap];
+    CGRect stringRenderingRect = CGRectMake(kBorderInset,
+                                            kBorderInset + 8,
+                                            kWidth - (2*kBorderInset),
+                                            stringSize.height);
+    [str drawInRect:stringRenderingRect withFont:theFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
+    
+    UIImage *starOnImage = [UIImage imageNamed:@"rate_star_on_yellow.png"];
+    UIImage *starOffImage = [UIImage imageNamed:@"rate_star_off_yellow.png"];
+    
+    CGSize starSize = starOnImage.size;
+    
+    UIFont *secaoFont = [UIFont italicSystemFontOfSize:12];
+    UIFont *perguntaFont = [UIFont systemFontOfSize:11];
+    UIFont *simNaoFont = [UIFont systemFontOfSize:9];
+    
+    int rowHeightOffset = 0;
+    int rowHeight = 30;
+    int rowY = 0;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SecaoPerguntas" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSArray *secoes = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    for (SecaoPerguntas *secao in secoes) {
+        if (rowY + 3*rowHeight > kHeight) {
+            UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, pageSize.width, pageSize.height), nil);
+            [self drawPageNumber:++currentPage];
+            rowHeightOffset = -1;
+        }
+        
+        rowY = kBorderInset + rowHeight * (++rowHeightOffset);
+        
+        CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
+        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), 30));
+        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 172, 30));
+        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY+1, kWidth - (2 * kBorderInset), 28));
+        
+        str = [secao.titulo uppercaseString];
+        stringSize = [str sizeWithFont:secaoFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
+        stringRenderingRect = CGRectMake(kBorderInset + 15,
+                                         rowY + 8,
+                                         370,
+                                         25);
+        [str drawInRect:stringRenderingRect withFont:secaoFont lineBreakMode:UILineBreakModeTailTruncation];
+        
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Resposta" inManagedObjectContext:self.managedObjectContext];
+        [fetchRequest setEntity:entity];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pergunta.secao == %@ and avaliacao == %@", secao, self.avaliacao];
+        [fetchRequest setPredicate:predicate];
+        
+        NSArray *respostas = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+        for (Resposta *resposta in respostas) {
+            if (rowY + 3*rowHeight > kHeight) {
+                UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, pageSize.width, pageSize.height), nil);
+                [self drawPageNumber:++currentPage];
+                rowHeightOffset = -1;
+            }
+            
+            rowY = kBorderInset + rowHeight * (++rowHeightOffset);
+            
+            CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
+            CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), 30));
+            CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 172, 30));
+            
+            str = resposta.pergunta.titulo;
+            stringSize = [str sizeWithFont:perguntaFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
+            stringRenderingRect = CGRectMake(kBorderInset + 30,
+                                             rowY + 8,
+                                             350,
+                                             20);
+            [str drawInRect:stringRenderingRect withFont:perguntaFont lineBreakMode:UILineBreakModeTailTruncation];
+            
+            if (resposta.pergunta.tipoSimNao.intValue == 1) {
+                str = @"Necessário";
+                stringSize = [str sizeWithFont:simNaoFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
+                stringRenderingRect = CGRectMake(430,
+                                                 rowY + 9,
+                                                 50,
+                                                 stringSize.height);
+                [str drawInRect:stringRenderingRect withFont:simNaoFont];
+                
+                str = @"Requerido";
+                stringSize = [str sizeWithFont:simNaoFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
+                stringRenderingRect = CGRectMake(511,
+                                                 rowY + 9,
+                                                 50,
+                                                 stringSize.height);
+                [str drawInRect:stringRenderingRect withFont:simNaoFont];
+                
+                UIImage * imageAccepted = [UIImage imageNamed:@"accepted.png"];
+                UIImage * imageCancel = [UIImage imageNamed:@"cancel.png"];
+                
+                CGSize imageAcceptedSize = imageAccepted.size;
+                CGSize imageCancelSize = imageCancel.size;
+                
+                if (resposta.implementado.intValue == 1) {
+                    [imageAccepted drawInRect:CGRectMake(480, rowY + 5, imageAcceptedSize.width/2.5, imageAcceptedSize.height/2.5)];
+                } else {
+                    [imageCancel drawInRect:CGRectMake(480, rowY + 5, imageCancelSize.width/2.5, imageCancelSize.height/2.5)];
+                }
+                
+                if (resposta.requerido.intValue == 1) {
+                    [imageAccepted drawInRect:CGRectMake(560, rowY + 5, imageAcceptedSize.width/2.5, imageAcceptedSize.height/2.5)];
+                } else {
+                    [imageCancel drawInRect:CGRectMake(560, rowY + 5, imageCancelSize.width/2.5, imageCancelSize.height/2.5)];
+                }
+            } else {
+                if (resposta.valor.intValue >= 1) {
+                    [starOnImage drawInRect:CGRectMake(458, rowY + 7, starSize.width/2, starSize.height/2)];
+                }
+                if (resposta.valor.intValue >= 2) {
+                    [starOnImage drawInRect:CGRectMake(478, rowY + 7, starSize.width/2, starSize.height/2)];
+                }
+                if (resposta.valor.intValue >= 3) {
+                    [starOnImage drawInRect:CGRectMake(498, rowY + 7, starSize.width/2, starSize.height/2)];
+                }
+                if (resposta.valor.intValue >= 4) {
+                    [starOnImage drawInRect:CGRectMake(518, rowY + 7, starSize.width/2, starSize.height/2)];
+                }
+                if (resposta.valor.intValue >= 5) {
+                    [starOnImage drawInRect:CGRectMake(538, rowY + 7, starSize.width/2, starSize.height/2)];
+                }
+                
+                if (resposta.valor.intValue <= 4) {
+                    [starOffImage drawInRect:CGRectMake(538, rowY + 7, starSize.width/2, starSize.height/2)];
+                }
+                if (resposta.valor.intValue <= 3) {
+                    [starOffImage drawInRect:CGRectMake(518, rowY + 7, starSize.width/2, starSize.height/2)];
+                }
+                if (resposta.valor.intValue <= 2) {
+                    [starOffImage drawInRect:CGRectMake(498, rowY + 7, starSize.width/2, starSize.height/2)];
+                }
+                if (resposta.valor.intValue <= 1) {
+                    [starOffImage drawInRect:CGRectMake(478, rowY + 7, starSize.width/2, starSize.height/2)];
+                }
+                if (resposta.valor.intValue == 0) {
+                    [starOffImage drawInRect:CGRectMake(458, rowY + 7, starSize.width/2, starSize.height/2)];
+                }
+            }
+            
+            if (resposta.valor.intValue < 2.5) {
+                UIImage * image = [UIImage imageNamed:@"circle_red.png"];
+                CGSize imageSize = image.size;
+                [image drawInRect:CGRectMake(25, rowY + 5, imageSize.width/3, imageSize.height/3)];
+            } else if (resposta.valor.intValue < 3.75) {
+                UIImage * image = [UIImage imageNamed:@"circle_yellow.png"];
+                CGSize imageSize = image.size;
+                [image drawInRect:CGRectMake(25, rowY + 5, imageSize.width/3, imageSize.height/3)];
+            } else {
+                UIImage * image = [UIImage imageNamed:@"circle_green.png"];
+                CGSize imageSize = image.size;
+                [image drawInRect:CGRectMake(25, rowY + 5, imageSize.width/3, imageSize.height/3)];
+            }
+        }
+    }
+}
+
+- (void) drawFotos
+{
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    CGContextSetRGBFillColor(currentContext, 0.7, 0.7, 0.7, 1);
+    CGContextFillRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset), 30));
+    CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset), 30));
+    
+    UIFont *theFont = [UIFont boldSystemFontOfSize:12];
+    UIFont *secaoFont = [UIFont italicSystemFontOfSize:12];
+    UIFont *legendaFont = [UIFont systemFontOfSize:11];
+    
+    NSString* str = @"FOTOS DA AVALIACAO";
+    CGSize stringSize = [str sizeWithFont:theFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeWordWrap];
+    CGRect stringRenderingRect = CGRectMake(kBorderInset,
+                                            kBorderInset + 8,
+                                            kWidth - (2*kBorderInset),
+                                            stringSize.height);
+    [str drawInRect:stringRenderingRect withFont:theFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
+    
+    int rowHeight = 200;
+    int rowY = kBorderInset + 30;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SecaoPerguntas" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSArray *secoes = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    for (SecaoPerguntas *secao in secoes) {
+        if (rowY + 60 > kHeight) {
+            UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, pageSize.width, pageSize.height), nil);
+            [self drawPageNumber:++currentPage];
+            rowY = kBorderInset;
+        }
+        
+        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), 30));
+        
+        NSString *str = [secao.titulo uppercaseString];
+        stringSize = [str sizeWithFont:legendaFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
+        stringRenderingRect = CGRectMake(kBorderInset + 15,
+                                         rowY + 8,
+                                         kWidth - 3 * kBorderInset,
+                                         20);
+        [str drawInRect:stringRenderingRect withFont:legendaFont lineBreakMode:UILineBreakModeTailTruncation];
+        
+        rowY += 30;
+        
+        NSFetchRequest *fotosFetchRequest = [[NSFetchRequest alloc] init];
+        entity = [NSEntityDescription entityForName:@"Foto" inManagedObjectContext:self.managedObjectContext];
+        [fotosFetchRequest setEntity:entity];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"avaliacao == %@ and secao == %@", self.avaliacao, secao];
+        [fotosFetchRequest setPredicate:predicate];
+        NSArray *fotos = [self.managedObjectContext executeFetchRequest:fotosFetchRequest error:nil];
+        for (int i = 0; i < [fotos count]; i++) {
+            if (rowY + rowHeight + 30 > kHeight) {
+                UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, pageSize.width, pageSize.height), nil);
+                [self drawPageNumber:++currentPage];
+                rowY = kBorderInset;
+            }
+            
+            CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), 200));
+            
+            Foto *foto = [fotos objectAtIndex:i];
+            UIImage *image = [foto.image resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(200, 200) interpolationQuality:kCGInterpolationMedium];
+            CGSize imageSize = image.size;
+            [image drawInRect:CGRectMake(kBorderInset + ((200-imageSize.width)/2), rowY + ((200-imageSize.height)/2), imageSize.width, imageSize.height)];
+            
+            CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, 200, 200));
+            
+            str = foto.legenda;
+            stringSize = [str sizeWithFont:secaoFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
+            stringRenderingRect = CGRectMake(kBorderInset * 2 + 200,
+                                             rowY + kBorderInset,
+                                             300,
+                                             160);
+            [str drawInRect:stringRenderingRect withFont:secaoFont lineBreakMode:UILineBreakModeTailTruncation];
+            
+            rowY += rowHeight;
+        }
+    }
+}
+
+- (void)drawObservacoes
+{
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    CGContextSetRGBFillColor(currentContext, 0.7, 0.7, 0.7, 1);
+    CGContextFillRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset), 30));
+    CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset), 30));
+    
+    UIFont *theFont = [UIFont boldSystemFontOfSize:12];
+    UIFont *textoFont = [UIFont systemFontOfSize:12];
+    
+    NSString* str = @"PONTOS POSITIVOS";
+    CGSize stringSize = [str sizeWithFont:theFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeWordWrap];
+    CGRect stringRenderingRect = CGRectMake(kBorderInset,
+                                            kBorderInset + 8,
+                                            kWidth - (2*kBorderInset),
+                                            stringSize.height);
+    [str drawInRect:stringRenderingRect withFont:theFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
+    
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset + 30, kWidth - (2 * kBorderInset), 200));
+    
+    str = self.avaliacao.comentPositivos;
+    stringSize = [str sizeWithFont:textoFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
+    stringRenderingRect = CGRectMake(kBorderInset * 2,
+                                     kBorderInset * 2 + 30,
+                                     kWidth - 4 * kBorderInset,
+                                     160);
+    [str drawInRect:stringRenderingRect withFont:textoFont lineBreakMode:UILineBreakModeTailTruncation];
+    
+    CGContextSetRGBFillColor(currentContext, 0.7, 0.7, 0.7, 1);
+    CGContextFillRect(currentContext, CGRectMake (kBorderInset, kBorderInset * 2 + 230, kWidth - (2 * kBorderInset), 30));
+    CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset * 2 + 230, kWidth - (2 * kBorderInset), 30));
+    
+    str = @"PONTOS CRÍTICOS";
+    stringSize = [str sizeWithFont:theFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeWordWrap];
+    stringRenderingRect = CGRectMake(kBorderInset,
+                                            kBorderInset*2 + 38 + 200,
+                                            kWidth - (2*kBorderInset),
+                                            stringSize.height);
+    [str drawInRect:stringRenderingRect withFont:theFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
+    
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset*2 + 230, kWidth - (2 * kBorderInset), 200));
+    
+    str = self.avaliacao.comentCriticos;
+    stringSize = [str sizeWithFont:textoFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
+    stringRenderingRect = CGRectMake(kBorderInset * 2,
+                                     kBorderInset * 3 + 260,
+                                     kWidth - 4 * kBorderInset,
+                                     160);
+    [str drawInRect:stringRenderingRect withFont:textoFont lineBreakMode:UILineBreakModeTailTruncation];
+    
+    CGContextSetRGBFillColor(currentContext, 0.7, 0.7, 0.7, 1);
+    CGContextFillRect(currentContext, CGRectMake (kBorderInset, kBorderInset * 3 + 430, kWidth - (2 * kBorderInset), 30));
+    CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset * 3 + 430, kWidth - (2 * kBorderInset), 30));
+    
+    str = @"PONTOS A MELHORAR";
+    stringSize = [str sizeWithFont:theFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeWordWrap];
+    stringRenderingRect = CGRectMake(kBorderInset,
+                                     kBorderInset*3 + 438,
+                                     kWidth - (2*kBorderInset),
+                                     stringSize.height);
+    [str drawInRect:stringRenderingRect withFont:theFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
+    
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset*3 + 430, kWidth - (2 * kBorderInset), 200));
+    
+    str = self.avaliacao.comentMelhorar;
+    stringSize = [str sizeWithFont:textoFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
+    stringRenderingRect = CGRectMake(kBorderInset * 2,
+                                     kBorderInset * 4 + 460,
+                                     kWidth - 4 * kBorderInset,
+                                     160);
+    [str drawInRect:stringRenderingRect withFont:textoFont lineBreakMode:UILineBreakModeTailTruncation];
 }
 
 @end

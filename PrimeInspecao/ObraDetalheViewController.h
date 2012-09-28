@@ -18,6 +18,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *engenheiroTextField;
 @property (strong, nonatomic) IBOutlet UITextField *supervisorTextField;
 @property (strong, nonatomic) IBOutlet UITextField *gerenteTextField;
+@property (strong, nonatomic) IBOutlet UITextField *label1TextField;
+@property (strong, nonatomic) IBOutlet UITextField *label2TextField;
+@property (strong, nonatomic) IBOutlet UITextField *label3TextField;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @end

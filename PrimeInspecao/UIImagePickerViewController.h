@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Avaliacao.h"
 
-@interface UIImagePickerViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+@interface UIImagePickerViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIPopoverControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextField *legendaField;
@@ -17,8 +17,10 @@
 
 @property (strong, nonatomic) Avaliacao *avaliacao;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) UIPopoverController *popVC;
 
 - (IBAction)takePicture:(id)sender;
+- (IBAction)pickAlbum:(UIButton*)sender;
 - (IBAction)savePhoto:(id)sender;
 - (IBAction)discardPhoto:(id)sender;
 

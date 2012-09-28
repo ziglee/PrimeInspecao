@@ -94,6 +94,56 @@
     }  
 }
 
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
+    NSUInteger fromIndex = fromIndexPath.row;
+    NSUInteger toIndex = toIndexPath.row;
+    
+    if (fromIndex == toIndex) {
+        return;
+    }
+    
+    Pergunta *affectedObject = [self.fetchedResultsController.fetchedObjects objectAtIndex:fromIndex];
+    affectedObject.posicao = [NSNumber numberWithInteger:toIndex];
+    
+    NSUInteger start, end;
+    int delta;
+    
+    if (fromIndex < toIndex) {
+        // move was down, need to shift up
+        delta = -1;
+        start = fromIndex + 1;
+        end = toIndex;
+    } else { // fromIndex > toIndex
+        // move was up, need to shift down
+        delta = 1;
+        start = toIndex;
+        end = fromIndex - 1;
+    }
+    
+    for (NSUInteger i = start; i <= end; i++) {
+        Pergunta *otherObject = [self.fetchedResultsController.fetchedObjects objectAtIndex:i];
+        otherObject.posicao = [NSNumber numberWithInteger:delta + otherObject.posicao.intValue];
+    }
+    
+    NSError *error = nil;
+    if ([self.managedObjectContext save:&error]){
+        NSLog(@"Successfully saved the context for reorder");
+    } else {
+        NSLog(@"Failed to save the context. Error = %@", error);
+    }
+    
+    if (![self.fetchedResultsController performFetch:&error]) {
+	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	    abort();
+	}
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Pergunta *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];

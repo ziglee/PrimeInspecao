@@ -2,8 +2,8 @@
 //  Resposta.m
 //  PrimeInspecao
 //
-//  Created by Cassio Ribeiro on 06/08/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Cassio Landim on 27/09/12.
+//
 //
 
 #import "Resposta.h"
