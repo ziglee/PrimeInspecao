@@ -110,6 +110,7 @@
     Foto *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     FotoDetalheViewController *detalhe = [self.storyboard instantiateViewControllerWithIdentifier:@"FotoDetalhe"];
     detalhe.foto = selectedObject;
+    detalhe.managedObjectContext = self.managedObjectContext;
     [self.navigationController pushViewController:detalhe animated:YES];
 }
 
@@ -127,7 +128,7 @@
     
     [fetchRequest setFetchBatchSize:20];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"legenda" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"secao" ascending:YES];
     NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
     
     [fetchRequest setSortDescriptors:sortDescriptors];

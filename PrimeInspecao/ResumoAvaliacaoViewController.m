@@ -8,7 +8,6 @@
 
 #import "ResumoAvaliacaoViewController.h"
 #import "AvaliacaoTableViewController.h"
-#import "PreReportViewController.h"
 #import "PreviewPdfViewController.h"
 #import "SecaoPerguntas.h"
 #import "Foto.h"
@@ -354,13 +353,6 @@
 
 - (void)generatePdfButtonPressed:(id)sender
 {
-    /*
-    PreReportViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SendReport"];
-    controller.managedObjectContext = self.managedObjectContext;
-    controller.avaliacao = self.avaliacao;
-    [self presentModalViewController:controller animated:YES];
-     */
-    
     alert = [[UIAlertView alloc] initWithTitle:@"Prime Inspeção" message:@"Gerando relatório..." delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
     [alert show];
     

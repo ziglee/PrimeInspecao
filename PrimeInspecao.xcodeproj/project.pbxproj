@@ -19,6 +19,7 @@
 		DF0A44B416262F5500B44CE6 /* SecaoPerguntas.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0A44B316262F5500B44CE6 /* SecaoPerguntas.m */; };
 		DF0A44B716262F5500B44CE6 /* Avaliacao.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0A44B616262F5500B44CE6 /* Avaliacao.m */; };
 		DF0A44BA16262F5500B44CE6 /* Obra.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0A44B916262F5500B44CE6 /* Obra.m */; };
+		DF0A44BD162684B600B44CE6 /* FotoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0A44BC162684B500B44CE6 /* FotoEditViewController.m */; };
 		DF109F1A15B4A3D8000660BE /* SecaoPerguntasHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109F1C15B4A3D8000660BE /* SecaoPerguntasHeaderView.m */; };
 		DF109F1D15B4A3F9000660BE /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF109F1015B49F3F000660BE /* RateView.m */; };
 		DF109F2215B4A9EE000660BE /* rate_star_half_green.png in Resources */ = {isa = PBXBuildFile; fileRef = DF109F1F15B4A9EE000660BE /* rate_star_half_green.png */; };
@@ -54,7 +55,6 @@
 		DFA7A64A15B87C2600ED2FC8 /* rate_star_off_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = DFA7A64715B87C2600ED2FC8 /* rate_star_off_yellow.png */; };
 		DFA7A64C15B89E6D00ED2FC8 /* arrow_right_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = DFA7A64B15B89E6D00ED2FC8 /* arrow_right_gray.png */; };
 		DFA7A64E15B8EDDC00ED2FC8 /* prime.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DFA7A64D15B8EDDC00ED2FC8 /* prime.jpeg */; };
-		DFADD42115E8441000A5D6D7 /* PreReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFADD41E15E838BB00A5D6D7 /* PreReportViewController.m */; };
 		DFCA8BCC15950CC500790F82 /* AvaliacaoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCA8BCB15950CC500790F82 /* AvaliacaoTableViewController.m */; };
 		DFE73BA315903BE900816FC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE73BA215903BE800816FC8 /* UIKit.framework */; };
 		DFE73BA515903BE900816FC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE73BA415903BE900816FC8 /* Foundation.framework */; };
@@ -94,6 +94,8 @@
 		DF0A44B616262F5500B44CE6 /* Avaliacao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Avaliacao.m; path = PrimeInspecao/Avaliacao.m; sourceTree = "<group>"; };
 		DF0A44B816262F5500B44CE6 /* Obra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Obra.h; path = PrimeInspecao/Obra.h; sourceTree = "<group>"; };
 		DF0A44B916262F5500B44CE6 /* Obra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Obra.m; path = PrimeInspecao/Obra.m; sourceTree = "<group>"; };
+		DF0A44BB162684B500B44CE6 /* FotoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FotoEditViewController.h; sourceTree = "<group>"; };
+		DF0A44BC162684B500B44CE6 /* FotoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FotoEditViewController.m; sourceTree = "<group>"; };
 		DF109F0F15B49F3F000660BE /* RateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RateView.h; sourceTree = "<group>"; };
 		DF109F1015B49F3F000660BE /* RateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
 		DF109F1F15B4A9EE000660BE /* rate_star_half_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rate_star_half_green.png; sourceTree = "<group>"; };
@@ -149,8 +151,6 @@
 		DFA7A64715B87C2600ED2FC8 /* rate_star_off_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rate_star_off_yellow.png; sourceTree = "<group>"; };
 		DFA7A64B15B89E6D00ED2FC8 /* arrow_right_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right_gray.png; sourceTree = "<group>"; };
 		DFA7A64D15B8EDDC00ED2FC8 /* prime.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = prime.jpeg; sourceTree = "<group>"; };
-		DFADD41D15E838BB00A5D6D7 /* PreReportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreReportViewController.h; sourceTree = "<group>"; };
-		DFADD41E15E838BB00A5D6D7 /* PreReportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreReportViewController.m; sourceTree = "<group>"; };
 		DFCA8BCA15950CC500790F82 /* AvaliacaoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvaliacaoTableViewController.h; sourceTree = "<group>"; };
 		DFCA8BCB15950CC500790F82 /* AvaliacaoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvaliacaoTableViewController.m; sourceTree = "<group>"; };
 		DFE73B9E15903BE800816FC8 /* PrimeInspecao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrimeInspecao.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +222,8 @@
 		DF33CC2C15BF3706007C5BFE /* Fotos */ = {
 			isa = PBXGroup;
 			children = (
+				DF0A44BB162684B500B44CE6 /* FotoEditViewController.h */,
+				DF0A44BC162684B500B44CE6 /* FotoEditViewController.m */,
 				DF33CC0915BE70D2007C5BFE /* UIImagePickerViewController.h */,
 				DF33CC0A15BE70D2007C5BFE /* UIImagePickerViewController.m */,
 				DF33CC2D15BF3AA7007C5BFE /* FotosTableViewController.h */,
@@ -361,8 +363,6 @@
 				DF475D1F15D3F08F0032F6BE /* UIImage+RoundedCorner.m */,
 				DF475D2115D3F0D80032F6BE /* UIImage+Alpha.h */,
 				DF475D2215D3F0D80032F6BE /* UIImage+Alpha.m */,
-				DFADD41D15E838BB00A5D6D7 /* PreReportViewController.h */,
-				DFADD41E15E838BB00A5D6D7 /* PreReportViewController.m */,
 				DFFD6DDA1614C1A600149997 /* PreviewPdfViewController.h */,
 				DFFD6DDB1614C1A600149997 /* PreviewPdfViewController.m */,
 			);
@@ -472,7 +472,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFADD42115E8441000A5D6D7 /* PreReportViewController.m in Sources */,
 				DFE73BB115903BE900816FC8 /* main.m in Sources */,
 				DFE73BB515903BE900816FC8 /* PrimeInspecaoAppDelegate.m in Sources */,
 				DFE73BBB15903BE900816FC8 /* PrimeInspecao.xcdatamodeld in Sources */,
@@ -506,6 +505,7 @@
 				DF0A44B416262F5500B44CE6 /* SecaoPerguntas.m in Sources */,
 				DF0A44B716262F5500B44CE6 /* Avaliacao.m in Sources */,
 				DF0A44BA16262F5500B44CE6 /* Obra.m in Sources */,
+				DF0A44BD162684B600B44CE6 /* FotoEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@
 @interface FotoDetalheViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-
 @property (strong, nonatomic) Foto *foto;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end
