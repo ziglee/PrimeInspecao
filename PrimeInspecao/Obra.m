@@ -2,7 +2,7 @@
 //  Obra.m
 //  PrimeInspecao
 //
-//  Created by Cassio Landim on 27/09/12.
+//  Created by Cassio Landim on 10/10/12.
 //
 //
 
@@ -14,14 +14,13 @@
 
 @dynamic engenheiro;
 @dynamic gerente;
+@dynamic label1;
+@dynamic label2;
+@dynamic label3;
 @dynamic latitude;
 @dynamic longitude;
 @dynamic nome;
 @dynamic supervisor;
-@dynamic label1;
-@dynamic label2;
-@dynamic label3;
-@dynamic label4;
 @dynamic avaliacoes;
 
 @end

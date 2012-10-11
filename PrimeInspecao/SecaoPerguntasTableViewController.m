@@ -127,7 +127,8 @@
     
     SecaoPerguntasDetalheViewController *detalheObra = [self.storyboard instantiateViewControllerWithIdentifier:@"SecaoPerguntasDetalhe"];
     detalheObra.managedObjectContext = self.managedObjectContext;
-    detalheObra.secaoPerguntas = selectedObject;
+    
+    detalheObra.secaoPerguntas = [self.managedObjectContext objectWithID: selectedObject.objectID];
     
     [self.navigationController pushViewController:detalheObra animated:YES];
 }
@@ -157,7 +158,7 @@
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     

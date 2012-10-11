@@ -2,7 +2,7 @@
 //  Obra.h
 //  PrimeInspecao
 //
-//  Created by Cassio Landim on 27/09/12.
+//  Created by Cassio Landim on 10/10/12.
 //
 //
 
@@ -15,14 +15,13 @@
 
 @property (nonatomic, retain) NSString * engenheiro;
 @property (nonatomic, retain) NSString * gerente;
+@property (nonatomic, retain) NSString * label1;
+@property (nonatomic, retain) NSString * label2;
+@property (nonatomic, retain) NSString * label3;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSString * nome;
 @property (nonatomic, retain) NSString * supervisor;
-@property (nonatomic, retain) NSString * label1;
-@property (nonatomic, retain) NSString * label2;
-@property (nonatomic, retain) NSString * label3;
-@property (nonatomic, retain) NSString * label4;
 @property (nonatomic, retain) NSSet *avaliacoes;
 @end
 

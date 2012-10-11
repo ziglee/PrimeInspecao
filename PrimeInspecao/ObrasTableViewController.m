@@ -88,6 +88,17 @@
     [self.navigationController pushViewController:detalheObra animated:YES];
 }
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    Obra *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    
+    ObraDetalheViewController *detalheObra = [self.storyboard instantiateViewControllerWithIdentifier:@"ObraDetalhe"];
+    detalheObra.managedObjectContext = self.managedObjectContext;
+    detalheObra.detailItem = selectedObject;
+    
+    [self.navigationController pushViewController:detalheObra animated:YES];
+}
+
 #pragma mark - Fetched results controller
 
 - (NSFetchedResultsController *)fetchedResultsController

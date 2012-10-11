@@ -80,7 +80,7 @@
     
     NSMutableArray *infoArray = [[NSMutableArray alloc] init];
     for (SecaoPerguntas *secaoPerguntas in self.secoesPerguntas) {
-		SecaoPerguntasHeaderInfo *sectionInfo = [[SecaoPerguntasHeaderInfo alloc] init];
+        SecaoPerguntasHeaderInfo *sectionInfo = [[SecaoPerguntasHeaderInfo alloc] init];
         sectionInfo.secaoPerguntas = secaoPerguntas;
         [infoArray addObject:sectionInfo];
     }

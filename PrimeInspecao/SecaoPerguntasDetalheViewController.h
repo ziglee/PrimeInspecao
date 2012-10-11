@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "SecaoPerguntas.h"
 
-@interface SecaoPerguntasDetalheViewController : UITableViewController <UITextFieldDelegate,NSFetchedResultsControllerDelegate>
+@interface SecaoPerguntasDetalheViewController : UITableViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) SecaoPerguntas *secaoPerguntas;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @property (strong, nonatomic) IBOutlet UITextField *tituloTextField;
 
