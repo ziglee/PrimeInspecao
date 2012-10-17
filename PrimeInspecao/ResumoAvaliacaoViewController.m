@@ -25,8 +25,8 @@
 - (void)drawPageNumber:(NSInteger)pageNum;
 - (void)drawPrimeLogo;
 - (void)drawObraInfo;
-- (void)drawQuadroResumo;
-- (void)drawRespostas;
+- (int)drawQuadroResumo;
+- (void)drawRespostas: (int) rowOffset;
 - (void)drawFotos;
 - (void)drawObservacoes;
 @end
@@ -383,12 +383,12 @@
     // Segunda pagina (Resumo da avaliacao)
     UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, pageSize.width, pageSize.height), nil);
     [self drawPageNumber:++currentPage];    
-    [self drawQuadroResumo];    
+    int rowOffset = [self drawQuadroResumo];
     
     // Terceira pagina (Detalhes das respostas)
-    UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, pageSize.width, pageSize.height), nil);
-    [self drawPageNumber:++currentPage];
-    [self drawRespostas];
+    //UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, pageSize.width, pageSize.height), nil);
+    //[self drawPageNumber:++currentPage];
+    [self drawRespostas: rowOffset];
     
     // Observacoes
     UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, pageSize.width, pageSize.height), nil);
@@ -548,17 +548,14 @@
     [visitaString drawInRect:stringRenderingRect withFont:theFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
 }
 
-- (void)drawQuadroResumo
+- (int)drawQuadroResumo
 {
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(currentContext, 0.3);
     CGContextSetRGBFillColor(currentContext, 0.0, 0.0, 0.15, 1);
     CGContextFillRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset), 30));
     CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
     CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset), 30));
-    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset) - 60, 30));
-    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset) - 120, 30));
-    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset) - 180, 30));
-    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset) - 290, 30));
     
     UIFont* theFont = [UIFont boldSystemFontOfSize:12];
 
@@ -609,10 +606,6 @@
     CGContextFillRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), rowHeight));
     CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
     CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), rowHeight));
-    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 60, rowHeight));
-    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 120, rowHeight));
-    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 180, rowHeight));
-    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 290, rowHeight));
 
     UIImage * starOnImage = [UIImage imageNamed:@"rate_star_on_yellow.png"];
     UIImage * starHalfImage = [UIImage imageNamed:@"rate_star_half_yellow.png"];
@@ -669,30 +662,30 @@
     if (self.avaliacao.notaGeral.doubleValue * 20 < 50) {
         UIImage * image = [UIImage imageNamed:@"circle_red.png"];
         CGSize imageSize = image.size;
-        [image drawInRect:CGRectMake(431, rowY + 5, imageSize.width/3, imageSize.height/3)];
+        [image drawInRect:CGRectMake(434, rowY + 7, imageSize.width/4, imageSize.height/4)];
     } else if (self.avaliacao.notaGeral.doubleValue * 20 < 75) {
         UIImage * image = [UIImage imageNamed:@"circle_yellow.png"];
         CGSize imageSize = image.size;
-        [image drawInRect:CGRectMake(431, rowY + 5, imageSize.width/3, imageSize.height/3)];
+        [image drawInRect:CGRectMake(434, rowY + 7, imageSize.width/4, imageSize.height/4)];
     } else {
         UIImage * image = [UIImage imageNamed:@"circle_green.png"];
         CGSize imageSize = image.size;
-        [image drawInRect:CGRectMake(431, rowY + 5, imageSize.width/3, imageSize.height/3)];
+        [image drawInRect:CGRectMake(434, rowY + 7, imageSize.width/4, imageSize.height/4)];
     }
     
     if (self.avaliacaoAnterior) {
         if (self.avaliacao.notaGeral.doubleValue > self.avaliacaoAnterior.notaGeral.doubleValue) {
             UIImage * image = [UIImage imageNamed:@"arrow_up_green.png"];
             CGSize imageSize = image.size;
-            [image drawInRect:CGRectMake(492, rowY + 6, imageSize.width/2.5, imageSize.height/2.5)];
+            [image drawInRect:CGRectMake(494, rowY + 7, imageSize.width/3, imageSize.height/3)];
         } else if (self.avaliacao.notaGeral.doubleValue < self.avaliacaoAnterior.notaGeral.doubleValue) {
             UIImage * image = [UIImage imageNamed:@"arrow_down_red.png"];
             CGSize imageSize = image.size;
-            [image drawInRect:CGRectMake(492, rowY + 6, imageSize.width/2.5, imageSize.height/2.5)];
+            [image drawInRect:CGRectMake(494, rowY + 7, imageSize.width/3, imageSize.height/3)];
         } else {
             UIImage * image = [UIImage imageNamed:@"arrow_right_gray.png"];
             CGSize imageSize = image.size;
-            [image drawInRect:CGRectMake(492, rowY + 6, imageSize.width/3.3, imageSize.height/3.3)];
+            [image drawInRect:CGRectMake(494, rowY + 7, imageSize.width/3.9, imageSize.height/3.9)];
         }
     }
     
@@ -739,12 +732,7 @@
         rowY = kBorderInset + rowHeight * (++rowHeightOffset);
         
         CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
-        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), rowHeight));
-        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 60, rowHeight));
-        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 120, rowHeight));
-        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 180, rowHeight));
-        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 290, rowHeight));
-        
+        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), rowHeight));        
         str = secao.titulo;
         stringSize = [str sizeWithFont:normalFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
         stringRenderingRect = CGRectMake(kBorderInset + 25,
@@ -761,15 +749,15 @@
             if (rating * 20 < 50) {
                 UIImage * image = [UIImage imageNamed:@"circle_red.png"];
                 CGSize imageSize = image.size;
-                [image drawInRect:CGRectMake(431, rowY + 5, imageSize.width/3, imageSize.height/3)];
+                [image drawInRect:CGRectMake(434, rowY + 7, imageSize.width/4, imageSize.height/4)];
             } else if (rating * 20 < 75) {
                 UIImage * image = [UIImage imageNamed:@"circle_yellow.png"];
                 CGSize imageSize = image.size;
-                [image drawInRect:CGRectMake(431, rowY + 5, imageSize.width/3, imageSize.height/3)];
+                [image drawInRect:CGRectMake(434, rowY + 7, imageSize.width/4, imageSize.height/4)];
             } else {
                 UIImage * image = [UIImage imageNamed:@"circle_green.png"];
                 CGSize imageSize = image.size;
-                [image drawInRect:CGRectMake(431, rowY + 5, imageSize.width/3, imageSize.height/3)];
+                [image drawInRect:CGRectMake(434, rowY + 7, imageSize.width/4, imageSize.height/4)];
             }
             
             if (rating <= 4) {
@@ -824,15 +812,15 @@
             if (rating > notaAnterior) {
                 UIImage * image = [UIImage imageNamed:@"arrow_up_green.png"];
                 CGSize imageSize = image.size;
-                [image drawInRect:CGRectMake(492, rowY + 6, imageSize.width/2.5, imageSize.height/2.5)];
+                [image drawInRect:CGRectMake(494, rowY + 7, imageSize.width/3, imageSize.height/3)];
             } else if (rating < notaAnterior) {
                 UIImage * image = [UIImage imageNamed:@"arrow_down_red.png"];
                 CGSize imageSize = image.size;
-                [image drawInRect:CGRectMake(492, rowY + 6, imageSize.width/2.5, imageSize.height/2.5)];
+                [image drawInRect:CGRectMake(494, rowY + 7, imageSize.width/3, imageSize.height/3)];
             } else {
                 UIImage * image = [UIImage imageNamed:@"arrow_right_gray.png"];
                 CGSize imageSize = image.size;
-                [image drawInRect:CGRectMake(492, rowY + 6, imageSize.width/3.3, imageSize.height/3.3)];
+                [image drawInRect:CGRectMake(494, rowY + 7, imageSize.width/3.9, imageSize.height/3.9)];
             }
         }
         
@@ -844,15 +832,20 @@
                                          stringSize.height);
         [str drawInRect:stringRenderingRect withFont:normalFont lineBreakMode:UILineBreakModeWordWrap alignment:NSTextAlignmentRight];
     }
+    
+    return rowY;
 }
 
-- (void)drawRespostas
+- (void)drawRespostas: (int) rowOffset
 {
+    int rowY = rowOffset + 35;
+    
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     CGContextSetRGBFillColor(currentContext, 0.0, 0.0, 0.15, 1);
-    CGContextFillRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset), 30));
+    CGContextSetLineWidth(currentContext, 0.3);
+    CGContextFillRect(currentContext, CGRectMake (kBorderInset, kBorderInset + rowY, kWidth - (2 * kBorderInset), 30));
     CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
-    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset), 30));
+    CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset + rowY, kWidth - (2 * kBorderInset), 30));
     
     UIFont* theFont = [UIFont boldSystemFontOfSize:12];
     
@@ -861,7 +854,7 @@
     NSString* str = @"DETALHES DA AVALIACAO";
     CGSize stringSize = [str sizeWithFont:theFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeWordWrap];
     CGRect stringRenderingRect = CGRectMake(kBorderInset,
-                                            kBorderInset + 8,
+                                            kBorderInset + 8 + rowY,
                                             kWidth - (2*kBorderInset),
                                             stringSize.height);
     [str drawInRect:stringRenderingRect withFont:theFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
@@ -874,37 +867,43 @@
     UIFont *secaoFont = [UIFont italicSystemFontOfSize:12];
     UIFont *perguntaFont = [UIFont systemFontOfSize:11];
     UIFont *simNaoFont = [UIFont systemFontOfSize:9];
-    
-    int rowHeightOffset = 0;
+        
     int rowHeight = 30;
-    int rowY = 0;
+    
+    rowY = rowY + 20;
+    
+    BOOL isFirstSection = YES;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"SecaoPerguntas" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     NSArray *secoes = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
     for (SecaoPerguntas *secao in secoes) {
-        if (rowY + 3*rowHeight > kHeight) {
+        rowY = rowY + rowHeight;
+        if (rowY + 100 > kHeight) {
             UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, pageSize.width, pageSize.height), nil);
             [self drawPageNumber:++currentPage];
-            rowHeightOffset = -1;
+            rowY = kBorderInset;
         }
         
-        rowY = kBorderInset + rowHeight * (++rowHeightOffset);
+        CGContextSetLineWidth(currentContext, 0.3);
+        
+        if (!isFirstSection) {
+            CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), 30));
+            rowY = rowY + rowHeight;            
+        }
         
         CGContextSetRGBFillColor(currentContext, 0.85, 0.85, 0.85, 1);
         CGContextFillRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), 30));
         
         CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
         CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), 30));
-        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 172, 30));
-        CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY+1, kWidth - (2 * kBorderInset), 28));
         
         str = [secao.titulo uppercaseString];
         stringSize = [str sizeWithFont:secaoFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
         stringRenderingRect = CGRectMake(kBorderInset + 15,
                                          rowY + 8,
-                                         370,
+                                         540,
                                          25);
         [str drawInRect:stringRenderingRect withFont:secaoFont lineBreakMode:UILineBreakModeTailTruncation];
         
@@ -917,17 +916,16 @@
         
         NSArray *respostas = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
         for (Resposta *resposta in respostas) {
-            if (rowY + 3*rowHeight > kHeight) {
+            rowY = rowY + rowHeight;
+            if (rowY + 80  > kHeight) {
                 UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, pageSize.width, pageSize.height), nil);
                 [self drawPageNumber:++currentPage];
-                rowHeightOffset = -1;
+                rowY = kBorderInset;
             }
-            
-            rowY = kBorderInset + rowHeight * (++rowHeightOffset);
-            
+           
+            CGContextSetLineWidth(currentContext, 0.3);
             CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
             CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), 30));
-            CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset) - 172, 30));
             
             str = resposta.pergunta.titulo;
             stringSize = [str sizeWithFont:perguntaFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
@@ -1019,6 +1017,7 @@
                 [image drawInRect:CGRectMake(27, rowY + 7, imageSize.width/4, imageSize.height/4)];
             }
         }
+        isFirstSection = NO;
     }
 }
 
@@ -1026,6 +1025,7 @@
 {
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     CGContextSetRGBFillColor(currentContext, 0.0, 0.0, 0.15, 1);
+    CGContextSetLineWidth(currentContext, 0.3);
     CGContextFillRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset), 30));
     CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
     CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset), 30));
@@ -1072,6 +1072,7 @@
             rowY = kBorderInset;
         }
         
+        CGContextSetLineWidth(currentContext, 0.3);
         CGContextSetRGBFillColor(currentContext, 0.85, 0.85, 0.85, 1);
         CGContextFillRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), 30));
         
@@ -1099,6 +1100,7 @@
                 rowY = kBorderInset;
             }
             
+            CGContextSetLineWidth(currentContext, 0.3);
             CGContextSetRGBFillColor(currentContext, 0.95, 0.95, 0.95, 1);
             CGContextFillRect(currentContext, CGRectMake (kBorderInset, rowY, kWidth - (2 * kBorderInset), 182));
             
@@ -1145,6 +1147,7 @@
 {
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     CGContextSetRGBFillColor(currentContext, 0.9, 0.9, 0.9, 1);
+    CGContextSetLineWidth(currentContext, 0.3);
     CGContextFillRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset), 30));
     CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
     CGContextStrokeRect(currentContext, CGRectMake (kBorderInset, kBorderInset, kWidth - (2 * kBorderInset), 30));

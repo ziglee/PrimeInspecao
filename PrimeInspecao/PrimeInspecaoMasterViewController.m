@@ -56,7 +56,7 @@
         newAnnotation.title = obra.nome;
     
         [self.obrasAnnot addObject: obra];
-        [self.annotations addObject:newAnnotation];
+        [self.annotations addObject: newAnnotation];
     }
     [self.mapView addAnnotations:self.annotations];
 }
@@ -90,20 +90,19 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
     if ([(UIButton*)control buttonType] == UIButtonTypeDetailDisclosure){
-        Obra *selectedObject = nil;
-        
-        for (int i = 0; i < mapView.annotations.count; i++) {
-            MKPointAnnotation *annotation = [mapView.annotations objectAtIndex:i];
-            if (annotation.title == view.annotation.title) {
-                selectedObject = [self.obrasAnnot objectAtIndex:i];
+         nil;        
+        for (int j = 0; j < self.obrasAnnot.count; j++) {
+            Obra *selectedObject = [self.obrasAnnot objectAtIndex:j];
+            NSLog(@"%@ - %@", selectedObject.nome, view.annotation.title);
+            if ([selectedObject.nome isEqualToString:view.annotation.title]) {
+                ObraDetalheViewController *detalheObra = [self.storyboard instantiateViewControllerWithIdentifier:@"ObraDetalhe"];
+                detalheObra.managedObjectContext = self.managedObjectContext;
+                detalheObra.detailItem = selectedObject;
+                
+                [self.navigationController pushViewController:detalheObra animated:YES];
+                break;
             }
         }
-        
-        ObraDetalheViewController *detalheObra = [self.storyboard instantiateViewControllerWithIdentifier:@"ObraDetalhe"];
-        detalheObra.managedObjectContext = self.managedObjectContext;
-        detalheObra.detailItem = selectedObject;
-        
-        [self.navigationController pushViewController:detalheObra animated:YES];
     }
 }
 
