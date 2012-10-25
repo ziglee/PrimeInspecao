@@ -45,6 +45,8 @@
 		DF71B20615939D2A00D8A52F /* SecaoPerguntasDetalheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF71B20515939D2A00D8A52F /* SecaoPerguntasDetalheViewController.m */; };
 		DF73BD3315943D0600538178 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF73BD3215943D0600538178 /* MapKit.framework */; };
 		DF73BD3715944BDA00538178 /* MapViewAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DF73BD3615944BDA00538178 /* MapViewAnnotation.m */; };
+		DF854DE71639A14D0084DDD2 /* logomrv.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DF854DE51639A14D0084DDD2 /* logomrv.jpg */; };
+		DF854DE81639A14D0084DDD2 /* logoprime.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DF854DE61639A14D0084DDD2 /* logoprime.jpg */; };
 		DFA7A63D15B8750100ED2FC8 /* circle_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = DFA7A63A15B8750100ED2FC8 /* circle_yellow.png */; };
 		DFA7A63E15B8750100ED2FC8 /* circle_red.png in Resources */ = {isa = PBXBuildFile; fileRef = DFA7A63B15B8750100ED2FC8 /* circle_red.png */; };
 		DFA7A63F15B8750100ED2FC8 /* circle_green.png in Resources */ = {isa = PBXBuildFile; fileRef = DFA7A63C15B8750100ED2FC8 /* circle_green.png */; };
@@ -54,7 +56,6 @@
 		DFA7A64915B87C2600ED2FC8 /* rate_star_on_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = DFA7A64615B87C2600ED2FC8 /* rate_star_on_yellow.png */; };
 		DFA7A64A15B87C2600ED2FC8 /* rate_star_off_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = DFA7A64715B87C2600ED2FC8 /* rate_star_off_yellow.png */; };
 		DFA7A64C15B89E6D00ED2FC8 /* arrow_right_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = DFA7A64B15B89E6D00ED2FC8 /* arrow_right_gray.png */; };
-		DFA7A64E15B8EDDC00ED2FC8 /* prime.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DFA7A64D15B8EDDC00ED2FC8 /* prime.jpeg */; };
 		DFCA8BCC15950CC500790F82 /* AvaliacaoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCA8BCB15950CC500790F82 /* AvaliacaoTableViewController.m */; };
 		DFE73BA315903BE900816FC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE73BA215903BE800816FC8 /* UIKit.framework */; };
 		DFE73BA515903BE900816FC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE73BA415903BE900816FC8 /* Foundation.framework */; };
@@ -141,6 +142,8 @@
 		DF73BD3215943D0600538178 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DF73BD3515944BDA00538178 /* MapViewAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewAnnotation.h; sourceTree = "<group>"; };
 		DF73BD3615944BDA00538178 /* MapViewAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewAnnotation.m; sourceTree = "<group>"; };
+		DF854DE51639A14D0084DDD2 /* logomrv.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logomrv.jpg; sourceTree = "<group>"; };
+		DF854DE61639A14D0084DDD2 /* logoprime.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logoprime.jpg; sourceTree = "<group>"; };
 		DFA7A63A15B8750100ED2FC8 /* circle_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle_yellow.png; sourceTree = "<group>"; };
 		DFA7A63B15B8750100ED2FC8 /* circle_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle_red.png; sourceTree = "<group>"; };
 		DFA7A63C15B8750100ED2FC8 /* circle_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle_green.png; sourceTree = "<group>"; };
@@ -150,7 +153,6 @@
 		DFA7A64615B87C2600ED2FC8 /* rate_star_on_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rate_star_on_yellow.png; sourceTree = "<group>"; };
 		DFA7A64715B87C2600ED2FC8 /* rate_star_off_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rate_star_off_yellow.png; sourceTree = "<group>"; };
 		DFA7A64B15B89E6D00ED2FC8 /* arrow_right_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right_gray.png; sourceTree = "<group>"; };
-		DFA7A64D15B8EDDC00ED2FC8 /* prime.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = prime.jpeg; sourceTree = "<group>"; };
 		DFCA8BCA15950CC500790F82 /* AvaliacaoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvaliacaoTableViewController.h; sourceTree = "<group>"; };
 		DFCA8BCB15950CC500790F82 /* AvaliacaoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvaliacaoTableViewController.m; sourceTree = "<group>"; };
 		DFE73B9E15903BE800816FC8 /* PrimeInspecao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrimeInspecao.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,9 +202,10 @@
 		DF109F1E15B4A9DF000660BE /* stars */ = {
 			isa = PBXGroup;
 			children = (
+				DF854DE51639A14D0084DDD2 /* logomrv.jpg */,
+				DF854DE61639A14D0084DDD2 /* logoprime.jpg */,
 				DFFD6DDF1615313500149997 /* cancel.png */,
 				DFFD6DDD1615311100149997 /* accepted.png */,
-				DFA7A64D15B8EDDC00ED2FC8 /* prime.jpeg */,
 				DFA7A64B15B89E6D00ED2FC8 /* arrow_right_gray.png */,
 				DFA7A64515B87C2600ED2FC8 /* rate_star_half_yellow.png */,
 				DFA7A64615B87C2600ED2FC8 /* rate_star_on_yellow.png */,
@@ -453,7 +456,6 @@
 				DFA7A64915B87C2600ED2FC8 /* rate_star_on_yellow.png in Resources */,
 				DFA7A64A15B87C2600ED2FC8 /* rate_star_off_yellow.png in Resources */,
 				DFA7A64C15B89E6D00ED2FC8 /* arrow_right_gray.png in Resources */,
-				DFA7A64E15B8EDDC00ED2FC8 /* prime.jpeg in Resources */,
 				49D527D315E67B38000C7169 /* bg-01.png in Resources */,
 				49D527D715E688E0000C7169 /* botao-01.png in Resources */,
 				49D527D915E68BFC000C7169 /* positive.gif in Resources */,
@@ -462,6 +464,8 @@
 				4982FA8E15E6E1B100127F75 /* botao-02.png in Resources */,
 				DFFD6DDE1615311100149997 /* accepted.png in Resources */,
 				DFFD6DE01615313500149997 /* cancel.png in Resources */,
+				DF854DE71639A14D0084DDD2 /* logomrv.jpg in Resources */,
+				DF854DE81639A14D0084DDD2 /* logoprime.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

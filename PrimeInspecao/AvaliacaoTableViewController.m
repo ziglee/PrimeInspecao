@@ -132,13 +132,23 @@
     [fetchRequest setPredicate:predicate];
     
     NSArray *respostas = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
-    if ([respostas count] > 0)
-    {
-        Resposta *resposta = [respostas objectAtIndex:0];
-        [cell setResposta:resposta];
+    Resposta *resposta = nil;
+    
+    if ([respostas count] > 0) {
+        resposta =[respostas objectAtIndex:0];
     } else {
-        [cell setResposta:nil];
+        resposta = [NSEntityDescription insertNewObjectForEntityForName:@"Resposta" inManagedObjectContext:self.managedObjectContext];
+        resposta.valor = [NSNumber numberWithInt:-1];
+        resposta.avaliacao = self.avaliacao;
+        resposta.pergunta = cell.perguntaObj;
+        NSError *error = nil;
+        if (![self.managedObjectContext save:&error]) {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
     }
+    
+    [cell setResposta:resposta];
     
     return cell;
 }
@@ -146,51 +156,44 @@
 -(UIView*)tableView:(UITableView*)tableView viewForHeaderInSection:(NSInteger)section {
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SecaoPerguntasHeaderView" owner:self options:nil];
     SecaoPerguntasHeaderInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:section];
-    //if (!sectionInfo.headerView) {
-        SecaoPerguntasHeaderView *tableHeaderView = nil;
-        for (id currentObject in nib) {
-            if ([currentObject isKindOfClass:[UIView class]]) {
-                NSString *titulo = sectionInfo.secaoPerguntas.titulo;
-                NSNumber *nota;
+    SecaoPerguntasHeaderView *tableHeaderView = nil;
+    for (id currentObject in nib) {
+        if ([currentObject isKindOfClass:[UIView class]]) {
+            NSString *titulo = sectionInfo.secaoPerguntas.titulo;
+            NSNumber *nota;
                 
-                int respostasCount = 0;
-                int respostasSum = 0;
+            int respostasCount = 0;
+            int respostasSum = 0;
                 
-                NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-                NSEntityDescription *entity = [NSEntityDescription entityForName:@"Resposta" inManagedObjectContext:self.managedObjectContext];
-                [fetchRequest setEntity:entity];
+            NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+            NSEntityDescription *entity = [NSEntityDescription entityForName:@"Resposta" inManagedObjectContext:self.managedObjectContext];
+            [fetchRequest setEntity:entity];
                 
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pergunta.secao == %@ and avaliacao == %@", sectionInfo.secaoPerguntas, self.avaliacao];
-                [fetchRequest setPredicate:predicate];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pergunta.secao == %@ and avaliacao == %@", sectionInfo.secaoPerguntas, self.avaliacao];
+            [fetchRequest setPredicate:predicate];
                 
-                NSArray *respostas = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
-                for (Resposta *resposta in respostas) 
-                {
-                    if (resposta.valor.intValue >= 0)
-                    {
-                        respostasSum += resposta.valor.intValue;
-                        respostasCount++;
-                    }
+            NSArray *respostas = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+            for (Resposta *resposta in respostas) {
+                if (resposta.valor.intValue >= 0) {
+                    respostasSum += resposta.valor.intValue;
+                    respostasCount++;
                 }
-                
-                if (respostasCount > 0)
-                {
-                    double notaGeral = (double) respostasSum / respostasCount;
-                    nota = [NSNumber numberWithDouble:notaGeral];
-                } 
-                else 
-                {
-                    nota = [NSNumber numberWithInt:0];
-                }
-                
-                tableHeaderView = (SecaoPerguntasHeaderView *)currentObject;
-                [tableHeaderView initWithTitle:titulo nota:nota];
-                break;
             }
+                
+            if (respostasCount > 0) {
+                double notaGeral = (double) respostasSum / respostasCount;
+                nota = [NSNumber numberWithDouble:notaGeral];
+            } else {
+                nota = [NSNumber numberWithInt:0];
+            }
+                
+            tableHeaderView = (SecaoPerguntasHeaderView *)currentObject;
+            [tableHeaderView initWithTitle:titulo nota:nota];
+            break;
         }
+    }
 		
-        sectionInfo.headerView = tableHeaderView;    
-    //}
+    sectionInfo.headerView = tableHeaderView;
     
     return sectionInfo.headerView;
 }
@@ -222,8 +225,7 @@
     [cell setResposta:resposta];
     
     NSError *error = nil;
-	if (![self.managedObjectContext save:&error]) 
-    {
+	if (![self.managedObjectContext save:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 		abort();
 	}

@@ -133,6 +133,18 @@
     [self.navigationController pushViewController:detalheObra animated:YES];
 }
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    SecaoPerguntas *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    
+    SecaoPerguntasDetalheViewController *detalheObra = [self.storyboard instantiateViewControllerWithIdentifier:@"SecaoPerguntasDetalhe"];
+    detalheObra.managedObjectContext = self.managedObjectContext;
+    
+    detalheObra.secaoPerguntas = [self.managedObjectContext objectWithID: selectedObject.objectID];
+    
+    [self.navigationController pushViewController:detalheObra animated:YES];
+}
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     SecaoPerguntas *secao = [self.fetchedResultsController objectAtIndexPath:indexPath];

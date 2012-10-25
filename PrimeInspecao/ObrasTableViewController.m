@@ -185,6 +185,8 @@
     [newManagedObject setValue:@"" forKey:@"engenheiro"];
     [newManagedObject setValue:@"" forKey:@"supervisor"];
     [newManagedObject setValue:@"" forKey:@"gerente"];
+    [newManagedObject setValue:[NSNumber numberWithFloat:-15] forKey:@"latitude"];
+    [newManagedObject setValue:[NSNumber numberWithFloat:-47] forKey:@"longitude"];
     
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {

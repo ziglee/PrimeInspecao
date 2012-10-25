@@ -20,15 +20,6 @@
 @synthesize implementedSwitch;
 @synthesize cellDelegate;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
@@ -37,8 +28,7 @@
 - (void)setPergunta:(Pergunta *)newPergunta
 {
     NSString *texto = newPergunta.titulo;
-    if (newPergunta.tipoSimNao.intValue == 0)
-    {
+    if (newPergunta.tipoSimNao.intValue == 0) {
         [segmentedControl setHidden:NO];
         [requiredLabel setHidden:YES];
         [implementedLabel setHidden:YES];
@@ -73,8 +63,7 @@
         [segmentedControl setSelectedSegmentIndex:0];
         [requiredSwitch setOn: NO];
         [implementedSwitch setOn: NO];
-    }    
-
+    }
     self.respostaObj = newResposta;
 }
 

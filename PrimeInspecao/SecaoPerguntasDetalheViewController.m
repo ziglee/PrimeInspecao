@@ -172,6 +172,7 @@
 {
     Pergunta *pergunta = [self.secaoPerguntas.perguntas objectAtIndex:indexPath.row];
     cell.textLabel.text = pergunta.titulo;
+    cell.detailTextLabel.text = (pergunta.tipoSimNao.boolValue ? @"Sim/Não" : @"Gradual");
 }
 
 - (void)insertNewObject

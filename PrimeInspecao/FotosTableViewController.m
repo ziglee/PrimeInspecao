@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "FotoDetalheViewController.h"
+#import "UIImagePickerViewController.h"
 #import "FotosTableViewController.h"
 #import "Foto.h"
 #import "SecaoPerguntas.h"
@@ -19,22 +19,10 @@
 
 @synthesize dateFormatter;
 @synthesize avaliacao = _avaliacao;
-@synthesize nomeLabel = _nomeLabel;
-@synthesize dataLabel = _dataLabel;
-@synthesize numeroLabel = _numeroLabel;
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize fetchedResultsController = __fetchedResultsController;
 
 #pragma mark - Managing the detail item
-
-- (void)configureView
-{
-    if (self.avaliacao) {
-        self.nomeLabel.text = self.avaliacao.obra.nome;
-        self.numeroLabel.text = [NSString stringWithFormat:@"%@", self.avaliacao.numero];
-        self.dataLabel.text = [self.dateFormatter stringFromDate:self.avaliacao.data];
-    }
-}
 
 - (void)viewDidLoad
 {
@@ -43,8 +31,6 @@
     self.dateFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     [self.dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    
-    [self configureView];
     
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects: self.editButtonItem, nil];
     
@@ -101,17 +87,30 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Foto *foto = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", foto.secao.titulo, foto.legenda];
-	//cell.imageView.image = foto.image;
+    cell.textLabel.text = foto.legenda;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Foto *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    FotoDetalheViewController *detalhe = [self.storyboard instantiateViewControllerWithIdentifier:@"FotoDetalhe"];
+    Foto *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];    
+    UIImagePickerViewController *detalhe = [self.storyboard instantiateViewControllerWithIdentifier:@"TirarFoto"];
     detalhe.foto = selectedObject;
+    detalhe.avaliacao = selectedObject.avaliacao;
     detalhe.managedObjectContext = self.managedObjectContext;
     [self.navigationController pushViewController:detalhe animated:YES];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo name];
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return [self.fetchedResultsController sectionIndexTitles];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    return [self.fetchedResultsController sectionForSectionIndexTitle:title atIndex:index];
 }
 
 #pragma mark - Fetched results controller
@@ -128,9 +127,8 @@
     
     [fetchRequest setFetchBatchSize:20];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"secao" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"legenda" ascending:YES];
     NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
-    
     [fetchRequest setSortDescriptors:sortDescriptors];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"avaliacao == %@", self.avaliacao];

@@ -21,6 +21,7 @@
 @implementation UIImagePickerViewController
 
 @synthesize secoes;
+@synthesize foto;
 @synthesize imageView;
 @synthesize legendaField;
 @synthesize secaoPickerView;
@@ -38,13 +39,18 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"SecaoPerguntas" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"posicao" ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
     self.secoes = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
     
-    //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,     NSUserDomainMask, YES);
-    //NSString *documentsDirectory = [paths objectAtIndex:0];
-    //NSString *getImagePath = [documentsDirectory stringByAppendingPathComponent:@"savedImage.png"];
-    //UIImage *img = [UIImage imageWithContentsOfFile:getImagePath];
-    //self.imageView.image = img;
+    if (foto != nil) {
+        [self.imageView setImage:foto.image];
+        self.legendaField.text = foto.legenda;
+        [secaoPickerView selectRow:[self.secoes indexOfObject:self.foto.secao] inComponent:0 animated:NO];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -58,7 +64,7 @@
 {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
     } else {
         [imagePicker setSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
@@ -96,9 +102,11 @@
     }
 }
 
-- (IBAction)savePhoto:(id)sender {    
+- (IBAction)savePhoto:(id)sender {
+    if (foto == nil)
+        foto = [NSEntityDescription insertNewObjectForEntityForName:@"Foto" inManagedObjectContext: self.managedObjectContext];
+    
     if (imageView.image != nil) {
-        Foto *foto = [NSEntityDescription insertNewObjectForEntityForName:@"Foto" inManagedObjectContext: self.managedObjectContext];
         foto.legenda = self.legendaField.text;
         foto.avaliacao = self.avaliacao;
         foto.image = imageView.image;
@@ -107,7 +115,7 @@
         foto.secao = [secoes objectAtIndex:row];
         
         NSError *error = nil;
-        if (![self.managedObjectContext save:&error]) 
+        if (![self.managedObjectContext save:&error])
         {
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
@@ -115,15 +123,6 @@
     
         [self.navigationController popViewControllerAnimated:YES];
     }
-    
-    //    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,     NSUserDomainMask, YES);
-    //    NSString *documentsDirectory = [paths objectAtIndex:0];
-    //    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:@"savedImage.png"];
-    //    UIImage *image = imageView.image; // imageView is my image from camera
-    //    NSData *imageData = UIImagePNGRepresentation(image);
-    //    [imageData writeToFile:savedImagePath atomically:NO]; 
-    
-    //UIImageWriteToSavedPhotosAlbum(self.imageView.image, nil, nil , nil);
 }
 
 - (IBAction)discardPhoto:(id)sender {

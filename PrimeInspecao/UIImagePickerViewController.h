@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *secaoPickerView;
 
 @property (strong, nonatomic) Avaliacao *avaliacao;
+@property (strong, nonatomic) Foto *foto;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) UIPopoverController *popVC;
 
