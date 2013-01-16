@@ -440,7 +440,7 @@
     [bgImage drawInRect:CGRectMake(0, 0, kWidth, kHeight)];
     
     UIImage * primeLogoImage = [UIImage imageNamed:@"logoprime.jpg"];
-    [primeLogoImage drawInRect:CGRectMake((pageSize.width/2 - primeLogoImage.size.width/12), kBorderInset, primeLogoImage.size.width/6, primeLogoImage.size.height/6)];
+    [primeLogoImage drawInRect:CGRectMake((pageSize.width/2 - primeLogoImage.size.width/14), kBorderInset + 20, primeLogoImage.size.width/7, primeLogoImage.size.height/7)];
     
     UIImage * mrvLogoImage = [UIImage imageNamed:@"logomrv.jpg"];
     [mrvLogoImage drawInRect:CGRectMake((pageSize.width/2 - mrvLogoImage.size.width/12), 200, mrvLogoImage.size.width/6, mrvLogoImage.size.height/6)];
@@ -712,6 +712,11 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"SecaoPerguntas" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"posicao" ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
     NSArray *secoes = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
     for (SecaoPerguntas *secao in secoes) {
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -881,7 +886,7 @@
     
     UIFont *secaoFont = [UIFont systemFontOfSize:10];
     UIFont *perguntaFont = [UIFont systemFontOfSize:7];
-    UIFont *simNaoFont = [UIFont systemFontOfSize:6];
+    UIFont *simNaoFont = [UIFont systemFontOfSize:5.5];
     
     rowY = rowY + rowHeight;
     
@@ -890,6 +895,9 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"SecaoPerguntas" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"posicao" ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
     NSArray *secoes = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
     for (SecaoPerguntas *secao in secoes) {
         rowHeight = 20;
@@ -924,6 +932,10 @@
         
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pergunta.secao == %@ and avaliacao == %@", secao, self.avaliacao];
         [fetchRequest setPredicate:predicate];
+        
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"pergunta.posicao" ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
+        [fetchRequest setSortDescriptors:sortDescriptors];
         
         NSArray *respostas = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
         
@@ -960,6 +972,11 @@
                 CGContextMoveToPoint(currentContext, kBorderInset, rowY + rowHeight);
                 CGContextAddLineToPoint(currentContext, kWidth - kBorderInset, rowY + rowHeight);
                 CGContextStrokePath(currentContext);
+                
+                CGContextMoveToPoint(currentContext, kWidth / 2, rowY);
+                CGContextAddLineToPoint(currentContext, kWidth / 2, rowY + rowHeight);
+                CGContextStrokePath(currentContext);
+                
                 CGColorSpaceRelease(colorspace);
                 CGColorRelease(color);
             }
@@ -982,7 +999,7 @@
                                                      stringSize.height);
                     [str drawInRect:stringRenderingRect withFont:simNaoFont];
                     
-                    str = @"Requerido";
+                    str = @"Implantado";
                     stringSize = [str sizeWithFont:simNaoFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];
                     stringRenderingRect = CGRectMake(258 + columnDisplacement,
                                                      rowY + 7,
@@ -996,13 +1013,13 @@
                     CGSize imageAcceptedSize = imageAccepted.size;
                     CGSize imageCancelSize = imageCancel.size;
                     
-                    if (resposta.implementado.intValue == 1) {
+                    if (resposta.requerido.intValue == 1) {
                         [imageAccepted drawInRect:CGRectMake(245 + columnDisplacement, rowY + 5, imageAcceptedSize.width/4.5, imageAcceptedSize.height/4.5)];
                     } else {
                         [imageCancel drawInRect:CGRectMake(245 + columnDisplacement, rowY + 5, imageCancelSize.width/4.5, imageCancelSize.height/4.5)];
                     }
                     
-                    if (resposta.requerido.intValue == 1) {
+                    if (resposta.implementado.intValue == 1) {
                         [imageAccepted drawInRect:CGRectMake(287 + columnDisplacement, rowY + 5, imageAcceptedSize.width/4.5, imageAcceptedSize.height/4.5)];
                     } else {
                         [imageCancel drawInRect:CGRectMake(287 + columnDisplacement, rowY + 5, imageCancelSize.width/4.5, imageCancelSize.height/4.5)];
@@ -1099,6 +1116,11 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"SecaoPerguntas" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"posicao" ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
     NSArray *secoes = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
     
     for (SecaoPerguntas *secao in secoes) {
@@ -1145,6 +1167,8 @@
             if (index % 2 == 1) {
                 columnDisplacement = 0;
                 rowY += 20;
+                if (index == fotosCount)
+                    rowHeight = 300;
             } else {
                 rowHeight = 300;
             }
@@ -1156,24 +1180,26 @@
             }
             
             CGContextSetRGBFillColor(currentContext, 0.95, 0.95, 0.95, 1);
-            CGContextFillRect(currentContext, CGRectMake (columnDisplacement + (kWidth / 4) - 91, rowY, 182, 182));
+            CGContextFillRect(currentContext, CGRectMake (columnDisplacement + (kWidth / 4) - 130, rowY, 260, 182));
             
             CGContextSetLineWidth(currentContext, 0.1);
-            CGContextStrokeRect(currentContext, CGRectMake (columnDisplacement + (kWidth / 4) - 91, rowY, 182, 182));
+            CGContextStrokeRect(currentContext, CGRectMake (columnDisplacement + (kWidth / 4) - 130, rowY, 260, 182));
             
             CGContextSetRGBFillColor(currentContext, 0, 0, 0, 1);
             
-            UIImage *image = [foto.image resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(700, 700) interpolationQuality:kCGInterpolationNone];
-            
+            UIImage *image = foto.image;
+            image = [foto.image resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(780, 546) interpolationQuality:kCGInterpolationNone];
             CGSize imageSize = image.size;
             
+            image = [UIImage imageWithData:UIImageJPEGRepresentation(image, 0.5f)];
+            
             int imagePositionX = (kWidth / 4);
-            imagePositionX -= imageSize.width/8;
+            imagePositionX -= imageSize.width/6;
             
             int imagePositionY = 182 / 2;
-            imagePositionY -= imageSize.height/8;
+            imagePositionY -= imageSize.height/6;
 
-            [image drawInRect:CGRectMake(columnDisplacement + imagePositionX, rowY + imagePositionY, imageSize.width/4, imageSize.height/4)];
+            [image drawInRect:CGRectMake(columnDisplacement + imagePositionX, rowY + imagePositionY, imageSize.width/3, imageSize.height/3)];
             
             str = foto.legenda;
             stringSize = [str sizeWithFont:legendaFont constrainedToSize:pageSize lineBreakMode:UILineBreakModeTailTruncation];

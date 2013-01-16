@@ -252,26 +252,21 @@
     
     NSArray *respostas = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
     for (Resposta *resposta in respostas) {
-        if (resposta.valor.intValue >= 0)
-        {
+        if (resposta.valor.intValue >= 0) {
             respostasSum += resposta.valor.intValue;
             respostasCount++;
         }
     }
     
-    if (respostasCount > 0)
-    {
+    if (respostasCount > 0) {
         double notaGeral = (double) respostasSum / respostasCount;
         self.avaliacao.notaGeral = [NSNumber numberWithDouble:notaGeral];
-    } 
-    else 
-    {
+    } else {
         self.avaliacao.notaGeral = [NSNumber numberWithInt:0];
     }
     
     NSError *error = nil;
-	if (![self.managedObjectContext save:&error]) 
-    {
+	if (![self.managedObjectContext save:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 		abort();
 	}

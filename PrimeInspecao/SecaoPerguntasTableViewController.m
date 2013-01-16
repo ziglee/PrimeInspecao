@@ -127,8 +127,7 @@
     
     SecaoPerguntasDetalheViewController *detalheObra = [self.storyboard instantiateViewControllerWithIdentifier:@"SecaoPerguntasDetalhe"];
     detalheObra.managedObjectContext = self.managedObjectContext;
-    
-    detalheObra.secaoPerguntas = [self.managedObjectContext objectWithID: selectedObject.objectID];
+    detalheObra.secaoPerguntas = (SecaoPerguntas *) [self.managedObjectContext objectWithID: selectedObject.objectID];
     
     [self.navigationController pushViewController:detalheObra animated:YES];
 }
@@ -139,8 +138,7 @@
     
     SecaoPerguntasDetalheViewController *detalheObra = [self.storyboard instantiateViewControllerWithIdentifier:@"SecaoPerguntasDetalhe"];
     detalheObra.managedObjectContext = self.managedObjectContext;
-    
-    detalheObra.secaoPerguntas = [self.managedObjectContext objectWithID: selectedObject.objectID];
+    detalheObra.secaoPerguntas = (SecaoPerguntas *) [self.managedObjectContext objectWithID: selectedObject.objectID];
     
     [self.navigationController pushViewController:detalheObra animated:YES];
 }
